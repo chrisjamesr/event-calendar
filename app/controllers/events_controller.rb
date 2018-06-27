@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    events = Event.all 
+    events = Event.all.order(:date_time)
     render json: events, status: 200
   end
 
