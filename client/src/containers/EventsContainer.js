@@ -9,14 +9,18 @@ export class EventsContainer extends React.Component {
   
 
   componentDidMount(){
-    // call fetch events action
-
+    this.props.fetchEvents()
   }
 
   render(){
+    const events = this.props.events.map((e,i)=>{
+      return <Event event={e} key={i} id={"event-${e.id}"}/>
+    })
+
     return(
     <div>
       <h1>Events</h1>
+      {events}
       <p></p>
       <Event />
     </div>
