@@ -2,7 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { fetchEvents } from '../actions/fetchEvents'
-import Event from "../components/Event"
+import EventTile from "../components/EventTile"
 
 
 export class EventsContainer extends React.Component {
@@ -14,7 +14,7 @@ export class EventsContainer extends React.Component {
 
   render(){
     const events = this.props.events.map((e,i)=>{
-      return <Event event={e} key={i} id={"event-${e.id}"}/>
+      return <EventTile event={e} key={i} id={e.id}/>
     })
 
     return(
@@ -22,7 +22,6 @@ export class EventsContainer extends React.Component {
       <h1>Events</h1>
       {events}
       <p></p>
-      <Event />
     </div>
 
     );
