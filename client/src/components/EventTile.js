@@ -1,12 +1,20 @@
 import React from 'react'
 import '../styles/eventTile.css'
+import moment from 'moment'
 
 const EventTile=({event})=>{
+  const day = moment(event.date_time).format("dddd, \n MMMM Do YYYY")
+  const time = moment(event.date_time).format( "h:mm a")
   return (
     <div className="EventTile">
       <aside className="Event-sidebar">
-        <div className="Event-date-header">{event.date}</div>
-        <div className="Event-time">{event.time}</div> 
+        <div className="Event-date-header">
+                    
+          <p>{day}</p>
+          <p>{time}</p>
+          
+        </div>
+        
       </aside>  
       <main>
         <div className="Event-name-header">
