@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './styles/App.css';
 import EventsContainer from './containers/EventsContainer'
-
+import WeeksContainer from './containers/WeeksContainer'
 
 class App extends Component {
   render() {
@@ -13,7 +13,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         
-        <EventsContainer />
+        <WeeksContainer />
         
       </div>
     );
