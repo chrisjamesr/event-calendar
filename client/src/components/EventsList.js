@@ -1,9 +1,11 @@
 import React from 'react'
-
-const EventsList = (props) => {
+import Event from './Event'
+const EventsList = ({events}) => {
+  const renderEvents = events.map((e,i)=> <Event key={i} id={e.id} event={e}/>)
   return (
     <div>
-      <h1>Events List</h1> 
+      <h1>Events List</h1>
+        {renderEvents} 
     </div>    
   )
 }
