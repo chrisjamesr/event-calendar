@@ -2,7 +2,7 @@ import React from 'react'
 import '../styles/eventTile.css'
 import moment from 'moment'
 
-const EventTile=({event})=>{
+const Event=({event})=>{
   const day = moment(event.date_time).format("dddd, \n MMMM Do YYYY")
   const time = moment(event.date_time).format( "h:mm a")
   return (
@@ -29,4 +29,4 @@ const EventTile=({event})=>{
   )
 }
 
-export default EventTile
+export default Event
