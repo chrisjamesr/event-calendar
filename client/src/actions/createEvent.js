@@ -1,0 +1,18 @@
+import fetch from 'isomorphic-fetch'
+
+export function fetchEvents(){
+  return function(dispatch){
+    dispatch({type: 'LOADING_EVENTS'});
+    return fetch('http://localhost:3000/api/events')
+      .then(response => response.json())
+      .then(events => dispatch({
+        type: 'FETCH_EVENTS',
+        payload: events
+      })
+    ) 
+  }
+}
+
+export function monthEvents(){
+  
+}
