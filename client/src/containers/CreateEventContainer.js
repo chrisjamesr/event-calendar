@@ -2,17 +2,35 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { createEvent } from '../actions/fetchEvents'
-// import EventsList from '../components/EventsList'
+import CreateEventInput from '../components/CreateEventInput'
 
 
 export class CreateEventContainer extends React.Component {
-
+  constructor(){
+    super()
+    this.state = {
+      event: {
+        name: '',
+        datetime: '',
+        location: '',
+        details: ''
+      },
+    }    
   }
+  handleChange = (event) => {
+    this.setState({
+      ...this.state,
 
+    })
+  }
   render(){
     return(
       <div>
-        <CreateEventInput createEvent={this.props.createEvent}/>
+        <CreateEventInput 
+          onSubmit={this.handleSubmit}
+          onChange={this.handleChange}
+          event={this.state.event}
+        />
       </div>
     )
   }
