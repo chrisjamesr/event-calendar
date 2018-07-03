@@ -1,8 +1,13 @@
-export default function eventsReducer(state =[], action){
+export default function eventsReducer(state = [], action){
+  let events;
   switch (action.type) {
     case 'FETCH_EVENTS':
-      let events = state.concat(action.payload.filter(event=> !state.includes(event)))
+      events = action.payload
       return events
+    case 'CREATE_EVENT':
+      let event = action.payload
+      events = state.concat(action.payload)
+      return state
     default:
       return state
   }
