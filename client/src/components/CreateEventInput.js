@@ -1,54 +1,34 @@
 import React from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { createEvent } from '../actions/fetchEvents'
-// import EventsList from '../components/EventsList'
+import '../styles/EventInput.css'
 
-
-export class EventInput extends React.Component {
-  constructor(){
-    this.state = {
-      event: {
-        name: '',
-        datetime: '',
-        location: '',
-        details: ''
-      },
-    }
-  }
-
+const CreateEventInput = ({handleSubmit, handleChange}) => {
   
-  componentDidMount(){
-    this.props.createEvent(event)
-  }
-
-  render(){
-    return(
-      <div>
-        <form>
-          <h3>New event</h3>
+  return(
+    <div className="create-input">
+      <h1>New event</h1>
+      <form className="input-form" onSubmit={handleSubmit}>
+        <div>
           <label>Name: </label>
-          <input type="text" onChange={} />
+          <input type="text" name="name" onChange={handleChange} />
+        </div>
+        <div>
           <label>Date & Time: </label>
-          <input type="datetime-local" onChange={} />
+          <input type="datetime-local" name="datetime" onChange={handleChange} />
+        </div>
+        <div>
           <label>Location: </label>
-          <input type="text" onChange={} />
+          <input type="text" name="location" onChange={handleChange} />
+        </div>
+        <div>  
           <label>Details: </label>
-          <textarea onChange={} />
-        </form>
-      </div>
-    )
-  }
+          <textarea name="details" onChange={handleChange} />
+        </div>
+        <button>Create Event</button>
+      </form>
+
+    </div>
+  )
 }
 
-const mapStateToProps=({events})=>{
-  return{
-    event: event
-  }
-}
 
-const mapDispatchToProps=(dispatch)=>{
-  return bindActionCreators({createEvent}, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(EventsContainer)
+export default CreateEventInput;
