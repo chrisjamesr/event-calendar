@@ -1,0 +1,22 @@
+.create-input{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.input-form{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  /*padding: 15px;*/
+}
+
+.input-form div {
+  padding: 10px;
+}
+
+label {
+  padding-right: 10px;
+}
+
