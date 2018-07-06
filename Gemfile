@@ -31,6 +31,7 @@ gem 'active_model_serializers'
 # gem 'mini_magick', '~> 4.8'
 gem 'foreman', '~> 0.82.0'
 gem 'jwt'
+gem 'knock', '~> 2.1', '>= 2.1.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
