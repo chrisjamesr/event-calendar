@@ -5,6 +5,7 @@ import './styles/App.css';
 import Navbar from './components/Navbar';
 import EventsContainer from './containers/EventsContainer';
 import MonthsContainer from './containers/MonthsContainer';
+import CreateEventContainer from './containers/CreateEventContainer';
 
 
 class App extends React.Component{
@@ -17,6 +18,7 @@ class App extends React.Component{
               <Route path="/" exact component={EventsContainer} />
               <Route path="/schedule"  component={EventsContainer} />
               <Route path="/calendar" component={MonthsContainer} />
+              <Route path="/add-event" component={CreateEventContainer} />
             </div>
         </Router>      
       </div>
