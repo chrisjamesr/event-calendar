@@ -1,8 +1,9 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { createEvent } from '../actions/fetchEvents'
+import { createEvent } from '../actions/createEvent'
 import CreateEventInput from '../components/CreateEventInput'
+import '../styles/EventInput.css'
 
 
 export class CreateEventContainer extends React.Component {
@@ -16,27 +17,40 @@ export class CreateEventContainer extends React.Component {
         details: ''
       },
     }    
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
+
   handleChange = (event) => {
     this.setState({
-      ...this.state,
-
+      ...this.state, 
+      event: {
+        ...this.state.event,
+        [event.target.name]: event.target.value,
+      }
     })
   }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.createEvent(this.state.event)
+  }
+
   render(){
     return(
       <div>
-        <CreateEventInput 
-          onSubmit={this.handleSubmit}
-          onChange={this.handleChange}
-          event={this.state.event}
+        <CreateEventInput {...this.props}
+          // onSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          //event={this.state.event}
         />
       </div>
     )
   }
 }
 
-const mapStateToProps=({events})=>{
+const mapStateToProps=({event})=>{
   return{
     event: event
   }
@@ -46,4 +60,4 @@ const mapDispatchToProps=(dispatch)=>{
   return bindActionCreators({createEvent}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventsContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateEventContainer)
