@@ -1,10 +1,13 @@
 import React from 'react'
 
-class Day extends React.Component {
+const Day = ()=>{
   render(){
     return(
-      <EventsContainer />
+      <div>
+
+      </div>
     )
   }
 }
 
+export default Day
