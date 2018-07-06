@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Month = props => {
+const Month = ({name, year}) => {
   return(
     <div>
-    <h1>{props.name}, {props.year}</h1>
+    <h1>{name}, {year}</h1>
     </div>
   )
 }
