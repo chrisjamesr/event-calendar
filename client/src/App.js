@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import EventsContainer from './containers/EventsContainer';
 import MonthsContainer from './containers/MonthsContainer';
 import CreateEventContainer from './containers/CreateEventContainer';
+import Home from './components/Home'
 
 
 class App extends React.Component{
@@ -15,7 +16,7 @@ class App extends React.Component{
           <Router>
             <div>
               <Navbar />
-              <Route path="/" exact component={EventsContainer} />
+              <Route path="/" exact component={Home} />
               <Route path="/schedule"  component={EventsContainer} />
               <Route path="/calendar" component={MonthsContainer} />
               <Route path="/add-event" component={CreateEventContainer} />
