@@ -1,10 +1,10 @@
 import React from 'react'
-import '../styles/EventInput.css'
+import '../styles/form.css'
 
 const CreateEventInput = ({handleSubmit, handleChange}) => {
   
   return(
-    <div className="create-input">
+    <div className="input">
       <h1>New event</h1>
       <form className="input-form" onSubmit={handleSubmit}>
         <div>
