@@ -1,8 +1,12 @@
 class EventsController < ApplicationController
-
+  before_action :authenticate_user, only: [:create, :update, :destroy]
   def create
     event = Event.new(event_params)
-    render json: event, status: 201
+    if event.save
+      render json: event, status: 201
+    else
+      render json: event.errors
+    end  
   end
 
   def index
@@ -18,7 +22,7 @@ class EventsController < ApplicationController
   def update
     event = Event.find(params[:id])
     event.update(event_params)
-    render json :event, status: 200
+    render json: event, status: 200
   end
 
   def destroy
@@ -34,6 +38,6 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:name, :description, :location, :date, :time)
+      params.require(:event).permit(:name, :description, :location, :date_time)
     end
 end 
