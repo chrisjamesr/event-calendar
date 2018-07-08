@@ -2,7 +2,7 @@ class Event < ApplicationRecord
 
   validates :name, uniqueness: {case_sensitive: false}
   validates :location, presence: {allow_blank: true}
-  validates :date_time, presence: {allow_blank: false}
+  validates :date_time, presence: true
 
   attr_reader :date, :time
 
