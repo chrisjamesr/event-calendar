@@ -33,6 +33,7 @@ gem 'foreman', '~> 0.82.0'
 gem 'jwt'
 gem 'knock'
 gem 'rack-cors'
+gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
