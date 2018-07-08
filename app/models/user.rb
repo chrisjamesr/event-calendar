@@ -4,6 +4,10 @@ class User < ApplicationRecord
   validates :email, :name, uniqueness: {case_sensitive: false}
   validates_format_of :email, with: /@/
 
+  def self.from_token_payload(payload)
+    self.find payload["sub"]
+  end
+
   def to_token_payload
         {
             sub: id,
