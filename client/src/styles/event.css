@@ -1,0 +1,43 @@
+.EventTile {
+  display: flex;
+  flex-flow: row || wrap;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px 15%;
+
+  min-height: 150px;
+}
+
+.Event-sidebar{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 10px;
+  padding: 10px;
+  min-width: 100px;
+  border-right: 1px solid black;
+}
+.Event-date-header {
+  
+}
+
+.Event-name-header {
+
+}
+h3, p  {
+    margin:0;
+    padding:10px 0 0 0;
+  }
+
+.Event-details{
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+main {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
