@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user, only: [:create, :update, :destroy]
+  skip_before_action :authenticate, only: [:index, :show]
+
   def create
     event = Event.new(event_params)
     if event.save
@@ -40,4 +41,5 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:name, :description, :location, :date_time)
     end
+
 end 
