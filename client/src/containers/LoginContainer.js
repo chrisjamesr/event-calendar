@@ -10,6 +10,7 @@ export class LoginContainer extends React.Component{
   constructor(){
     super()
     this.state = {
+      loggedIn: false,
       auth: {
         email: '',
         password: ''
