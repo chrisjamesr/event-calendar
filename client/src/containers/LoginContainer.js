@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import LoginInput from '../components/LoginInput'
-import {login} from '../actions/authActions'
+import {signin} from '../actions/authActions'
 
 
 
@@ -32,7 +32,7 @@ export class LoginContainer extends React.Component{
 
   onSubmit = (event) => {
     event.preventDefault()
-    this.props.login({auth: this.state.auth})
+    this.props.signin({auth: this.state.auth})
   }
 
   render(){
@@ -50,7 +50,7 @@ export class LoginContainer extends React.Component{
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({login}, dispatch)
+  return bindActionCreators({signin}, dispatch)
 }
 
 export default connect(null, mapDispatchToProps)(LoginContainer)
