@@ -29,5 +29,5 @@ class DayContainer extends React.Component {
 
 
 
-// export default connect(mapStateToPrsdops, mapDispatchToProps)(MonthsContainer)
+// export default connect(mapStateToProps, mapDispatchToProps)(MonthsContainer)
 export default DayContainer
