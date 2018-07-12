@@ -40,7 +40,6 @@ export class CreateEventContainer extends React.Component {
     return(
       <div>
         <CreateEventInput {...this.props}
-          // onSubmit={this.handleSubmit}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           //event={this.state.event}
