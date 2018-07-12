@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const LoginInput = ({handleChange, handleSubmit}, props) =>{
+const LoginInput = ({handleChange, handleSubmit, email, password}) =>{
   return(
     <div className="input">
       <form 
@@ -10,14 +11,14 @@ const LoginInput = ({handleChange, handleSubmit}, props) =>{
         <div>
           <input 
             onChange={handleChange}
-            value = { props.email }
+            value = { email }
             placeholder="email" 
             type="email" 
             name="email"
            /><br />
           <input 
             onChange={handleChange}
-            value = { props.password }
+            value = { password }
             placeholder="password" 
             type="password" 
             name="password"
@@ -27,6 +28,14 @@ const LoginInput = ({handleChange, handleSubmit}, props) =>{
       </form>
     </div>
   )
+}
+
+// ADD PROPTYPES
+LoginInput.propTypes = {
+  handleChange: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  password: PropTypes.string,
+  email: PropTypes.string
 }
 
 export default LoginInput
