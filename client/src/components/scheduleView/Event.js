@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import '../../styles/event.css'
 import moment from 'moment'
 
@@ -27,6 +28,16 @@ const Event=({event})=>{
       </main>  
     </div>
   )
+}
+
+Event.propTypes = {
+  event: PropTypes.shape({
+    id: PropTypes.nummber,
+    name: PropTypes.string,
+    notes: PropTypes.string,
+    location: PropTypes.string,
+    date_time: PropTypes.string    
+  })
 }
 
 export default Event
