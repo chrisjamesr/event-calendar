@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     post 'user_token' => 'user_token#create'
     resources :events, :except => [:new, :edit]
     resources :users, :only => [:create, :index]
+    get 'users/user_data', to: 'users#info', as: :user
   end
 end
