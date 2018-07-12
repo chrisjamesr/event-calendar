@@ -11,9 +11,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def info
+    logged_in? ? (render json: current_user) : (head 403 )
+
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
+
+  def user_auth_params
+    params.require(:auth).permit(:jwt)
+  end  
 end
