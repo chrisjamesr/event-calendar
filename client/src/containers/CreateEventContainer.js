@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { createEvent } from '../actions/createEvent'
+import { createEvent } from '../actions/eventActions'
 import CreateEventInput from '../components/CreateEventInput'
 import '../styles/EventInput.css'
 
