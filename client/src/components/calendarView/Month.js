@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Month = ({name, year}) => {
   return(
@@ -7,4 +8,11 @@ const Month = ({name, year}) => {
     </div>
   )
 }
+
+// ADD PROPTYPES
+Month.propTypes = {
+  name: PropTypes.string,
+  year: PropTypes.number
+}
+
 export default Month
