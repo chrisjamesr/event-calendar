@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { fetchEvents } from '../actions/fetchEvents'
+import { fetchEvents } from '../actions/eventActions'
 import EventsList from '../components/scheduleView/EventsList'
 
 
