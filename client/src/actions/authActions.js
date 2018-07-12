@@ -10,17 +10,17 @@ export function login(auth){
       })
       .then(handleError)
       .then(res=> res.json())
-      .then(jwt => {
+      .then(json => {
+        sessionStorage.setItem('jwt', json.jwt)
         dispatch({
           type: 'LOGIN_SUCCESS',
-          payload: jwt
+          payload: json.jwt
         })
       })  
       .catch(error=> {
-
         dispatch({
           type: 'LOGIN_FAILURE',
-          payload: "response.statusText"
+          payload: error.statusText
         })
       }) 
   }
@@ -32,3 +32,5 @@ function handleError(response){
   }
     return response
 }
+
+function storeToken(){}
