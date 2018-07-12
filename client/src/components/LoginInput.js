@@ -1,12 +1,27 @@
 import React from 'react'
 
-const LoginInput = (props) =>{
+const LoginInput = ({handleChange, handleSubmit}, props) =>{
   return(
     <div className="input">
-      <form className="login-form">
+      <form 
+        className="login-form"
+        onSubmit={handleSubmit}
+      >
         <div>
-          <input placeholder="email" type="email" name="email"/><br />
-          <input placeholder="password" type="password" name="password"/>
+          <input 
+            onChange={handleChange}
+            value = { props.email }
+            placeholder="email" 
+            type="email" 
+            name="email"
+           /><br />
+          <input 
+            onChange={handleChange}
+            value = { props.password }
+            placeholder="password" 
+            type="password" 
+            name="password"
+          />
         </div>
         <button>Sign In</button>
       </form>
