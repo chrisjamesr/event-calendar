@@ -3,7 +3,6 @@ export default function authReducer(state={jwt: ''}, action){
     case 'LOGIN_REQUEST':
       return state
     case 'LOGIN_SUCCESS':
-    debugger
       let token = {jwt: action.payload}      
       return token
     case 'LOGIN_FAILURE':
