@@ -22,7 +22,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
-  def user_auth_params
-    params.require(:auth).permit(:jwt)
-  end  
-end
+end 
