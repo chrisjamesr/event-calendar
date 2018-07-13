@@ -7,14 +7,16 @@ import SignupInput from '../components/SignupInput'
 import UserDisplay from '../components/UserDisplay'
 
 
-export class LoginContainer extends React.Component{
+export class UserStatusContainer extends React.Component{
   constructor(){
     super()
     this.state = {
       auth: {
         email: '',
-        password: ''
-      }
+        password: '',
+        name: ''
+      },
+      selector: 'signUp'
     }
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -42,6 +44,8 @@ export class LoginContainer extends React.Component{
       )
     } else {
       return (    
+
+
         <SignupInput 
           handleChange={this.onChange}
           handleSubmit={this.onSubmit}
@@ -60,4 +64,4 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({signin}, dispatch)
 }
 
-export default connect(mapStatetoProps, mapDispatchToProps)(LoginContainer)
+export default connect(mapStatetoProps, mapDispatchToProps)(UserStatusContainer)
