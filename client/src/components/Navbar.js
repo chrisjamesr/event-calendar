@@ -8,7 +8,8 @@ const Navbar =() => {
 
     <div className="nav-header">
       <div className="nav-links">
-        <NavLink to="/schedule" exact className="link">Schedule View</NavLink>
+        <NavLink to="/" exact className="link">Home</NavLink>
+        <NavLink to="/schedule" className="link">Schedule View</NavLink>
         <NavLink to="/calendar" className="link">Calendar View</NavLink>
         <NavLink to="/add-event" className="link">Add event</NavLink>
       </div>
