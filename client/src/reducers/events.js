@@ -1,13 +1,14 @@
-export default function eventsReducer(state = [], action){
-  let events;
+import initialState from './initialState'
+
+export default function eventsReducer(state=initialState.events, action){
   switch (action.type) {
     case 'FETCH_EVENTS':
-      events = action.payload
+      let events = action.payload
       return events
     case 'CREATE_EVENT':
       let event = action.payload
-      events = state.concat(action.payload)
-      return state
+      debugger
+      return state.concat(event)
     default:
       return state
   }
