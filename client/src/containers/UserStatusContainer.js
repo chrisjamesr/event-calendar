@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import {signin} from '../actions/authActions'
 import LoginInput from '../components/LoginInput'
+import SignupInput from '../components/SignupInput'
 import UserDisplay from '../components/UserDisplay'
 
 
@@ -41,14 +42,12 @@ export class LoginContainer extends React.Component{
       )
     } else {
       return (    
-        // <div>
-          <LoginInput 
-            handleChange={this.onChange}
-            handleSubmit={this.onSubmit}
-            email={this.state.auth.email}
-            password={this.state.auth.password}
-            />
-        // </div>
+        <SignupInput 
+          handleChange={this.onChange}
+          handleSubmit={this.onSubmit}
+          email={this.state.auth.email}
+          password={this.state.auth.password}
+        />
       )  
     }  
   }
