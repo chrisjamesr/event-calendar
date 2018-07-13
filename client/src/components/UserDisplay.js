@@ -2,8 +2,8 @@ import React from 'react'
 
 const UserDisplay = () => {
   return (
-    <div>
-      Logged In
+    <div className="user-display">
+      User
     </div>
   )
 }
