@@ -1,12 +1,13 @@
-export default function authReducer(state={jwt: ''}, action){
+import initialState from './initialState'
+
+export default function authReducer(state = initialState.loggedIn, action){
   switch (action.type){
     case 'LOGIN_REQUEST':
       return state
     case 'LOGIN_SUCCESS':
-      let token = {jwt: action.payload}      
-      return token
+      return {loggedIn: !!sessionStorage.jwt}
     case 'LOGIN_FAILURE':
-      return Object.assign({},state, {msg: action.payload})
+      return {loggedIn: !!sessionStorage.jwt}
     default:
       return state
   }

@@ -13,14 +13,12 @@ export function signin(auth){
       .then(json => {
         sessionStorage.setItem('jwt', json.jwt)
         dispatch({
-          type: 'LOGIN_SUCCESS',
-          payload: json.jwt
+          type: 'LOGIN_SUCCESS'
         })
       })  
       .catch(error=> {
         dispatch({
-          type: 'LOGIN_FAILURE',
-          payload: error.statusText
+          type: 'LOGIN_FAILURE'
         })
       }) 
   }
