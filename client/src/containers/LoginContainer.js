@@ -1,16 +1,15 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
-import LoginInput from '../components/LoginInput'
 import {signin} from '../actions/authActions'
-
+import LoginInput from '../components/LoginInput'
+import UserDisplay from '../components/UserDisplay'
 
 
 export class LoginContainer extends React.Component{
   constructor(){
     super()
     this.state = {
-      loggedIn: false,
       auth: {
         email: '',
         password: ''
@@ -36,21 +35,30 @@ export class LoginContainer extends React.Component{
   }
 
   render(){
-    return(
-      <div>
-        <LoginInput 
-          handleChange={this.onChange}
-          handleSubmit={this.onSubmit}
-          email={this.state.auth.email}
-          password={this.state.auth.password}
-          />
-      </div>
-    )
+    if (!!this.props.auth){
+      return(
+        <UserDisplay />
+      )
+    } else {
+      return (    
+        // <div>
+          <LoginInput 
+            handleChange={this.onChange}
+            handleSubmit={this.onSubmit}
+            email={this.state.auth.email}
+            password={this.state.auth.password}
+            />
+        // </div>
+      )  
+    }  
   }
 }
 
+const mapStatetoProps = ({auth}) => {
+  return {auth}
+}
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({signin}, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(LoginContainer)
+export default connect(mapStatetoProps, mapDispatchToProps)(LoginContainer)
