@@ -6,7 +6,6 @@ import LoginInput from '../components/LoginInput'
 import SignupInput from '../components/SignupInput'
 import UserDisplay from '../components/UserDisplay'
 
-
 export class UserStatusContainer extends React.Component{
   constructor(){
     super()
@@ -37,21 +36,45 @@ export class UserStatusContainer extends React.Component{
     this.props.signin({auth: this.state.auth})
   }
 
+  toggleAuth = () => {
+    if (this.state.selector === 'signUp') {
+      this.setState({
+        ...this.state,
+        selector: 'logIn'
+      }) 
+    } else {
+       this.setState({
+        ...this.state,
+        selector: 'signUp'
+      }) 
+    }
+  }
+
   render(){
+
+
+    let props = {
+      handleChange: this.onChange,
+      handleSubmit: this.onSubmit,
+      email: this.state.auth.email,
+      password: this.state.auth.password
+    }
+  
     if (!!this.props.auth){
       return(
         <UserDisplay />
       )
     } else {
       return (    
-
-
-        <SignupInput 
-          handleChange={this.onChange}
-          handleSubmit={this.onSubmit}
-          email={this.state.auth.email}
-          password={this.state.auth.password}
-        />
+        <div>
+          <div className="toggle-user-auth">
+            <a href="#" onClick={this.toggleAuth}>Sign up</a>
+            <a href="#" onClick={this.toggleAuth}>Log in</a>
+          </div>
+          <div>
+            {this.state.selector === "signUp" ? <LoginInput props={props} /> : <SignupInput props={props} />}
+          </div>
+        </div>
       )  
     }  
   }
