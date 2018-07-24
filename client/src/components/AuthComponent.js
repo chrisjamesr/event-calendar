@@ -11,12 +11,15 @@ const AuthComponent = ({selector, handleChange, handleSubmit, email, password, n
                         name={name}
            />
   } else if (selector === "logIn"){ 
-    return <LoginInput handleChange={handleChange}
-                       handleSubmit={handleSubmit}
-                       email={email}
-                       password={password}  
-                       name={name}
-            />
+    return (
+      <LoginInput 
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        email={email}
+        password={password}  
+        name={name}
+      />
+    )
   }
 }
 
