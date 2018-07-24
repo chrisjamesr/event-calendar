@@ -1,8 +1,7 @@
-.input{
+.auth-input-container{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  
+  align-items: flex-start; 
 }
 
 .input-form{
@@ -28,7 +27,10 @@
   width: 110px;
 }
 
+input {
+  width: 150px;
+}
 
 button {
-  width: 90px;
+  width: 75px;
 }
