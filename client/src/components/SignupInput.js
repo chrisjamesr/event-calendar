@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import '../styles/form.css';
 
-const SignupInput = ({handleChange, handleSubmit, email, password, name}) =>{
+const SignupInput = ({handleChange, handleSubmit, email, password}) =>{
   return(
     // <div className="auth-input-container">
       <form 
@@ -24,14 +24,7 @@ const SignupInput = ({handleChange, handleSubmit, email, password, name}) =>{
             type="password" 
             name="password"
           />
-          <input 
-            onChange={ handleChange }
-            value = { name }
-            placeholder="name" 
-            type="text" 
-            name="name"
-          />          
-          <button>Submit</button>
+          <input type="submit" className="toggle-link button" placeholder="Submit" />
         </div>
       </form>
     //</div>
@@ -42,8 +35,7 @@ SignupInput.propTypes = {
   handleChange: PropTypes.func,
   handleSubmit: PropTypes.func,
   password: PropTypes.string,
-  email: PropTypes.string,
-  name: PropTypes.string
+  email: PropTypes.string
 }
 
 export default SignupInput
