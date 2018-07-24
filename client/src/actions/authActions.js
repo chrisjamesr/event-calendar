@@ -25,26 +25,22 @@ export function logIn(auth){
 
 export function signUp(auth){
   return function(dispatch){
-    dispatch({type: 'LOGIN_REQUEST'})
-    return fetch('http://localhost:3000/api/user_token',{
-      body: JSON.stringify(auth),
-      headers: { 'content-type': 'application/json' },
-      method: 'POST'
+    dispatch({type: 'SIGNUP_REQUEST'})
+    return UserAPI.createToken(auth) 
+      .catch(error=> {
+        dispatch({
+          type: 'SIGNUP_FAILURE',
+          payload: error.statusText
+        })
+        console.error(error)
+        return Promise.reject()
       })
       .then(json => {
         sessionStorage.setItem('jwt', json.jwt)
         dispatch({
-          type: 'LOGIN_SUCCESS',
-          payload: json.jwt
+          type: 'SIGNUP_SUCCESS'
         })
       })  
-      .catch(error=> {
-        // dispatch({
-        //   type: 'LOGIN_FAILURE',
-        //   payload: error.statusText
-        // })
-        console.error(`this didn't work, ${error}`)
-      }) 
   }
 }
 
