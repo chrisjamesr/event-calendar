@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import '../styles/form.css';
 
 const LoginInput = ({handleChange, handleSubmit, email, password}) =>{
   return(
-    <div className="input">
       <form 
-        className="login-form"
+        className="auth-input-container"
         onSubmit={handleSubmit}
       >
         <div>
@@ -26,11 +26,9 @@ const LoginInput = ({handleChange, handleSubmit, email, password}) =>{
         </div>
         <button>Submit</button>
       </form>
-    </div>
   )
 }
 
-// ADD PROPTYPES
 LoginInput.propTypes = {
   handleChange: PropTypes.func,
   handleSubmit: PropTypes.func,
