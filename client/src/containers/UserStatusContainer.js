@@ -1,9 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
-import {signin} from '../actions/authActions'
-import LoginInput from '../components/LoginInput'
-import SignupInput from '../components/SignupInput'
+import { logIn, signUp } from '../actions/authActions'
+// import LoginInput from '../components/LoginInput'
+// import SignupInput from '../components/SignupInput'
+import AuthComponent from '../components/AuthComponent'
 import UserDisplay from '../components/UserDisplay'
 
 export class UserStatusContainer extends React.Component{
@@ -22,6 +23,7 @@ export class UserStatusContainer extends React.Component{
   }
 
   onChange = (event) => {
+  
     this.setState({
       ...this.state,
       auth: {
@@ -33,7 +35,10 @@ export class UserStatusContainer extends React.Component{
 
   onSubmit = (event) => {
     event.preventDefault()
-    this.props.signin({auth: this.state.auth})
+    if (this.state.selector === 'signUp'){
+      this.props.signUp({auth: this.state.auth})
+    } else if ( this.state.selector === 'logIn')
+    this.props.logIn({auth: this.state.auth})
   }
 
   toggleAuth = () => {
@@ -52,39 +57,34 @@ export class UserStatusContainer extends React.Component{
 
   render(){
 
-
-    let props = {
-      handleChange: this.onChange,
-      handleSubmit: this.onSubmit,
-      email: this.state.auth.email,
-      password: this.state.auth.password
-    }
-  
-    if (!!this.props.auth){
-      return(
-        <UserDisplay />
-      )
-    } else {
-      return (    
-        <div>
+    return (
+      !!this.props.auth ? <UserDisplay /> : (
+         <div>
           <div className="toggle-user-auth">
-            <a href="#" onClick={this.toggleAuth}>Sign up</a>
-            <a href="#" onClick={this.toggleAuth}>Log in</a>
+            <button onClick={this.toggleAuth}>Sign up</button>
+            <button onClick={this.toggleAuth}>Log in</button>
           </div>
-          <div>
-            {this.state.selector === "signUp" ? <LoginInput props={props} /> : <SignupInput props={props} />}
-          </div>
+          <div>  
+            <AuthComponent selector={this.state.selector} 
+                           handleSubmit={this.onSubmit}
+                           handleChange={this.onChange}  
+                           name={this.state.auth.name} 
+                           password={this.state.auth.password}
+                           email={this.state.auth.email}
+            />
+          </div>  
         </div>
-      )  
-    }  
+      )
+    )
   }
+
 }
 
 const mapStatetoProps = ({auth}) => {
   return {auth}
 }
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({signin}, dispatch)
+  return bindActionCreators({logIn, signUp}, dispatch)
 }
 
 export default connect(mapStatetoProps, mapDispatchToProps)(UserStatusContainer)
