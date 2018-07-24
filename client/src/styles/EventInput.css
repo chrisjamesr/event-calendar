@@ -1,14 +1,14 @@
 .create-input{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /*align-items: ;*/
   
 }
 
 .input-form{
   display: flex;
   flex-direction: column;
-  align-self: center;
+  /*align-self: center;*/
   /*padding: 15px;*/
 }
 
