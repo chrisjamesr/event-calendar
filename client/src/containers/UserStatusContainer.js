@@ -11,7 +11,7 @@ export class UserStatusContainer extends React.Component{
   constructor(){
     super()
     this.state = {
-      auth: {
+      user: {
         email: '',
         password: '',
         name: ''
@@ -26,8 +26,8 @@ export class UserStatusContainer extends React.Component{
   
     this.setState({
       ...this.state,
-      auth: {
-        ...this.state.auth,
+      user: {
+        ...this.state.user,
         [event.target.name]: event.target.value
       }
     })
@@ -36,9 +36,9 @@ export class UserStatusContainer extends React.Component{
   onSubmit = (event) => {
     event.preventDefault()
     if (this.state.selector === 'signUp'){
-      this.props.signUp({auth: this.state.auth})
+      this.props.signUp(this.state.user)
     } else if ( this.state.selector === 'logIn')
-    this.props.logIn({auth: this.state.auth})
+    this.props.logIn(this.state.user)
   }
 
   toggleAuth = () => {
@@ -68,9 +68,9 @@ export class UserStatusContainer extends React.Component{
             <AuthComponent selector={this.state.selector} 
                            handleSubmit={this.onSubmit}
                            handleChange={this.onChange}  
-                           name={this.state.auth.name} 
-                           password={this.state.auth.password}
-                           email={this.state.auth.email}
+                           name={this.state.user.name} 
+                           password={this.state.user.password}
+                           email={this.state.user.email}
             />
           </div>  
         </div>
