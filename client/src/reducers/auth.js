@@ -5,9 +5,9 @@ export default function authReducer(state = initialState.loggedIn, action){
     case 'LOGIN_REQUEST':
       return state
     case 'LOGIN_SUCCESS':
-      return {loggedIn: !!sessionStorage.jwt}
+      return !!sessionStorage.jwt
     case 'LOGIN_FAILURE':
-      return {loggedIn: !!sessionStorage.jwt}
+      return !!sessionStorage.jwt
     case 'SIGNUP_REQUEST':
       return state
     case 'SIGNUP_SUCCESS':  
