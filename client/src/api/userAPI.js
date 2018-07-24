@@ -37,7 +37,6 @@ class UserAPI {
 export default UserAPI
 
 function handleError(response){
-  debugger
   if (!response.ok) {
     throw Error(response.statusText);
   }
