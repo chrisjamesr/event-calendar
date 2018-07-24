@@ -2,10 +2,10 @@ import fetch from 'isomorphic-fetch'
 import UserAPI from '../api/userAPI'
 
 
-export function logIn(auth){
+export function logIn(user){
   return function(dispatch){
     dispatch({type: 'LOGIN_REQUEST'})
-    return UserAPI.getToken(auth) 
+    return UserAPI.getToken(user) 
       .catch(error=> {
         dispatch({
           type: 'LOGIN_FAILURE',
@@ -16,6 +16,7 @@ export function logIn(auth){
       })
       .then(json => {
         sessionStorage.setItem('jwt', json.jwt)
+        sessionStorage.setItem('user', user.email.split('@')[0])
         dispatch({
           type: 'LOGIN_SUCCESS'
         })
@@ -23,10 +24,10 @@ export function logIn(auth){
   }
 }    
 
-export function signUp(auth){
+export function signUp(user){
   return function(dispatch){
     dispatch({type: 'SIGNUP_REQUEST'})
-    return UserAPI.createToken(auth) 
+    return UserAPI.createToken(user) 
       .catch(error=> {
         dispatch({
           type: 'SIGNUP_FAILURE',
@@ -37,6 +38,7 @@ export function signUp(auth){
       })
       .then(json => {
         sessionStorage.setItem('jwt', json.jwt)
+        sessionStorage.setItem('user', user.email.split('@')[0])
         dispatch({
           type: 'SIGNUP_SUCCESS'
         })
