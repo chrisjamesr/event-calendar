@@ -1,40 +1,40 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import '../styles/form.css';
 
 const SignupInput = ({handleChange, handleSubmit, email, password, name}) =>{
   return(
-    <div className="input">
+    // <div className="auth-input-container">
       <form 
-        className="login-form"
-        onSubmit={handleSubmit}
+        className="auth-input-container"
+        onSubmit={ handleSubmit }
       >
         <div>
           <input 
-            onChange={handleChange}
-            value = { name }
-            placeholder="name" 
-            type="text" 
-            name="name"
-          />
-          <input 
-            onChange={handleChange}
+            onChange={ handleChange }
             value = { email }
             placeholder="email" 
             type="email" 
             name="email"
            /><br />
           <input 
-            onChange={handleChange}
+            onChange={ handleChange }
             value = { password }
             placeholder="password" 
             type="password" 
             name="password"
+          />
+          <input 
+            onChange={ handleChange }
+            value = { name }
+            placeholder="name" 
+            type="text" 
+            name="name"
           />          
-          <button>Sign Up</button>
+          <button>Submit</button>
         </div>
-        
       </form>
-    </div>
+    //</div>
   )
 }
 
