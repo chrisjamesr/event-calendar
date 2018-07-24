@@ -24,7 +24,7 @@ const LoginInput = ({handleChange, handleSubmit, email, password}) =>{
             name="password"
           />
         </div>
-        <button>Sign In</button>
+        <button>Submit</button>
       </form>
     </div>
   )
