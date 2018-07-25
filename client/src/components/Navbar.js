@@ -6,7 +6,7 @@ import UserStatusContainer from '../containers/UserStatusContainer'
 const Navbar =() => {
   return (
 
-    <div className="nav-header">
+    <nav className="nav-header">
       <div className="nav-links">
         <NavLink to="/" exact className="link">Home</NavLink>
         <NavLink to="/schedule" className="link">Schedule View</NavLink>
@@ -16,7 +16,7 @@ const Navbar =() => {
       <div className="nav-user-status">
         <UserStatusContainer />
       </div>
-    </div>
+    </nav>
 
   )
 }
