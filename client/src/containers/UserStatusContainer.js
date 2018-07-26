@@ -4,23 +4,26 @@ import { bindActionCreators } from 'redux'
 import { logIn, signUp, logOut } from '../actions/authActions'
 import AuthComponent from '../components/AuthComponent'
 import UserDisplay from '../components/UserDisplay'
+import ToggleAuthLink from '../components/ToggleAuthLink'
 
 export class UserStatusContainer extends React.Component{
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       user: {
         email: '',
         password: '',
       },
-      selector: 'signUp',
+      selector: 'Sign Up',
     }
-    this.onChange = this.onChange.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
-    this.logOut = this.logOut.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSelectorToggle = this.handleSelectorToggle.bind(this)
+    this.renderToggleAuthLink = this.renderToggleAuthLink.bind(this)
+     // this.logOut = this.logOut.bind(this)
   }
 
-  onChange = (event) => {  
+  handleChange = (event) => {  
     this.setState({
       ...this.state,
       user: {
@@ -30,7 +33,7 @@ export class UserStatusContainer extends React.Component{
     })
   }
   
-  clearStateUser = () => {
+  clearUserState = () => {
     this.setState({
       ...this.state,
       user: {
@@ -40,38 +43,44 @@ export class UserStatusContainer extends React.Component{
     })
   }
 
-  onSubmit = (event) => {
+  handleSubmit = (event) => {
     event.preventDefault()
     if (this.state.selector === 'signUp'){
       this.props.signUp(this.state.user)
     } else if ( this.state.selector === 'logIn'){
       this.props.logIn(this.state.user)
     }  
-    this.clearStateUser()
+    this.clearUserState()
   }
   
-  toggleAuth = () => {
-    if (this.state.selector === 'signUp') {
-      this.setState({
-        ...this.state,
-        selector: 'logIn'
-      }) 
-    } else {
-       this.setState({
-        ...this.state,
-        selector: 'signUp'
-      }) 
-    }
+  handleSelectorToggle = (event) => {
+    this.setState({
+      ...this.state,
+      selector: event.target.name,
+    })
+  }
+
+  renderToggleAuthLink = (selector) => {
+    return ["Sign Up", "Log In"].map( (e, i)=> {
+      return (
+        <ToggleAuthLink 
+          key={i}
+          active={selector === e}
+          name={e} 
+          onSelectorToggle={this.handleSelectorToggle} 
+        />
+      )                          
+    })
   }
 
   // CREATE LOGOUT ACTION
   // ADD LOGOUT TO REDUCER
-  logOut = () =>{
-    this.props.logOut()
-  }
+
+  // logOut = () => {
+  //   this.props.logOut()
+  // }
 
   render(){
-
     return (
       !!this.props.auth ? (
         <UserDisplay 
@@ -79,18 +88,28 @@ export class UserStatusContainer extends React.Component{
           logOut={this.logOut}    
         />
       ) : (
-        <div>
+        <div className="auth-container">
           <div className="toggle-user-auth">
-            <a className="toggle-link" onClick={this.toggleAuth}>Sign up</a>
-            <a className="toggle-link" onClick={this.toggleAuth}>Log in</a>
+          {this.renderToggleAuthLink(this.state.selector)}
+             {//<ToggleAuthLink active={this.state.selector === this.children}
+            //                             name="Sign Up" 
+            //                             selector={this.state.selector} 
+            //                             onSelectorToggle={this.handleSelectorToggle} 
+            //                           />
+            //             <ToggleAuthLink active={this.state.selector === this.name}
+            //                             name="Log In" 
+            //                             selector={this.state.selector} 
+            //                             onSelectorToggle={this.handleSelectorToggle} 
+            //                           />
+            }
           </div>
           <div>  
             <AuthComponent selector={this.state.selector} 
-                           handleSubmit={this.onSubmit}
-                           handleChange={this.onChange}  
+                           handleSubmit={this.handleSubmit}
+                           handleChange={this.handleChange}  
                            password={this.state.user.password}
                            email={this.state.user.email}
-            />
+                           />
           </div>  
         </div>
       )
@@ -107,3 +126,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStatetoProps, mapDispatchToProps)(UserStatusContainer)
+
+ // <a className="toggle-link" name="signUp" handleClick={this.toggleAuth}>Sign up</a>
+            // <a className="toggle-link" name="logIn" onClick={this.toggleAuth}>Log in</a>
