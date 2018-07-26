@@ -90,18 +90,7 @@ export class UserStatusContainer extends React.Component{
       ) : (
         <div className="auth-container">
           <div className="toggle-user-auth">
-          {this.renderToggleAuthLink(this.state.selector)}
-             {//<ToggleAuthLink active={this.state.selector === this.children}
-            //                             name="Sign Up" 
-            //                             selector={this.state.selector} 
-            //                             onSelectorToggle={this.handleSelectorToggle} 
-            //                           />
-            //             <ToggleAuthLink active={this.state.selector === this.name}
-            //                             name="Log In" 
-            //                             selector={this.state.selector} 
-            //                             onSelectorToggle={this.handleSelectorToggle} 
-            //                           />
-            }
+            {this.renderToggleAuthLink(this.state.selector)}
           </div>
           <div>  
             <AuthComponent selector={this.state.selector} 
