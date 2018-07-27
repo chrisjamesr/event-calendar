@@ -46,5 +46,14 @@ export function signUp(user){
   }
 }
 
+export function logOut(){
+  return function(dispatch){
+    sessionStorage.clear()
+    dispatch({
+      type: 'LOGOUT_USER'
+    })
+  }
+}
+
 
 
