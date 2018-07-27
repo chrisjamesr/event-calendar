@@ -7,7 +7,7 @@ class UserAPI {
 
   static getToken(user){
     const tokenRequest = new Request('http://localhost:3000/api/user_token',{
-      body: JSON.stringify({'auth': UserAPI.removeNameProperty(user)}),
+      body: JSON.stringify({'auth': user}),
       headers: { 'Content-Type': 'application/json' },
       method: 'POST'
       })
@@ -27,10 +27,6 @@ class UserAPI {
       .then(response=> {
         return response.json() 
     })
-  }
-
-  static removeNameProperty(user){
-    return {email: user.email, password: user.password}
   }
 }
 
