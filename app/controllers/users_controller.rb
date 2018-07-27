@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       jwt = Auth.issue({user: @user.id})
       render json: {jwt: jwt}
     else
-      render json: @user.errors
+      head 403
     end
   end
 
