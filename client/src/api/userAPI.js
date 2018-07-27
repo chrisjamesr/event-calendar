@@ -1,10 +1,5 @@
 class UserAPI {
 
-  // static tokenHeader(){
-  //   !!sessionStorage.jwt ? {'Authorization': `Bearer ${sessionStorage.jwt}`} : null
-  //   }
-  // }
-
   static getToken(user){
     const tokenRequest = new Request('http://localhost:3000/api/user_token',{
       body: JSON.stringify({'auth': user}),
