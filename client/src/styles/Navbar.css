@@ -32,11 +32,36 @@
 
 .toggle-user-auth {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-direction: row;
+  width: 150px;
+}
+
+.toggle-link{
+  cursor: hand;
+  cursor: pointer;
+}
+
+.toggle-link-active{
+  text-decoration: underline;
+}
+.button{
+  border: .5px black solid;
+  border-radius: 10%;
+  padding: 2px;
+  margin: 1px;
 }
 
 .user-display{
   font-weight: 10px;
   text-align: center;
+}
+
+a:link, a:visited, a:active{
+  text-decoration: none;
+  color: black;
+}
+a:hover{
+  text-decoration: underline;
+  color: black;    
 }
