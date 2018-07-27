@@ -21,7 +21,7 @@ export class UserStatusContainer extends React.Component{
     this.handleSelectorToggle = this.handleSelectorToggle.bind(this)
     this.renderToggleAuthLink = this.renderToggleAuthLink.bind(this)
     this.renderAuthInput = this.renderAuthInput.bind(this)
-     // this.logOut = this.logOut.bind(this)
+    this.logOut = this.logOut.bind(this)
   }
 
   handleChange = (event) => {  
@@ -85,12 +85,10 @@ export class UserStatusContainer extends React.Component{
     )
   }
 
-  // CREATE LOGOUT ACTION
-  // ADD LOGOUT TO REDUCER
-
-  // logOut = () => {
-  //   this.props.logOut()
-  // }
+  logOut = () => {
+    this.props.logOut()
+    this.clearUserState()
+  }
 
   render(){
     return (
