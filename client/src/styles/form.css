@@ -11,13 +11,13 @@
   /*padding: 15px;*/
 }
 
-/*.auth-input-form{
+.auth-input-form{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  /*padding: 15px;
-}*/
+  padding: 15px;
+}
 
 .input-form div {
   padding: 10px;
