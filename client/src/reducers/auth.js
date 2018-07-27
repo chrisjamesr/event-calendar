@@ -14,6 +14,8 @@ export default function authReducer(state = initialState.loggedIn, action){
       return !!sessionStorage.jwt
     case 'SIGNUP_FAILURE':
       return !!sessionStorage.jwt
+    case 'LOGOUT_USER':
+      return !!sessionStorage.jwt
     default:
       return state
   }
