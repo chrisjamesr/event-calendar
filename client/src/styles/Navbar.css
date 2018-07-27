@@ -40,16 +40,24 @@
 .toggle-link{
   cursor: hand;
   cursor: pointer;
+  color: rgb(204,204,204);
 }
 
 .toggle-link-active{
   text-decoration: underline;
+  color: rgb(0,0,0);
 }
 .button{
   border: .5px black solid;
   border-radius: 10%;
   padding: 2px;
   margin: 1px;
+  color: rgb(204,204,204);
+  
+}
+.button:hover{
+  color: rgb(0,0,0);
+  border: .75px black solid;
 }
 
 .user-display{
