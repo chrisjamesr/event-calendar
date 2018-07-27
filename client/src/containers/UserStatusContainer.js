@@ -2,9 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { logIn, signUp, logOut } from '../actions/authActions'
-import AuthComponent from '../components/AuthComponent'
 import UserDisplay from '../components/UserDisplay'
 import ToggleAuthLink from '../components/ToggleAuthLink'
+import AuthInputComponent from '../components/AuthInputComponent'
 
 export class UserStatusContainer extends React.Component{
   constructor(props){
@@ -20,6 +20,7 @@ export class UserStatusContainer extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleSelectorToggle = this.handleSelectorToggle.bind(this)
     this.renderToggleAuthLink = this.renderToggleAuthLink.bind(this)
+    this.renderAuthInput = this.renderAuthInput.bind(this)
      // this.logOut = this.logOut.bind(this)
   }
 
@@ -45,9 +46,9 @@ export class UserStatusContainer extends React.Component{
 
   handleSubmit = (event) => {
     event.preventDefault()
-    if (this.state.selector === 'signUp'){
+    if (this.state.selector === 'Sign Up'){
       this.props.signUp(this.state.user)
-    } else if ( this.state.selector === 'logIn'){
+    } else if ( this.state.selector === 'Log In'){
       this.props.logIn(this.state.user)
     }  
     this.clearUserState()
@@ -73,6 +74,17 @@ export class UserStatusContainer extends React.Component{
     })
   }
 
+  renderAuthInput = (selector) => {
+    return (
+      <AuthInputComponent 
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+        email={this.state.user.email}
+        password={this.state.user.password}  
+      />  
+    )
+  }
+
   // CREATE LOGOUT ACTION
   // ADD LOGOUT TO REDUCER
 
@@ -93,12 +105,7 @@ export class UserStatusContainer extends React.Component{
             {this.renderToggleAuthLink(this.state.selector)}
           </div>
           <div>  
-            <AuthComponent selector={this.state.selector} 
-                           handleSubmit={this.handleSubmit}
-                           handleChange={this.handleChange}  
-                           password={this.state.user.password}
-                           email={this.state.user.email}
-                           />
+            {this.renderAuthInput(this.state.selector)}
           </div>  
         </div>
       )
@@ -115,6 +122,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStatetoProps, mapDispatchToProps)(UserStatusContainer)
-
- // <a className="toggle-link" name="signUp" handleClick={this.toggleAuth}>Sign up</a>
-            // <a className="toggle-link" name="logIn" onClick={this.toggleAuth}>Log in</a>
