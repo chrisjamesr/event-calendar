@@ -13,15 +13,15 @@ const CreateEventInput = ({handleSubmit, handleChange}) => {
         </div>
         <div>
           <label>Date & Time: </label>
-          <input type="datetime-local" name="datetime" onChange={handleChange} />
+          <input type="datetime-local" name="date_time" onChange={handleChange} />
         </div>
         <div>
           <label>Location: </label>
           <input type="text" name="location" onChange={handleChange} />
         </div>
         <div>  
-          <label>Details: </label>
-          <textarea name="details" onChange={handleChange} />
+          <label>Description: </label>
+          <textarea name="description" onChange={handleChange} />
         </div>
         <button>Create Event</button>
       </form>
