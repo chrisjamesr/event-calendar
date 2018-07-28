@@ -12,9 +12,9 @@ export class CreateEventContainer extends React.Component {
     this.state = {
       event: {
         name: '',
-        datetime: '',
+        date_time: '',
         location: '',
-        details: ''
+        description: ''
       },
     }    
     this.handleChange = this.handleChange.bind(this)
