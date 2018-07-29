@@ -17,6 +17,7 @@ class MonthsContainer extends React.Component {
     
     return(
       <div>
+        <h1>Calendar</h1>
         {
           months.map((m,i)=> {
             return <Month id={`${m.monthName}-${m.year}`} key={i} name={m.monthName} year={m.year} month={m.month} /> 
