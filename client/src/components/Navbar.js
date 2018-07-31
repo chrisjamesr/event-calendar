@@ -9,9 +9,9 @@ const Navbar =() => {
     <nav className="nav-header">
       <div className="nav-links">
         <NavLink to="/" exact className="link">Home</NavLink>
-        <NavLink to="/schedule" className="link">Schedule View</NavLink>
+        <NavLink to="/events" className="link">Schedule View</NavLink>
         <NavLink to="/calendar" className="link">Calendar View</NavLink>
-        <NavLink to="/add-event" className="link">Add event</NavLink>
+        <NavLink to="/events/new" className="link">Add event</NavLink>
       </div>
       <div className="nav-user-status">
         <UserStatusContainer />
