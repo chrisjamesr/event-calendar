@@ -2,7 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import moment from 'moment'
-import { readEvent } from '../actions/eventActions'
+import { readEvent } from '../actions/eventsActions'
 import EventShow from '../components/scheduleView/EventShow'
 
 class EventShowContainer extends React.Component {
