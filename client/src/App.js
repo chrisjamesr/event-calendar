@@ -1,27 +1,32 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import logo from './logo.svg';
-import './styles/App.css';
+import {Route, Switch} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import EventsContainer from './containers/EventsContainer';
 import MonthsContainer from './containers/MonthsContainer';
 import CreateEventContainer from './containers/CreateEventContainer';
+import EventShowContainer from './containers/EventShowContainer'
 import Home from './components/Home'
-
+import './styles/App.css';
 
 class App extends React.Component{
   render(){
     return (
-      <div className="App">
-          <Router>
+      <div className="App" >
+          
             <div>
               <Navbar />
-              <Route path="/" exact component={Home} />
-              <Route path="/schedule"  component={EventsContainer} />
-              <Route path="/calendar" component={MonthsContainer} />
-              <Route path="/add-event" component={CreateEventContainer} />
+                <div className="container">
+                  <Route exact path="/" component={Home} />
+                  
+                  <Route path="/calendar" component={MonthsContainer} />
+                  <Switch>
+                    <Route exact path="/events" component={EventsContainer} />
+                    <Route exact path="/events/new" component={CreateEventContainer} />
+                    <Route path="/events/:id" component={EventShowContainer} />
+                  </Switch>
+                </div>
             </div>
-        </Router>      
+             
       </div>
     );
   }  
