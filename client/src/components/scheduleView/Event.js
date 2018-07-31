@@ -1,12 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link, Route } from 'react-router-dom';
 import '../../styles/event.css'
 import moment from 'moment'
+import EventShow from './EventShow'
 
-const Event=({event})=>{
+
+const Event=({event, match})=>{
   const day = moment(event.date_time).format("dddd, \n MMMM Do YYYY")
   const time = moment(event.date_time).format( "h:mm a")
+
   return (
+    
     <div className="EventTile">
       <aside className="Event-sidebar">
         <div className="Event-date-header">
@@ -19,7 +24,12 @@ const Event=({event})=>{
       </aside>  
       <main>
         <div className="Event-name-header">
-          <h3>{event.name}</h3>
+        <h3>
+          <Link to={`/events/${event.id}`}>
+            {event.name} 
+          </Link>  
+        </h3>
+          
         </div>  
         <div className="Event-details">
           <p>{event.location}</p>
@@ -41,3 +51,4 @@ Event.propTypes = {
 }
 
 export default Event
+//<Route path={`/events/${event.id}`} render={(...props)=><EventShow event={event}/>} />
