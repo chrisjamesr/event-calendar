@@ -4,7 +4,7 @@ class EventAPI {
     return !!sessionStorage.jwt ? ({
       "Authorization": `Bearer ${sessionStorage.jwt}`,
       "Content-Type": "application/json"
-    }) : null
+    }) : {"Content-Type": "application/json"}
   }
 
   static getEventsIndex(){
@@ -28,6 +28,17 @@ class EventAPI {
       .then(response=> {
         return response.json() 
     })
+  }
+
+  static getEvent(eventID){
+    const getEventRequest = new Request(`http://localhost:3000/api/events/${eventID}`,{
+      headers: this.tokenHeader(),
+      method: 'GET'
+      })
+    return fetch(getEventRequest).then(handleError)
+      .then(response=> {
+        return response.json() 
+    }) 
   }
   
 
