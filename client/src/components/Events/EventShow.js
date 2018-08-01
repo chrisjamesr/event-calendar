@@ -4,7 +4,6 @@ import moment from 'moment'
 import '../../styles/event.css'
 
 const EventShow=({event})=>{
-  debugger
   const day = moment(event.date_time).format("dddd, \n MMMM Do YYYY")
   const time = moment(event.date_time).format( "h:mm a")
   return (
