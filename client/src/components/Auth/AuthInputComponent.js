@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import '../styles/form.css';
+import '../../styles/form.css';
 
 const AuthInputComponent = ({handleChange, handleSubmit, email, password}) =>{
   return(
