@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, withRouter} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import EventsContainer from './containers/EventsContainer';
 import MonthsContainer from './containers/MonthsContainer';
@@ -12,12 +12,11 @@ class App extends React.Component{
   render(){
     return (
       <div className="App" >
-          
+            
             <div>
               <Navbar />
                 <div className="container">
                   <Route exact path="/" component={Home} />
-                  
                   <Route path="/calendar" component={MonthsContainer} />
                   <Switch>
                     <Route exact path="/events" component={EventsContainer} />
@@ -33,5 +32,5 @@ class App extends React.Component{
 }
 
 
-export default App;
+export default withRouter(App);
 
