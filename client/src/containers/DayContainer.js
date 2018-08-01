@@ -2,7 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { fetchEvents } from '../actions/eventsActions'
-import Month from '../components/calendarView/Month'
+import Month from '../components/Calendar/Month'
 import {calendar} from '../utils/calendar'
 
 

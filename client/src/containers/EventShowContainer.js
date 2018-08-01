@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import { readEvent } from '../actions/eventsActions'
-import EventShow from '../components/scheduleView/EventShow'
+import EventShow from '../components/Events/EventShow'
 
 class EventShowContainer extends React.Component {
   constructor(props){
@@ -12,8 +12,7 @@ class EventShowContainer extends React.Component {
   }
 
   componentDidMount(){
-    debugger
-    this.props.readEvent(this.props.match.params.id)
+    this.props.readEvent(this.props.history, this.props.match.params.id)
   }
 
   render(){
@@ -22,8 +21,8 @@ class EventShowContainer extends React.Component {
 
 }
 
-const mapStateToProps = (event)=> {
-  return {event}
+const mapStateToProps = ({currentEvent})=> {
+  return {event: currentEvent}
 }
 
 const mapDispatchToProps = (dispatch)=> {

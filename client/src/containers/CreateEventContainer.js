@@ -2,13 +2,13 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { createEvent } from '../actions/eventsActions'
-import CreateEventInput from '../components/CreateEventInput'
+import CreateEventInput from '../components/Events/CreateEventInput'
 import '../styles/EventInput.css'
 
 
 export class CreateEventContainer extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       event: {
         name: '',
@@ -32,8 +32,9 @@ export class CreateEventContainer extends React.Component {
   }
 
   handleSubmit = (event) => {
+    debugger
     event.preventDefault()
-    this.props.createEvent(this.state.event)
+    this.props.createEvent(this.state.event, this.props.history)
   }
 
   render(){
