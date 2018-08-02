@@ -23,6 +23,10 @@ class UserAPI {
         return response.json() 
     })
   }
+
+  static loggedIn(){
+    return !!sessionStorage.jwt
+  }
 }
 
 export default UserAPI
