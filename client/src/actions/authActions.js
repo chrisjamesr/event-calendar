@@ -1,7 +1,7 @@
 import UserAPI from '../api/userAPI'
 
 
-export function logIn(user){
+export function logIn(history, user){
   return function(dispatch){
     dispatch({type: 'LOGIN_REQUEST'})
     return UserAPI.getToken(user) 
@@ -19,11 +19,12 @@ export function logIn(user){
         dispatch({
           type: 'LOGIN_SUCCESS'
         })
+        history.push("/events") 
       })  
   }
 }    
 
-export function signUp(user){
+export function signUp(history, user){
   return function(dispatch){
     dispatch({type: 'SIGNUP_REQUEST'})
     return UserAPI.createToken(user) 
@@ -41,16 +42,18 @@ export function signUp(user){
         dispatch({
           type: 'SIGNUP_SUCCESS'
         })
+        history.push("/events") 
       })  
   }
 }
 
-export function logOut(){
+export function logOut(history){
   return function(dispatch){
     sessionStorage.clear()
     dispatch({
       type: 'LOGOUT_USER'
     })
+    history.push("/") 
   }
 }
 
