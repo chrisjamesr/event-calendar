@@ -1,6 +1,11 @@
+body {
+  background-color: rgb(173, 177, 178);
+}
 .App {
   display: flex;
   flex-direction: column;
+  background-color: rgb(173, 177, 178);
+  min-height: 100%;
 }
 
 .App-logo {
@@ -24,9 +29,11 @@
 }
 
 .container{
-  margin: 0 15%;
+  margin: 5% 15%;
   border: .5px solid black;
   padding: 0 5% 0;
+  background-color: rgb(232, 236, 237);
+
 }
 
 h1{
