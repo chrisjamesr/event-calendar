@@ -40,7 +40,7 @@ export function createEvent(event){
     ) 
   }
 }
-export function readEvent(eventID){
+export function readEvent(history, eventID){
   return function(dispatch){
     dispatch({type: 'SHOW_EVENT_REQUEST'});
     return EventAPI.getEvent(eventID)
@@ -52,17 +52,17 @@ export function readEvent(eventID){
         console.error(error)
         return Promise.reject()
       })  
-      .then(event => dispatch({
+      .then(event => {
+        dispatch({
         type: 'SHOW_EVENT_SUCCESS',
         payload: event
       })
-    ) 
+    }) 
   }
 }
 
 export function destroyEvent(event){
   return function(dispatch){
     dispatch({type: 'DESTROY_EVENT'});
-    return fetch('')
   }
 }
