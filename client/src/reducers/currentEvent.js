@@ -3,7 +3,6 @@ import initialState from './initialState'
 export default function currentEventReducer(state=initialState.currentEvent, action){  
   switch (action.type) {
   case 'SHOW_EVENT_REQUEST':
-    debugger
     return state
   case 'SHOW_EVENT_SUCCESS':
     return action.payload
