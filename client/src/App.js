@@ -14,9 +14,7 @@ class App extends React.Component{
       <div className="App" >
             
             <div>
-              { 
-               // <Navbar />
-              }
+              <Navbar {...this.props} />
                 <div className="container">
                   <Route exact path="/" component={Home} />
                   <Route path="/calendar" component={MonthsContainer} />
