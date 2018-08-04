@@ -1,5 +1,7 @@
 class Event < ApplicationRecord
-
+  has_many :user_events
+  has_many :users, :through => :user_events
+  
   validates :name, uniqueness: {case_sensitive: false}
   validates :location, presence: {allow_blank: true}
   validates :date_time, presence: true
