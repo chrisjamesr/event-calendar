@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  scope :ordered_events, -> { order(:date_time) }
+
   has_many :user_events
   has_many :users, :through => :user_events
   
