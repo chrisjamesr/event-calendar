@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def info
+  def show
     logged_in? ? (render json: current_user) : (head 403 )
 
   end
