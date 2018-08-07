@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   scope '/api' do
     post 'user_token' => 'user_token#create'
+    resources :user_events, :as => :rsvp, :path => :rsvp, :only => [:create, :destroy]
     resources :events, :except => [:new, :edit]
-    resources :users, :only => [:create, :index]
+    resources :users, :only => [:create, :show ]
     get 'users/user_data', to: 'users#info', as: :user
   end
 end
