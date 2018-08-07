@@ -8,6 +8,5 @@ Rails.application.routes.draw do
     resources :user_events, :as => :rsvp, :path => :rsvp, :only => [:create, :destroy]
     resources :events, :except => [:new, :edit]
     resources :users, :only => [:create, :show ]
-    get 'users/user_data', to: 'users#info', as: :user
   end
 end
