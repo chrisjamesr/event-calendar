@@ -12,14 +12,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    logged_in? ? (render json: current_user) : (head 403 )
+    user = User.find(params[:id])
+    logged_in? ? (render json: user) : (head 403 )
 
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:id, :email, :password, :password_confirmation)
   end
 
 end 
