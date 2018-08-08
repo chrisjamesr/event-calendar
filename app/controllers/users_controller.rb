@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   def show
     user = User.find(params[:id])
     logged_in? ? (render json: user) : (head 403 )
-
   end
 
   private
