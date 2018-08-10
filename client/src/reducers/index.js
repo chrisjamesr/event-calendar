@@ -3,6 +3,6 @@ import events from './events'
 import auth from './auth'
 import currentEvent from './currentEvent'
 
-export default combineReducers({
+export const rootReducer = combineReducers({
   events, auth, currentEvent
 })
