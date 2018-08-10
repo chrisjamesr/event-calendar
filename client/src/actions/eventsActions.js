@@ -40,10 +40,10 @@ export function createEvent(event){
     ) 
   }
 }
-export function readEvent(history, eventID){
+export function readEvent(history, eventId){
   return function(dispatch){
     dispatch({type: 'SHOW_EVENT_REQUEST'});
-    return EventAPI.getEvent(eventID)
+    return EventAPI.getEvent(eventId)
     .catch(error=>{
         dispatch({
           type: 'SHOW_EVENT_FAILURE',
@@ -67,10 +67,10 @@ export function destroyEvent(event){
   }
 }
 
-export function createRSVP(eventID){
+export function createRSVP(eventId){
   return function(dispatch){
     dispatch({type: 'CREATE_RSVP_REQUEST'});
-    return EventAPI.rsvpEvent(sessionStorage.jwt, eventID)
+    return EventAPI.rsvpEvent(sessionStorage.jwt, eventId)
     .catch(error=>{
       dispatch({
         type: 'CREATE_RSVP_FAILURE',
