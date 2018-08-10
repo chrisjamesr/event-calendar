@@ -66,3 +66,24 @@ export function destroyEvent(event){
     dispatch({type: 'DESTROY_EVENT'});
   }
 }
+
+export function createRSVP(eventID){
+  return function(dispatch){
+    dispatch({type: 'CREATE_RSVP_REQUEST'});
+    return EventAPI.rsvpEvent(sessionStorage.jwt, eventID)
+    .catch(error=>{
+      dispatch({
+        type: 'CREATE_RSVP_FAILURE',
+        payload: error.statusText
+      })
+      console.error(error)
+      return Promise.reject()
+    })
+    .then(event => {
+      dispatch({
+        type: 'CREATE_RSVP_SUCCESS',
+        payload: event
+      })
+    })
+  }
+}
