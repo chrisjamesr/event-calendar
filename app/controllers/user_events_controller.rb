@@ -1,8 +1,8 @@
 class UserEventsController < ApplicationController
 
   def create
-    if logged_in?
-      if user_event = UserEvent.create(user_event_params)
+    if logged_in?    
+      if user_event = UserEvent.create(user_id: current_user.id, event_id: user_event_params[:event_id])
         render json: user_event, status: 200
       end
     else
@@ -18,7 +18,7 @@ class UserEventsController < ApplicationController
   private
 
   def user_event_params
-    params.require(:rsvp).permit(:id, :user_id, :event_id)
+    params.require(:rsvp).permit(:id, :event_id)
   end
 
 end
