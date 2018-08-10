@@ -40,6 +40,22 @@ class EventAPI {
         return response.json() 
     }) 
   }
+
+  static rsvpEvent(jwt, eventID){
+    const postEventRSVP = new Request(`http://localhost:3000/api/rsvp/${eventID}`,{
+      headers: this.tokenHeader(),
+      method: 'POST',
+      body: {"rsvp": 
+        {
+          "event_id": eventID
+        }
+      }
+    })
+    return fetch(postEventRSVP).then(handleError)
+      .then(response=>{
+        return response.json()
+    })
+  }
   
 
 }
