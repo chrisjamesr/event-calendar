@@ -30,8 +30,8 @@ class EventAPI {
     })
   }
 
-  static getEvent(eventID){
-    const getEventRequest = new Request(`http://localhost:3000/api/events/${eventID}`,{
+  static getEvent(eventId){
+    const getEventRequest = new Request(`http://localhost:3000/api/events/${eventId}`,{
       headers: this.tokenHeader(),
       method: 'GET'
       })
@@ -41,15 +41,16 @@ class EventAPI {
     }) 
   }
 
-  static rsvpEvent(jwt, eventID){
-    const postEventRSVP = new Request(`http://localhost:3000/api/rsvp/${eventID}`,{
+  static rsvpEvent(jwt,eventId){
+    const postEventRSVP = new Request(`http://localhost:3000/api/rsvp`,{
       headers: this.tokenHeader(),
       method: 'POST',
-      body: {"rsvp": 
-        {
-          "event_id": eventID
+      body: JSON.stringify({
+        'rsvp': { 
+          'jwt': jwt, 
+          'event_id': eventId
         }
-      }
+      })
     })
     return fetch(postEventRSVP).then(handleError)
       .then(response=>{
@@ -65,6 +66,7 @@ export default EventAPI
 function handleError(response){
   if (!response.ok) {
     throw Error(response.statusText);
+    console.log(response.statusText)
   } 
   return response
 }
