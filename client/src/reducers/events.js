@@ -13,6 +13,12 @@ export default function eventsReducer(state=initialState.events, action){
       return [...state, action.payload]
     case 'CREATE_EVENT_FAILURE':
       return state
+    case 'CREATE_RSVP_REQUEST':
+      return state
+    case 'CREATE_RSVP_SUCCESS':
+      return action.payload
+    case 'CREATE_RSVP_FAILURE':
+      return state
     default:
       return state
   }
