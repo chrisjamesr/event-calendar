@@ -2,7 +2,7 @@ const initialState = {
   // jwt: '',
   events: [],
   currentEvent: {},
-  loggedIn: !!sessionStorage.jwt
+  auth: !!sessionStorage.jwt
 }
 
 export default initialState
