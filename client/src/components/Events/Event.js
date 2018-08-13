@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Link, Route } from 'react-router-dom';
 import '../../styles/event.css'
 import moment from 'moment'
-import EventShow from './EventShow'
 
 
 const Event=({event, match})=>{
