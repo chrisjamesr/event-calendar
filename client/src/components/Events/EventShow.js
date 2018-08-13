@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import '../../styles/event.css'
+import RSVPContainer from '../../containers/RSVPContainer'
 
 const EventShow=({event})=>{
   const day = moment(event.date_time).format("dddd, \n MMMM Do YYYY")
@@ -25,6 +26,9 @@ const EventShow=({event})=>{
           <p>{event.location}</p>
           <p>{event.notes}</p>
         </div> 
+        <div>
+          <RSVPContainer eventId={event.id}/>
+        </div>
       </main>  
     </div>
   )
