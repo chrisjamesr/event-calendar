@@ -1,3 +1,4 @@
+import {tokenHeader, handleError, loggedIn} from './apiUtils'
 class UserAPI {
 
   static getToken(user){
@@ -24,16 +25,7 @@ class UserAPI {
     })
   }
 
-  static loggedIn(){
-    return !!sessionStorage.jwt
-  }
+
 }
 
 export default UserAPI
-
-function handleError(response){
-  if (!response.ok) {
-    throw Error(response.statusText);
-  }
-    return response
-}
