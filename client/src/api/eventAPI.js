@@ -1,4 +1,4 @@
-import {tokenHeader, handleError, loggedIn} from './apiUtils'
+import {tokenHeader, handleError} from './apiUtils'
 
 class EventAPI {
 
@@ -38,11 +38,3 @@ class EventAPI {
 }
 
 export default EventAPI
-
-// function handleError(response){
-//   if (!response.ok) {
-//     throw Error(response.statusText);
-//     console.log(response.statusText)
-//   } 
-//   return response
-// }
