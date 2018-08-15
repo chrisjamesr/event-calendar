@@ -8,8 +8,8 @@ export const tokenHeader = () => {
 
 export function handleError(response){
   if (!response.ok) {
-    throw Error(response.statusText);
     console.log(response.statusText)
+    throw Error(response.statusText);
   } 
   return response
 }
