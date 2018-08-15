@@ -1,4 +1,4 @@
-import {tokenHeader, handleError, loggedIn} from './apiUtils'
+import {tokenHeader, handleError} from './apiUtils'
 
 class RsvpAPI {
 
