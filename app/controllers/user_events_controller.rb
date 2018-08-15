@@ -1,13 +1,16 @@
 class UserEventsController < ApplicationController
 
   def create
-    if logged_in?    
-      if user_event = UserEvent.create(user_id: current_user.id, event_id: user_event_params[:event_id])
+    if user_event = UserEvent.create(user_id: current_user.id, event_id: user_event_params[:event_id])
         render json: user_event, status: 200
-      end
     else
       render head: 403
     end
+  end
+
+  def index
+      user_events = current_user.user_events
+      render json: user_events, status: 200
   end
 
   def destroy
