@@ -5,5 +5,5 @@ import currentEvent from './currentEvent'
 import rsvp from './rsvp'
 
 export const rootReducer = combineReducers({
-  events, auth, currentEvent, rsvp
+  events, auth, currentEvent, rsvps
 })
