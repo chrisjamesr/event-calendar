@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       jwt = Auth.issue({user: @user.id})
-      render json: {jwt: jwt}
+      render json: {jwt: jwt, user_id: @user.id}
     else
       head 403
     end
