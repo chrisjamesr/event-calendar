@@ -3,7 +3,7 @@ let events;
 
 export default function eventsReducer(state=initialState.events, action){
   switch (action.type) {
-    case 'FETCH_EVENTS':
+    case 'FETCH_EVENTS': 
       return action.payload
     case 'EVENTS_LOAD_FAILURE':
       return state
@@ -16,7 +16,8 @@ export default function eventsReducer(state=initialState.events, action){
     case 'CREATE_RSVP_REQUEST':
       return state
     case 'CREATE_RSVP_SUCCESS':
-      return action.payload
+      debugger
+      return state
     case 'CREATE_RSVP_FAILURE':
       return state
     default:
