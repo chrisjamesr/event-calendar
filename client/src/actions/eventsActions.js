@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-fetch'
 import EventAPI from '../api/eventAPI'
  
 export function fetchEvents(){
