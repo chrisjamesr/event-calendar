@@ -14,8 +14,9 @@ class UserEventsController < ApplicationController
   end
 
   def destroy
-    binding.pry
-    logged_in? ? user_event.find(id: user_event_params[:id]).destroy : (head 403)
+    user_event = user_event.find(id: user_event_params[:id])
+    user_event.destroy
+    render json: user_event
   end
 
   private
