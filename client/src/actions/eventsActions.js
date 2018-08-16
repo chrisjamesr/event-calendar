@@ -2,18 +2,18 @@ import EventAPI from '../api/eventAPI'
  
 export function fetchEvents(){
   return function(dispatch){
-    dispatch({type: 'LOADING_EVENTS'});
+    dispatch({type: 'FETCH_EVENTS_REQUEST'});
     return EventAPI.getEventsIndex()
       .catch(error=>{
         dispatch({
-          type: 'EVENTS_LOAD_FAILURE',
+          type: 'FETCH_EVENTS_FAILURE',
           payload: error.statusText
         })
         console.error(error)
         return Promise.reject()
       })     
       .then(events => dispatch({
-        type: 'FETCH_EVENTS',
+        type: 'FETCH_EVENTS_SUCCESS',
         payload: events
       })
     ) 
