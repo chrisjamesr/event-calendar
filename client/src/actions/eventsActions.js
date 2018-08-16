@@ -27,7 +27,7 @@ export function createEvent(event){
       .catch(error=>{
         dispatch({
           type: 'CREATE_EVENT_FAILURE',
-          payload: error.statusText
+          payload: error
         })
         console.error(error)
         return Promise.reject()
