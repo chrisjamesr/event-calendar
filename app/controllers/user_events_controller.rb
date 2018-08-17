@@ -14,7 +14,7 @@ class UserEventsController < ApplicationController
   end
 
   def destroy
-    user_event = user_event.find(id: user_event_params[:id])
+    user_event = UserEvent.find(user_event_params[:id])
     user_event.destroy
     render json: user_event
   end
@@ -22,7 +22,7 @@ class UserEventsController < ApplicationController
   private
 
   def user_event_params
-    params.require(:rsvp).permit(:id, :event_id)
+    params.require(:user_event).permit(:id, :event_id)
   end
 
 end
