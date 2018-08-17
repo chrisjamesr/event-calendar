@@ -2,8 +2,8 @@ const initialState = {
   // jwt: '',
   events: [],
   currentEvent: {},
-  auth: !!sessionStorage.jwt,
-  rsvps: []
+  auth: !!sessionStorage.jwt
+  // rsvp: []
 }
 
 export default initialState
