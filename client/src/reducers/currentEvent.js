@@ -1,6 +1,7 @@
 import initialState from './initialState'
 
 export default function currentEventReducer(state=initialState.currentEvent, action){  
+  let event;  
   switch (action.type) {
   case 'SHOW_EVENT_REQUEST':
     return state
@@ -22,6 +23,20 @@ export default function currentEventReducer(state=initialState.currentEvent, act
     return state          
   case 'DESTROY_EVENT_FAILURE':
     return state
+  case 'CREATE_RSVP_REQUEST':
+    return state
+  case 'CREATE_RSVP_SUCCESS':
+    debugger
+    return state
+  case 'CREATE_RSVP_FAILURE':
+    return state  
+  case 'DESTROY_RSVP_REQUEST':
+    return state
+  case 'DESTROY_RSVP_SUCCESS':
+    event = Object.assign({}, state, {user_events: state.user_events.filter(ue => ue.rsvp_id !== action.payload.id)})
+    return event
+  case 'DESTROY_RSVP_FAILURE':
+    return state   
   default:
     return state
   }      
