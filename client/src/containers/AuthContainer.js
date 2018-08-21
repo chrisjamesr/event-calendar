@@ -2,9 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { logIn, signUp, logOut } from '../actions/authActions'
-import UserDisplay from '../components/Auth/UserDisplay'
+// import {userRSVPs} from '../actions/rsvpActions'
 import ToggleAuthLink from '../components/Auth/ToggleAuthLink'
 import AuthInputComponent from '../components/Auth/AuthInputComponent'
+import UserDisplay from '../components/Auth/UserDisplay'
 
 export class AuthContainer extends React.Component{
   constructor(props){
@@ -42,6 +43,10 @@ export class AuthContainer extends React.Component{
         password: '',
       }
     })
+  }
+
+  componentDidUpdate(prevProps){
+    !prevProps.auth && this.props.auth ? this.props.userRSVPs() : null
   }
 
   handleSubmit = (event) => {
@@ -93,8 +98,8 @@ export class AuthContainer extends React.Component{
   render(){
     return (
       !!this.props.auth ? (
-        <UserDisplay 
-          userName={sessionStorage.user} 
+        <UserDisplay
+          userName={sessionStorage.username} 
           logOut={this.logOut}    
         />
       ) : (
