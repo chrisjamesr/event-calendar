@@ -3,10 +3,18 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import '../../styles/event.css'
 import RSVPComponent from './RSVPComponent'
+import AttendeesComponent from './AttendeeComponent'
 
 const EventShow=({event, handleClick, attending})=>{
   const day = moment(event.date_time).format("dddd, \n MMMM Do YYYY")
   const time = moment(event.date_time).format( "h:mm a")
+  const renderAttendees = () => {
+    if (event.hasOwnProperty("user_events")) {
+      return (
+        <AttendeesComponent attendees={event.user_events.map(ue=> ue.username)} />
+      )
+    }
+  }
   return (
     <div className="EventTile">
       <aside className="Event-sidebar">
@@ -31,6 +39,8 @@ const EventShow=({event, handleClick, attending})=>{
             handleClick={handleClick} 
             attending={attending ? 1 : 0} 
           /> 
+          {renderAttendees()}  
+
         </div>
       </main>  
     </div>
