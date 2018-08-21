@@ -13,6 +13,12 @@ class UserEventsController < ApplicationController
       render json: user_events, status: 200
   end
 
+  def update
+    user_event = UserEvent.find(user_event_params[:id])
+    user_event.toggle_attending
+    render json: user_event
+  end
+
   def destroy
     user_event = UserEvent.find(user_event_params[:id])
     user_event.destroy
