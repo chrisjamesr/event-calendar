@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import '../../styles/event.css'
-import RSVPContainer from '../../containers/RSVPContainer'
+import RSVPComponent from './RSVPComponent'
 
-const EventShow=({event})=>{
+const EventShow=({event, handleClick, attending})=>{
   const day = moment(event.date_time).format("dddd, \n MMMM Do YYYY")
   const time = moment(event.date_time).format( "h:mm a")
   return (
@@ -27,7 +27,10 @@ const EventShow=({event})=>{
           <p>{event.notes}</p>
         </div> 
         <div>
-          <RSVPContainer eventId={event.id}/>
+          <RSVPComponent 
+            handleClick={handleClick} 
+            attending={attending ? 1 : 0} 
+          /> 
         </div>
       </main>  
     </div>
@@ -40,8 +43,11 @@ EventShow.propTypes = {
     name: PropTypes.string,
     notes: PropTypes.string,
     location: PropTypes.string,
-    date_time: PropTypes.string    
-  })
+    date_time: PropTypes.string,
+    user_events: PropTypes.array    
+  }),
+  attending: PropTypes.bool,
+  handleClick: PropTypes.func
 }
 
 export default EventShow
