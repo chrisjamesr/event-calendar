@@ -3,9 +3,10 @@ class UserEvent < ApplicationRecord
   belongs_to :event
 
   validates :user_id, :event_id, :presence => true
-  validate :unique_rsvp
+  validates :user_id, :uniqueness => {:scope => :event_id}
 
-  def unique_rsvp
-    errors.add(:event_id, "You've already RSVP'd") if UserEvent.where(user_id: self.user_id, event_id: self.event_id).present?
+  def toggle_attending
+    self.update(attending: !self.attending)
   end
+
 end
