@@ -45,9 +45,9 @@ export class AuthContainer extends React.Component{
     })
   }
 
-  componentDidUpdate(prevProps){
-    !prevProps.auth && this.props.auth ? this.props.userRSVPs() : null
-  }
+  // componentDidUpdate(prevProps){
+  //   !prevProps.auth && this.props.auth ? this.props.userRSVPs() : null
+  // }
 
   handleSubmit = (event) => {
     event.preventDefault()
@@ -99,7 +99,7 @@ export class AuthContainer extends React.Component{
     return (
       !!this.props.auth ? (
         <UserDisplay
-          userName={sessionStorage.username} 
+          userName={sessionStorage.user} 
           logOut={this.logOut}    
         />
       ) : (
