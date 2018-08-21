@@ -34,8 +34,9 @@ export default function currentEventReducer(state=initialState.currentEvent, act
     return state
   case 'DESTROY_RSVP_SUCCESS':
     event = Object.assign({}, state, {
-      user_events: state.user_events.filter(ue => {
-        ue.rsvp_id !== action.payload.user_event.id
+      user_events: 
+      state.user_events.filter(ue => {
+        return ue.id !== action.payload.user_event.id
       })
     })
     return event
