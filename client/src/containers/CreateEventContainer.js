@@ -32,7 +32,6 @@ export class CreateEventContainer extends React.Component {
   }
 
   handleSubmit = (event) => {
-    debugger
     event.preventDefault()
     this.props.createEvent(this.state.event, this.props.history)
   }
