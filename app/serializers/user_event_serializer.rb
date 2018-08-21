@@ -1,11 +1,11 @@
 class UserEventSerializer < ActiveModel::Serializer
-  # attributes :id, :user
+  attributes :user_event
   # attributes :rsvp
   # belongs_to :user
   # belongs_to :event
 
-  def rsvp
-    Hash[:rsvp_id => object.id, :user_id => object.user_id, :username => object.user.username]
+  def user_event
+    Hash[:id => object.id, :user_id => object.user_id, :username => object.user.username]
   end
 
   def user_id
