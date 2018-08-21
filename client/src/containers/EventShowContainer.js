@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import { readEvent } from '../actions/eventsActions'
-import {createRSVP, destroyRSVP} from '../actions/rsvpActions' 
+import {createRSVP, updateRSVP} from '../actions/rsvpActions' 
 import EventShow from '../components/Events/EventShow'
 
 class EventShowContainer extends React.Component {
@@ -20,7 +20,7 @@ class EventShowContainer extends React.Component {
   handleClick = () => {
     if (this.props.auth){
       if (this.findRSVP(this.props.event)) {
-        this.props.destroyRSVP(this.props.event.id, this.findRSVP(this.props.event).id) 
+        this.props.updateRSVP(this.props.event.id, this.findRSVP(this.props.event).id) 
       } else {
         this.props.createRSVP(this.props.event.id) 
       } 
@@ -79,7 +79,7 @@ const mapStateToProps = ({ currentEvent, auth})=> {
 }
 
 const mapDispatchToProps = (dispatch)=> {
-  return bindActionCreators({readEvent, createRSVP, destroyRSVP}, dispatch)
+  return bindActionCreators({readEvent, createRSVP, updateRSVP}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventShowContainer)

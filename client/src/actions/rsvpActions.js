@@ -21,13 +21,13 @@ export function createRSVP(eventId){
   }
 }
 
-export function destroyRSVP(eventId, rsvpId){
+export function updateRSVP(eventId, rsvpId){
   return function(dispatch){
-    dispatch({type: 'DESTROY_RSVP_REQUEST'});
-    return rsvpAPI.postDestroyRsvp(eventId, rsvpId)
+    dispatch({type: 'UPDATE_RSVP_REQUEST'});
+    return rsvpAPI.postUpdateRsvp(eventId, rsvpId)
     .catch(error=>{
       dispatch({
-        type: 'DESTROY_RSVP_FAILURE',
+        type: 'UPDATE_RSVP_FAILURE',
         payload: error.statusText
       })
       console.error(error)
@@ -35,7 +35,7 @@ export function destroyRSVP(eventId, rsvpId){
     })
     .then(event => {
       dispatch({
-        type: 'DESTROY_RSVP_SUCCESS',
+        type: 'UPDATE_RSVP_SUCCESS',
         payload: event
       })
     })

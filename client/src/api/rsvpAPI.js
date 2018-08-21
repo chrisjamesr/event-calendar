@@ -18,10 +18,10 @@ class RsvpAPI {
     })
   }
 
-  static postDestroyRsvp(eventId, rsvpId){
-    const destroyEvent = new Request(`http://localhost:3000/api/rsvp/${rsvpId}`,{
+  static postUpdateRsvp(eventId, rsvpId){
+    const updateRSVP = new Request(`http://localhost:3000/api/rsvp/${rsvpId}`,{
       headers: tokenHeader(),
-      method: 'DELETE',
+      method: 'PATCH',
       body: JSON.stringify({
         user_event: { 
           id: rsvpId, 
@@ -29,7 +29,7 @@ class RsvpAPI {
         }
       })
     })
-    return fetch(destroyEvent).then(handleError)
+    return fetch(updateRSVP).then(handleError)
       .then(response=>{
         return response.json()
     }) 
