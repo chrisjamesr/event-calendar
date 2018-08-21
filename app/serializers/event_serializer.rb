@@ -4,7 +4,7 @@ class EventSerializer < ActiveModel::Serializer
 
   def user_events
     object.user_events.collect do |ue| 
-      Hash[:id => ue.id , :user_id => ue.user_id, :username => ue.user.username]
+      Hash[:id => ue.id , :user_id => ue.user_id, :username => ue.user.username, :attending => ue.attending]
     end
   end
 
