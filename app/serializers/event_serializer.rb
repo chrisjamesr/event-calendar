@@ -3,9 +3,9 @@ class EventSerializer < ActiveModel::Serializer
   # has_many :user_events
 
   def user_events
-    object.user_events.inject({}) do |memo, ue| 
-      Hash[ue.id => Hash[:id => ue.user_id, :username => ue.user.username]]
-    end  
+    object.user_events.collect do |ue| 
+      Hash[:id => ue.id , :user_id => ue.user_id, :username => ue.user.username]
+    end
   end
 
 
