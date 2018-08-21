@@ -6,7 +6,7 @@ export default function eventsReducer(state=initialState.events, action){
     case 'FETCH_EVENTS_REQUEST': 
       return state
     case 'FETCH_EVENTS_SUCCESS':
-      return [...state, ...action.payload]
+      return action.payload
     case 'FETCH_EVENTS_FAILURE': 
       return state  
     case 'EVENTS_LOAD_FAILURE':
