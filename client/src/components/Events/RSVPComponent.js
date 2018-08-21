@@ -15,7 +15,8 @@ const RSVPComponent = ({attending, handleClick}) => {
 }
 
 RSVPComponent.propTypes = {
-  attending: PropTypes.number
+  attending: PropTypes.number,
+  handleClick: PropTypes.func
 }
 
 export default RSVPComponent
