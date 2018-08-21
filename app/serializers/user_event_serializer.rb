@@ -5,7 +5,7 @@ class UserEventSerializer < ActiveModel::Serializer
   # belongs_to :event
 
   def user_event
-    Hash[:id => object.id, :user_id => object.user_id, :username => object.user.username]
+    Hash[:id => object.id, :user_id => object.user_id, :username => object.user.username, :attending=> object.attending]
   end
 
   def user_id
