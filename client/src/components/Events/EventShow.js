@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import '../../styles/event.css'
 import RSVPComponent from './RSVPComponent'
-import AttendeesComponent from './AttendeeComponent'
+import AttendeesComponent from './AttendeesComponent'
 
 const EventShow=({event, handleClick, attending})=>{
   const day = moment(event.date_time).format("dddd, \n MMMM Do YYYY")
