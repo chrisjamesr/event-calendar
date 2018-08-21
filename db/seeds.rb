@@ -11,7 +11,7 @@ require 'ffaker'
 15.times do
   Event.create do |e|
     e.name = FFaker::Conference.name
-    e.notes = FFaker::Lorem.sentence
+    e.description = FFaker::Lorem.sentence
     e.location = [
       FFaker::AddressUS.street_address, 
       FFaker::AddressUS.city, 
