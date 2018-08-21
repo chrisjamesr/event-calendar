@@ -26,14 +26,18 @@ export default function currentEventReducer(state=initialState.currentEvent, act
   case 'CREATE_RSVP_REQUEST':
     return state
   case 'CREATE_RSVP_SUCCESS':
-    event = Object.assign({}, state, {user_events: [...state.user_events, action.payload]})
+    event = Object.assign({}, state, {user_events: [...state.user_events, action.payload.user_event]})
     return event
   case 'CREATE_RSVP_FAILURE':
     return state  
   case 'DESTROY_RSVP_REQUEST':
     return state
   case 'DESTROY_RSVP_SUCCESS':
-    event = Object.assign({}, state, {user_events: state.user_events.filter(ue => ue.rsvp_id !== action.payload.id)})
+    event = Object.assign({}, state, {
+      user_events: state.user_events.filter(ue => {
+        ue.rsvp_id !== action.payload.user_event.id
+      })
+    })
     return event
   case 'DESTROY_RSVP_FAILURE':
     return state   
