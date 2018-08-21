@@ -2,13 +2,12 @@ import {tokenHeader, handleError} from './apiUtils'
 
 class RsvpAPI {
 
-  static postCreateRsvp(jwt,eventId){
+  static postCreateRsvp(eventId){
     const createRSVP = new Request(`http://localhost:3000/api/rsvp`,{
       headers: tokenHeader(),
       method: 'POST',
       body: JSON.stringify({
-        rsvp: { 
-          jwt: jwt, 
+        user_event: { 
           event_id: eventId
         }
       })
@@ -19,13 +18,13 @@ class RsvpAPI {
     })
   }
 
-  static postDestroyRsvp(jwt, eventId){
-    const destroyEvent = new Request(`http://localhost:3000/api/rsvp`,{
+  static postDestroyRsvp(eventId, rsvpId){
+    const destroyEvent = new Request(`http://localhost:3000/api/rsvp/${rsvpId}`,{
       headers: tokenHeader(),
       method: 'DELETE',
       body: JSON.stringify({
-        rsvp: { 
-          jwt: jwt, 
+        user_event: { 
+          id: rsvpId, 
           event_id: eventId
         }
       })
