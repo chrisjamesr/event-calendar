@@ -20,7 +20,7 @@ export function fetchEvents(){
   }
 }
 
-export function createEvent(event){
+export function createEvent( event, history){
   return function(dispatch){
     dispatch({type: 'CREATE_EVENT_REQUEST'});
     return EventAPI.postNewEvent(event)
@@ -32,11 +32,13 @@ export function createEvent(event){
         console.error(error)
         return Promise.reject()
       })  
-      .then(event => dispatch({
-        type: 'CREATE_EVENT_SUCCESS',
-        payload: event
+      .then(event => {
+        dispatch({
+          type: 'CREATE_EVENT_SUCCESS',
+          payload: event
       })
-    ) 
+      history.push(`/events/${event.id}`) 
+    }) 
   }
 }
 export function readEvent(history, eventId){
