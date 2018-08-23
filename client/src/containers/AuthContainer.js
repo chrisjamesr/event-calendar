@@ -99,7 +99,7 @@ export class AuthContainer extends React.Component{
     return (
       !!this.props.auth ? (
         <UserDisplay
-          userName={sessionStorage.user} 
+          userName={sessionStorage.username} 
           logOut={this.logOut}    
         />
       ) : (
