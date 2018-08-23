@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../styles/form.css'
 
+
 const CreateEventInput = ({handleSubmit, handleChange}) => {
   
   return(
