@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const ToggleAuthLink = ({active, name, onSelectorToggle}) => {  
 
@@ -14,6 +15,11 @@ const ToggleAuthLink = ({active, name, onSelectorToggle}) => {
        {name} 
     </a>
   )  
+}
+ToggleAuthLink.propTypes = {
+  active: PropTypes.bool,
+  name: PropTypes.string,
+  onSelectorToggle: PropTypes.func
 }
   
 
