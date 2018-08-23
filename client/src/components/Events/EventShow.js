@@ -8,13 +8,18 @@ import AttendeesComponent from './AttendeesComponent'
 const EventShow=({event, handleClick, attending})=>{
   const day = moment(event.date_time).format("dddd, \n MMMM Do YYYY")
   const time = moment(event.date_time).format( "h:mm a")
+  
   const renderAttendees = () => {
-    if (event.hasOwnProperty("user_events")) {
+    if (event.hasOwnProperty("user_events") && event.user_events.length>0) {
+      const attendees = event.user_events.filter(ue=> !!ue.attending) || []
       return (
-        <AttendeesComponent attendees={event.user_events.map(ue=> ue.username)} />
+        <AttendeesComponent 
+          rsvps={attendees.map(ue=> ue.username)} 
+        />
       )
     }
   }
+
   return (
     <div className="EventTile">
       <aside className="Event-sidebar">
