@@ -33,17 +33,23 @@ export class CreateEventContainer extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+
     this.props.createEvent(this.state.event, this.props.history)
   }
+
+  eventAction = () => {
+    // return this.props.match.url.match(/new/) ? "create" :  
+  }
+
 
   render(){
     return(
       <div>
-        <EventInputComponent {...this.props}
+        <EventInputComponent //{...this.props}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           event={this.state.event}
-          //event={this.state.event}
+          path={this.props.match.url}
         />
       </div>
     )
