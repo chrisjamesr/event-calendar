@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 import '../../styles/Navbar.css'
 
@@ -14,6 +15,11 @@ const UserDisplay = ({userName, logOut}) => {
       <button onClick={logOut}>Log Out</button>
     </div>
   )
+}
+
+UserDisplay.propTypes = {
+  userName: PropTypes.string,
+  logOut: PropTypes.func
 }
 
 export default UserDisplay
