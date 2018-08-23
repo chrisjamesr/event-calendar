@@ -3,7 +3,7 @@ import '../../styles/form.css'
 import PropTypes from 'prop-types'
 
 
-const CreateEventInput = ({handleSubmit, handleChange, event}) => {
+const EventInputComponent = ({handleSubmit, handleChange, event}) => {
   
   return(
     <div className="input">
@@ -46,4 +46,4 @@ CreateEventInput.propTypes = {
 }
 
 
-export default CreateEventInput;
+export default EventInputComponent;
