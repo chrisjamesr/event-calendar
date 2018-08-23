@@ -1,23 +1,69 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
-import {connect} from 'react-redux'
-// Modify CreateEventInput to serve as common component
-// Connect component to store
-// Add Patch & Delete actions & API methods
-// Add conditional for event creator
-// add reducer cases to currentEvent.js/events.js
+import { connect } from 'react-redux'
+import { createEvent } from '../actions/eventsActions'
+import EventInputComponent from '../components/Events/EventInputComponent'
 
-class EventEditContainer extends React.Component {
-  constructor(){
-    super()
+
+
+export class CreateEventContainer extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      event: {
+        name: '',
+        date_time: '',
+        location: '',
+        description: ''
+      },
+    }    
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
+
+  handleChange = (event) => {
+    this.setState({
+      ...this.state, 
+      event: {
+        ...this.state.event,
+        [event.target.name]: event.target.value,
+      }
+    })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+
+    this.props.createEvent(this.state.event, this.props.history)
+  }
+
+  eventAction = () => {
+    // return this.props.match.url.match(/new/) ? "create" :  
+  }
+
 
   render(){
     return(
       <div>
-    </div>
+        <EventInputComponent //{...this.props}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          event={this.state.event}
+          path={this.props.match.url}
+        />
+      </div>
     )
   }
 }
 
-export default EventEditContainer
+const mapStateToProps=({event})=>{
+  return{
+    event: event
+  }
+}
+
+const mapDispatchToProps=(dispatch)=>{
+  return bindActionCreators({createEvent}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateEventContainer)
