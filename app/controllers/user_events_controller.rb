@@ -1,7 +1,9 @@
 class UserEventsController < ApplicationController
 
   def create
-    if user_event = UserEvent.create(user_id: current_user.id, event_id: user_event_params[:event_id])
+    puts params
+    user_event = UserEvent.new(user_id: current_user.id, event_id: user_event_params[:event_id])
+    if user_event.save
         render json: user_event, status: 200
     else
       render head: 403
@@ -14,6 +16,7 @@ class UserEventsController < ApplicationController
   end
 
   def update
+    puts params
     user_event = UserEvent.find(user_event_params[:id])
     user_event.toggle_attending
     render json: user_event
