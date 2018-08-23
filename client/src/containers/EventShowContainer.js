@@ -13,7 +13,7 @@ class EventShowContainer extends React.Component {
       attending: false
     }
     this.handleClick = this.handleClick.bind(this)
-    this.toggleAttending = this.toggleAttending.bind(this)
+    this.findRSVPAttending = this.findRSVPAttending.bind(this)
     this.findRSVP = this.findRSVP.bind(this)
   }
 
@@ -27,10 +27,6 @@ class EventShowContainer extends React.Component {
     }
   }
 
-  toggleAttending = () => {
-    !!this.findRSVP() ? this.setState({attending: true}) : this.setState({attending: false})
-  }
-
   componentDidMount(){
     this.props.readEvent(this.props.history, this.props.match.params.id)
   }
@@ -40,12 +36,12 @@ class EventShowContainer extends React.Component {
       this.rsvpChange(prevProps, this.props) 
       ? (
         this.setState({
-          attending: !!this.findRSVP(this.props.event)
+          attending: this.findRSVP(this.props.event).attending
         })
       ) : null
     } else if (this.props.event.hasOwnProperty("user_events")) {
         this.setState({
-          attending: !!this.findRSVP(this.props.event)
+          attending: this.findRSVP(this.props.event).attending
         })
     }  
   }
@@ -59,8 +55,16 @@ class EventShowContainer extends React.Component {
   }
 
   findRSVP = (e) => {
-    return e.user_events.find(ue => ue.user_id === parseInt(sessionStorage.user_id)) || null
-  }  
+     return e.user_events.find(ue=>{
+        return ue.user_id === parseInt(sessionStorage.user_id)
+    }) || false
+  }
+
+  findRSVPAttending = (e) => {
+     return this.findRSVP(e).attending || false
+  }
+
+  
 
   render(){
     return (
