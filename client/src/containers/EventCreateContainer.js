@@ -42,6 +42,7 @@ export class CreateEventContainer extends React.Component {
         <CreateEventInput {...this.props}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+          event={this.state.event}
           //event={this.state.event}
         />
       </div>
