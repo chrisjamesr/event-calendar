@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../styles/form.css'
+import PropTypes from 'prop-types'
 
 
 const CreateEventInput = ({handleSubmit, handleChange, event}) => {
@@ -29,6 +30,19 @@ const CreateEventInput = ({handleSubmit, handleChange, event}) => {
 
     </div>
   )
+}
+
+CreateEventInput.propTypes = {
+  handleChange: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  event: PropTypes.shape({
+    id: PropTypes.nummber,
+    name: PropTypes.string,
+    notes: PropTypes.string,
+    location: PropTypes.string,
+    date_time: PropTypes.string,
+    user_events: PropTypes.array    
+  })
 }
 
 
