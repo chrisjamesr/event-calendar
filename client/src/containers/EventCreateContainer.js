@@ -2,7 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { createEvent } from '../actions/eventsActions'
-import CreateEventInput from '../components/Events/CreateEventInput'
+import EventInputComponent from '../components/Events/EventInputComponent'
 
 
 
@@ -39,7 +39,7 @@ export class CreateEventContainer extends React.Component {
   render(){
     return(
       <div>
-        <CreateEventInput {...this.props}
+        <EventInputComponent {...this.props}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           event={this.state.event}
