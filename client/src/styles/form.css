@@ -1,3 +1,21 @@
+.create-input{
+  display: flex;
+  flex-direction: column;
+  /*align-items: ;*/
+  
+}
+
+.input-form{
+  display: flex;
+  flex-direction: column;
+  /*align-self: center;*/
+  /*padding: 15px;*/
+}
+
+.input-form div {
+  padding: 10px;
+}
+
 .auth-input-container{
   display: flex;
   flex-direction: column;
@@ -37,4 +55,8 @@ input {
 
 button {
   width: 75px;
+}
+
+label {
+  padding-right: 10px;
 }
