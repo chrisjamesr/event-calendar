@@ -1,5 +1,5 @@
 class UserEventSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :username, :event_id, :attending
+  attributes :id, :user_id, :username, :event_id, :attending, :creator
   # belongs_to :user
   # belongs_to :event
 
@@ -10,6 +10,7 @@ class UserEventSerializer < ActiveModel::Serializer
   def username
     object.user.username
   end
+
 
   # def event
   #   {id: object.event.id, name: object.event.name}
