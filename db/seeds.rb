@@ -20,3 +20,16 @@ require 'ffaker'
     e.date_time = FFaker::Time.between(DateTime.now, DateTime.new(2018, 12, 31, 23, 59))
   end
 end
+
+  10.times do
+    User.create do |u|
+      u.email = FFaker::Internet.email,
+      u.password = FFaker::Internet.password
+    end
+  end
+
+  User.all.each do |u|
+    3.times do 
+      UserEvent.create(user_id: u.id, event_id: Event.all.sample.id)
+    end
+  end
