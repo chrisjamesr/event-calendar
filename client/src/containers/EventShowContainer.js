@@ -10,11 +10,13 @@ class EventShowContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      attending: false
+      attending: false,
+      creator: false
     }
     this.handleClick = this.handleClick.bind(this)
     this.findRSVPAttending = this.findRSVPAttending.bind(this)
     this.findRSVP = this.findRSVP.bind(this)
+    this.didCreate = this.didCreate.bind(this)
   }
 
   handleClick = () => {
@@ -29,6 +31,7 @@ class EventShowContainer extends React.Component {
 
   componentDidMount(){
     this.props.readEvent(this.props.history, this.props.match.params.id)
+    .then(e=>this.didCreate())
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -36,14 +39,17 @@ class EventShowContainer extends React.Component {
       this.rsvpChange(prevProps, this.props) 
       ? (
         this.setState({
+          ...this.state,
           attending: this.findRSVP(this.props.event).attending
         })
       ) : null
     } else if (this.props.event.hasOwnProperty("user_events")) {
         this.setState({
+          ...this.state,
           attending: this.findRSVP(this.props.event).attending
         })
     }  
+
   }
   
   rsvpChange(prevProps, currentProps){
@@ -64,6 +70,11 @@ class EventShowContainer extends React.Component {
      return this.findRSVP(e).attending || false
   }
 
+  didCreate = ()=>{
+    if (!this.state.creator){
+      return !!this.findRSVP(this.props.event).creator ? this.setState({...this.state, creator: true}) : {creator: false}  
+    }
+  }
   
 
   render(){
@@ -72,6 +83,7 @@ class EventShowContainer extends React.Component {
         event={this.props.event} 
         attending = {this.state.attending}
         handleClick={this.handleClick}
+        creator={this.state.creator}//{this.didCreate()||false}
       />
     )  
   }
