@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   scope :ordered_events, -> { order(:date_time) }
 
-  has_many :user_events
+  has_many :user_events, dependent: :destroy
   has_many :users, :through => :user_events
   
   validates :name, uniqueness: {case_sensitive: false}
@@ -24,7 +24,7 @@ class Event < ApplicationRecord
   private
   def creator_rsvp
     if self.id.present?
-      self.user_events.build(event_id: self.id, user_id: self.creator_rsvp)
+      self.user_events.create(event_id: self.id, user_id: self.creator_id, creator: true)
     end
   end
 end
