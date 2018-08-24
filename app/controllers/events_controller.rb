@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   skip_before_action :authenticate, only: [:index, :show]
 
   def create
-    event = Event.new(event_params)
+    event = Event.new(event_params.merge(creator_id: current_user.id))
     if event.save
       render json: event, status: 201
     else
