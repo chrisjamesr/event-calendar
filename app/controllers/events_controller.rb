@@ -22,7 +22,7 @@ class EventsController < ApplicationController
 
   def update
     event = Event.find(params[:id])
-    event.update(event_params)
+    event.update(event_params.merge(user_id: current_user.id))
     render json: event, status: 200
   end
 
