@@ -33,3 +33,5 @@ end
       UserEvent.create(user_id: u.id, event_id: Event.all.sample.id)
     end
   end
+
+  User.all.each {|u| u.update(:email=> u.email.match(/(\w\S+\b)/)[0])}
