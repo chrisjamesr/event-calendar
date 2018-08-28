@@ -6,7 +6,7 @@ import { readEvent } from '../actions/eventsActions'
 import {createRSVP, updateRSVP} from '../actions/rsvpActions' 
 import EventShow from '../components/Events/EventShow'
 
-class EventShowContainer extends React.Component {
+class currentEventShowContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -21,10 +21,10 @@ class EventShowContainer extends React.Component {
 
   handleClick = () => {
     if (this.props.auth){
-      if (this.findRSVP(this.props.event)) {
-        this.props.updateRSVP(this.props.event.id, this.findRSVP(this.props.event).id) 
+      if (this.findRSVP(this.props.currentEvent)) {
+        this.props.updateRSVP(this.props.currentEvent.id, this.findRSVP(this.props.currentEvent).id) 
       } else {
-        this.props.createRSVP(this.props.event.id) 
+        this.props.createRSVP(this.props.currentEvent.id) 
       } 
     }
   }
@@ -35,25 +35,25 @@ class EventShowContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    if (prevProps.event.hasOwnProperty("user_events")) {
+    if (prevProps.currentEvent.hasOwnProperty("user_currentEvents")) {
       this.rsvpChange(prevProps, this.props) 
       ? (
         this.setState({
           ...this.state,
-          attending: this.findRSVP(this.props.event).attending
+          attending: this.findRSVP(this.props.currentEvent).attending
         })
       ) : null
-    } else if (this.props.event.hasOwnProperty("user_events")) {
+    } else if (this.props.currentEvent.hasOwnProperty("user_currentEvents")) {
         this.setState({
           ...this.state,
-          attending: this.findRSVP(this.props.event).attending
+          attending: this.findRSVP(this.props.currentEvent).attending
         })
     }  
 
   }
   
   rsvpChange(prevProps, currentProps){
-    return this.findRSVP(prevProps.event) !== this.findRSVP(currentProps.event)
+    return this.findRSVP(prevProps.currentEvent) !== this.findRSVP(currentProps.currentEvent)
   }
   
   checkEmpty = (obj) => {
@@ -72,7 +72,7 @@ class EventShowContainer extends React.Component {
 
   didCreate = ()=>{
     if (!this.state.creator){
-      return !!this.findRSVP(this.props.event).creator ? this.setState({...this.state, creator: true}) : {creator: false}  
+      return !!this.findRSVP(this.props.currentEvent).creator ? this.setState({...this.state, creator: true}) : {creator: false}  
     }
   }
   
@@ -80,10 +80,10 @@ class EventShowContainer extends React.Component {
   render(){
     return (
       <EventShow 
-        event={this.props.event} 
+        event={this.props.currentEvent} 
         attending = {this.state.attending}
         handleClick={this.handleClick}
-        creator={this.state.creator}//{this.didCreate()||false}
+        creator={this.state.creator}
       />
     )  
   }
@@ -91,11 +91,11 @@ class EventShowContainer extends React.Component {
 }
 
 const mapStateToProps = ({ currentEvent, auth})=> {
-  return {event: currentEvent, auth}
+  return {currentEvent: currentEvent, auth}
 }
 
 const mapDispatchToProps = (dispatch)=> {
   return bindActionCreators({readEvent, createRSVP, updateRSVP}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventShowContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(currentEventShowContainer)
