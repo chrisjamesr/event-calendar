@@ -2,6 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { createEvent } from '../actions/eventsActions'
+import { readEvent } from '../actions/eventsActions'
 import EventInputComponent from '../components/Events/EventInputComponent'
 
 
@@ -15,7 +16,7 @@ export class EventInputContainer extends React.Component {
         date_time: '',
         location: '',
         description: ''
-      }
+      },
       action: 'Create'
     }    
     this.handleChange = this.handleChange.bind(this)
@@ -24,20 +25,20 @@ export class EventInputContainer extends React.Component {
   }
 
   componentDidMount(){
-    if (this.props.match.params.hasOwnProperty("id")) {
-      if (this.props.currentEvent.hasOwnProperty("id")) { 
-        this.props.match.params.id === this.props.currentEvent.id ? (
-          this.setState({event: {currentEvent}}))
-
-      }
-    }
+    this.props.match.params.hasOwnProperty("id") ? (
+      this.props.currentEvent.hasOwnProperty("id") ? (
+        parseInt(this.props.match.params.id) === this.props.currentEvent.id ? (
+          this.setCurrentEvent(this.props.currentEvent)
+        ) : this.props.readEvent(this.props.history, parseInt(this.props.match.params.id))
+      ) : this.props.readEvent(this.props.history, parseInt(this.props.match.params.id))
+    ) : null    
   }
 
   setCurrentEvent = (currentEvent) =>{
     this.setState({
       event: {
         name: currentEvent.name,
-        date_time: currentEvent.date_time,
+        date_time: currentEvent.date_time.slice(0,-5),
         location: currentEvent.location,
         description: currentEvent.description
       },
@@ -45,27 +46,8 @@ export class EventInputContainer extends React.Component {
     })
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   debugger    
-  // }
-
-  // componentDidUpdate(prevProps){
-  //   debugger
-  // }
-
-  // shouldComponentUpdate(prevProps, prevState){
-  //   debugger
-  // }
-  checkExistingEvent = () =>{
-    return (
-      this.props.match.params.hasOwnProperty("id") && this.props.currentEvent.hasOwnProperty("id")
-    )
-  }
-
-  checkEventMatch = () => {
-    return checkExistingEvent() ? (
-      this.props.match.params.id === this.props.currentEvent.id ? this.setCurrentEvent(this.props.currentEvent)
-    )  
+  componentWillReceiveProps(nextProps){
+    this.setCurrentEvent(nextProps.currentEvent)
   }
 
   handleChange = (event) => {
@@ -102,7 +84,7 @@ const mapStateToProps=({currentEvent})=>{
 }
 
 const mapDispatchToProps=(dispatch)=>{
-  return bindActionCreators({createEvent}, dispatch)
+  return bindActionCreators({createEvent, readEvent}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventInputContainer)
