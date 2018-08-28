@@ -58,6 +58,7 @@ export function readEvent(history, eventId){
         type: 'SHOW_EVENT_SUCCESS',
         payload: event
       })
+      history.push(`/events/${event.id}`)   
     }) 
   }
 }
@@ -65,7 +66,7 @@ export function readEvent(history, eventId){
 export function updateEvent(event){
   return function(dispatch){
     dispatch({type: 'UPDATE_EVENT_REQUEST'});
-    return EventAPI.patchEvent(event)
+    return EventAPI.putEvent(event)
     .catch(error=>{
         dispatch({
           type: 'UPDATE_EVENT_FAILURE',
