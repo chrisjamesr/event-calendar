@@ -1,8 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { createEvent } from '../actions/eventsActions'
-import { readEvent } from '../actions/eventsActions'
+import { createEvent, readEvent, updateEvent } from '../actions/eventsActions'
 import EventInputComponent from '../components/Events/EventInputComponent'
 
 
@@ -37,6 +36,7 @@ export class EventInputContainer extends React.Component {
   setCurrentEvent = (currentEvent) =>{
     this.setState({
       event: {
+        id: currentEvent.id,
         name: currentEvent.name,
         date_time: currentEvent.date_time.slice(0,-5),
         location: currentEvent.location,
@@ -47,7 +47,9 @@ export class EventInputContainer extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    this.setCurrentEvent(nextProps.currentEvent)
+    nextProps.currentEvent !== this.props.currentEvent ? (
+      this.setCurrentEvent(nextProps.currentEvent)
+    ) : null  
   }
 
   handleChange = (event) => {
@@ -62,7 +64,9 @@ export class EventInputContainer extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.createEvent(this.state.event, this.props.history)
+    this.state.action === "Create" ? (
+      this.props.createEvent(this.state.event, this.props.history)
+    ) : this.props.updateEvent(this.state.event, this.props.history)
   }
 
   render(){
@@ -84,7 +88,7 @@ const mapStateToProps=({currentEvent})=>{
 }
 
 const mapDispatchToProps=(dispatch)=>{
-  return bindActionCreators({createEvent, readEvent}, dispatch)
+  return bindActionCreators({createEvent, readEvent, updateEvent}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventInputContainer)
