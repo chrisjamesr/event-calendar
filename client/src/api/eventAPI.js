@@ -35,6 +35,18 @@ class EventAPI {
         return response.json() 
     }) 
   }
+
+  static patchEvent(event){
+    const patchEventRequest = new Request(`http://localhost:3000/api/events/${event.id}`,{
+      headers: tokenHeader(),
+      method: 'PATCH',
+      body: JSON.stringify(event)
+    })
+    return fetch(patchEventRequest).then(handleError)
+      .then(response=>{
+        return response.json
+      })
+  }
 }
 
 export default EventAPI
