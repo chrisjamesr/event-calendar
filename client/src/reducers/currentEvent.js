@@ -16,12 +16,12 @@ export default function currentEventReducer(state=initialState.currentEvent, act
     return action.payload
   case 'UPDATE_EVENT_FAILURE':
     return state    
-  case 'DESTROY_EVENT_REQUEST':
+  case 'DELETE_EVENT_REQUEST':
     return state
-  case 'DESTROY_EVENT_SUCCESS':
+  case 'DELETE_EVENT_SUCCESS':
     // create new events array ommitting destroyed event
-    return state          
-  case 'DESTROY_EVENT_FAILURE':
+    return {}          
+  case 'DELETE_EVENT_FAILURE':
     return state
   case 'CREATE_RSVP_REQUEST':
     return state
