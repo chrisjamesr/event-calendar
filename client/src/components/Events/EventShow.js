@@ -4,8 +4,9 @@ import moment from 'moment'
 import '../../styles/event.css'
 import RSVPComponent from './RSVPComponent'
 import AttendeesComponent from './AttendeesComponent'
+import EditButtonComponent from './EditButtonComponent'
 
-const EventShow=({event, handleClick, attending})=>{
+const EventShow=({event, handleClick, attending, creator})=>{
   const day = moment(event.date_time).format("dddd, \n MMMM Do YYYY")
   const time = moment(event.date_time).format( "h:mm a")
   
@@ -18,6 +19,10 @@ const EventShow=({event, handleClick, attending})=>{
         />
       )
     }
+  }
+
+  const renderEditButton = () => {
+    return creator ? <EditButtonComponent eventId={event.id}/> : null
   }
 
   return (
@@ -34,6 +39,8 @@ const EventShow=({event, handleClick, attending})=>{
       <main>
         <div className="Event-name-header">
           <h3>{event.name}</h3>
+          {renderEditButton()}
+            
         </div>  
         <div className="Event-details">
           <p>{event.location}</p>
@@ -42,7 +49,7 @@ const EventShow=({event, handleClick, attending})=>{
         <div>
           <RSVPComponent 
             handleClick={handleClick} 
-            attending={attending ? 1 : 0} 
+            attending={attending} 
           /> 
           {renderAttendees()}  
 
@@ -54,7 +61,7 @@ const EventShow=({event, handleClick, attending})=>{
 
 EventShow.propTypes = {
   event: PropTypes.shape({
-    id: PropTypes.nummber,
+    id: PropTypes.number,
     name: PropTypes.string,
     notes: PropTypes.string,
     location: PropTypes.string,
@@ -62,6 +69,7 @@ EventShow.propTypes = {
     user_events: PropTypes.array    
   }),
   attending: PropTypes.bool,
+  creator: PropTypes.bool,
   handleClick: PropTypes.func
 }
 
