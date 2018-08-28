@@ -3,7 +3,7 @@ import '../../styles/form.css'
 import PropTypes from 'prop-types'
 
 
-const EventInputComponent = ({handleSubmit, handleChange, event, action}) => {
+const EventInputComponent = ({handleSubmit, handleChange, handleDelete, event, action}) => {
   
   return(
     <div className="input">
@@ -25,8 +25,18 @@ const EventInputComponent = ({handleSubmit, handleChange, event, action}) => {
           <label>Description: </label>
           <textarea name="description" onChange={handleChange} value={event.description}/>
         </div>
-        <button>{action} Event</button>
+        <button name="edit-button">{action} Event</button>
+
       </form>
+        {
+          action === "Edit" ? (
+            <input type="submit" 
+                   name="destroy-button" 
+                   value="Delete Event"
+                   onClick={handleDelete}
+            />
+          ) : null
+        }  
 
     </div>
   )
