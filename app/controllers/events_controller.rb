@@ -21,25 +21,32 @@ class EventsController < ApplicationController
   end
 
   def update
-    event = Event.find(params[:id])
-    event.update(event_params)
-    render json: event, status: 200
+    event = Event.find(event_params[:id])
+    if event.update(event_params)
+      render json: event, status: 200
+    else
+      puts event.errors.full_messages  
+      head 400
+    end
   end
 
   def destroy
-    event = Event.find(params[:id])
-    event.destroy
-    render json: {
-      status: 200,
-      message: "Event has been destroyed."
-    }
+    event = Event.find(event_params[:id])
+    if event.destroy
+      render json: event,
+        status: 200,
+        message: "Event has been destroyed."
+    else
+      puts event.errors.full_messages
+      head 400
+    end
   end
 
 
   private
 
     def event_params
-      params.require(:event).permit(:name, :description, :location, :date_time)
+      params.require(:event).permit(:id, :name, :description, :location, :date_time)
     end
 
 end 
