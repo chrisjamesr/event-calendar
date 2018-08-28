@@ -30,7 +30,7 @@ class currentEventShowContainer extends React.Component {
   }
 
   componentDidMount(){
-    this.props.readEvent(this.props.history, this.props.match.params.id)
+    this.props.readEvent(this.props.match.params.id, this.props.history)
     .then(e=>this.didCreate())
   }
 
