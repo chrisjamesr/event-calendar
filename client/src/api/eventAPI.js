@@ -47,6 +47,18 @@ class EventAPI {
         return response.json
       })
   }
+
+  static deleteEvent(event){
+    const deleteEventRequest = new Request(`http://localhost:3000/api/events/${event.id}`,{
+      headers: tokenHeader(),
+      method: 'DELETE',
+      body: JSON.stringify(event)
+    })
+    return fetch(deleteEventRequest).then(handleError)
+      .then(response=>{
+        return response.json
+      })
+  }
 }
 
 export default EventAPI
