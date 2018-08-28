@@ -36,10 +36,10 @@ class EventAPI {
     }) 
   }
 
-  static patchEvent(event){
+  static putEvent(event){
     const patchEventRequest = new Request(`http://localhost:3000/api/events/${event.id}`,{
       headers: tokenHeader(),
-      method: 'PATCH',
+      method: 'PUT',
       body: JSON.stringify(event)
     })
     return fetch(patchEventRequest).then(handleError)
