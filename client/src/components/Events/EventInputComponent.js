@@ -3,11 +3,11 @@ import '../../styles/form.css'
 import PropTypes from 'prop-types'
 
 
-const EventInputComponent = ({handleSubmit, handleChange, event}) => {
+const EventInputComponent = ({handleSubmit, handleChange, event, action}) => {
   
   return(
     <div className="input">
-      <h1>New event</h1>
+      <h1>{action} event</h1>
       <form className="input-form" onSubmit={handleSubmit}>
         <div>
           <label>Name: </label>
@@ -25,14 +25,14 @@ const EventInputComponent = ({handleSubmit, handleChange, event}) => {
           <label>Description: </label>
           <textarea name="description" onChange={handleChange} value={event.description}/>
         </div>
-        <button>Create Event</button>
+        <button>{action} Event</button>
       </form>
 
     </div>
   )
 }
 
-CreateEventInput.propTypes = {
+EventInputComponent.propTypes = {
   handleChange: PropTypes.func,
   handleSubmit: PropTypes.func,
   event: PropTypes.shape({
@@ -42,7 +42,8 @@ CreateEventInput.propTypes = {
     location: PropTypes.string,
     date_time: PropTypes.string,
     user_events: PropTypes.array    
-  })
+  }),
+  action: PropTypes.string
 }
 
 
