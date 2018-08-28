@@ -15,7 +15,7 @@ const RSVPComponent = ({attending, handleClick}) => {
 }
 
 RSVPComponent.propTypes = {
-  attending: PropTypes.number,
+  attending: PropTypes.bool,
   handleClick: PropTypes.func
 }
 
