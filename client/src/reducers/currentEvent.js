@@ -13,7 +13,7 @@ export default function currentEventReducer(state=initialState.currentEvent, act
     return state      
   case 'UPDATE_EVENT_SUCCESS':
     // create new events array and replace existing event with modified event
-    return state        
+    return action.payload
   case 'UPDATE_EVENT_FAILURE':
     return state    
   case 'DESTROY_EVENT_REQUEST':
