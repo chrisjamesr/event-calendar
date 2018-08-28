@@ -41,7 +41,7 @@ export function createEvent( event, history){
     }) 
   }
 }
-export function readEvent(history, eventId){
+export function readEvent(eventId, history){
   return function(dispatch){
     dispatch({type: 'SHOW_EVENT_REQUEST'});
     return EventAPI.getEvent(eventId)
@@ -90,9 +90,25 @@ export function updateEvent(event){
 //   }
 // }
 
-export function destroyEvent(event){
+export function destroyEvent(event, history){
   return function(dispatch){
-    dispatch({type: 'DESTROY_EVENT'});
+    dispatch({type: 'DELETE_EVENT_REQUEST'});
+    return EventAPI.deleteEvent(event)
+    .catch(error=>{
+        dispatch({
+          type: 'DELETE_EVENT_FAILURE',
+          payload: error.statusText
+        })
+        console.error(error)
+        return Promise.reject()
+      })  
+      .then(event => {
+        dispatch({
+        type: 'DELETE_EVENT_SUCCESS',
+        payload: event
+      })
+      history.push("/events")     
+    })   
   }
 }
 
