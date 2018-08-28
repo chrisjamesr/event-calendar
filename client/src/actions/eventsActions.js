@@ -62,6 +62,27 @@ export function readEvent(history, eventId){
   }
 }
 
+export function updateEvent(event){
+  return function(dispatch){
+    dispatch({type: 'UPDATE_EVENT_REQUEST'});
+    return EventAPI.patchEvent(event)
+    .catch(error=>{
+        dispatch({
+          type: 'UPDATE_EVENT_FAILURE',
+          payload: error.statusText
+        })
+        console.error(error)
+        return Promise.reject()
+      })  
+      .then(event => {
+        dispatch({
+        type: 'UPDATE_EVENT_SUCCESS',
+        payload: event
+      })
+    }) 
+  }
+}
+
 // export function clearCurrentEvent(eventId){
 //   return function(dispatch){
 //     dispatch({type: 'CLEAR_CURRENT_EVENT'})
