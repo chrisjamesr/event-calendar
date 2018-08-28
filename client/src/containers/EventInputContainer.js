@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { createEvent, readEvent, updateEvent } from '../actions/eventsActions'
+import { createEvent, readEvent, updateEvent, destroyEvent } from '../actions/eventsActions'
 import EventInputComponent from '../components/Events/EventInputComponent'
 
 
@@ -21,6 +21,7 @@ export class EventInputContainer extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.setCurrentEvent = this.setCurrentEvent.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount(){
@@ -28,8 +29,8 @@ export class EventInputContainer extends React.Component {
       this.props.currentEvent.hasOwnProperty("id") ? (
         parseInt(this.props.match.params.id) === this.props.currentEvent.id ? (
           this.setCurrentEvent(this.props.currentEvent)
-        ) : this.props.readEvent(this.props.history, parseInt(this.props.match.params.id))
-      ) : this.props.readEvent(this.props.history, parseInt(this.props.match.params.id))
+        ) : this.props.readEvent( parseInt(this.props.match.params.id), this.props.history)
+      ) : this.props.readEvent(parseInt(this.props.match.params.id), this.props.history)
     ) : null    
   }
 
@@ -69,12 +70,18 @@ export class EventInputContainer extends React.Component {
     ) : this.props.updateEvent(this.state.event, this.props.history)
   }
 
+  handleDelete = (event) => {
+    event.preventDefault()
+    this.props.destroyEvent(this.state.event, this.props.history)
+  }
+
   render(){
     return(
       <div>
         <EventInputComponent //{...this.props}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+          handleDelete={this.handleDelete}
           event={this.state.event}
           action={this.state.action}
         />
@@ -88,7 +95,7 @@ const mapStateToProps=({currentEvent})=>{
 }
 
 const mapDispatchToProps=(dispatch)=>{
-  return bindActionCreators({createEvent, readEvent, updateEvent}, dispatch)
+  return bindActionCreators({createEvent, readEvent, updateEvent, destroyEvent}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventInputContainer)
