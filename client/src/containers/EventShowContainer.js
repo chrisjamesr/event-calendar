@@ -35,7 +35,7 @@ class currentEventShowContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    if (prevProps.currentEvent.hasOwnProperty("user_currentEvents")) {
+    if (prevProps.currentEvent.hasOwnProperty("user_events")) {
       this.rsvpChange(prevProps, this.props) 
       ? (
         this.setState({
@@ -43,7 +43,7 @@ class currentEventShowContainer extends React.Component {
           attending: this.findRSVP(this.props.currentEvent).attending
         })
       ) : null
-    } else if (this.props.currentEvent.hasOwnProperty("user_currentEvents")) {
+    } else if (this.props.currentEvent.hasOwnProperty("user_events")) {
         this.setState({
           ...this.state,
           attending: this.findRSVP(this.props.currentEvent).attending
