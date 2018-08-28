@@ -62,6 +62,12 @@ export function readEvent(history, eventId){
   }
 }
 
+// export function clearCurrentEvent(eventId){
+//   return function(dispatch){
+//     dispatch({type: 'CLEAR_CURRENT_EVENT'})
+//   }
+// }
+
 export function destroyEvent(event){
   return function(dispatch){
     dispatch({type: 'DESTROY_EVENT'});
