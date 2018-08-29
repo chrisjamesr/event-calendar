@@ -11,6 +11,7 @@ const UserDisplay = ({userName, logOut}) => {
         <NavLink to="/" exact className="link">{userName} </NavLink>  
         <br/>
         <NavLink to="/" exact className="link"> All Events</NavLink>  
+        <NavLink to="/events/new" className="link">Add event</NavLink>
       </p>
       <button onClick={logOut}>Log Out</button>
     </div>
