@@ -2,11 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import '../../styles/event.css'
-import RSVPComponent from './RSVPComponent'
 import AttendeesComponent from './AttendeesComponent'
 import EditButtonComponent from './EditButtonComponent'
 
-const EventShow=({event, handleClick, attending, creator})=>{
+const EventShow=({event, handleClick, attending, creator, renderRSVP})=>{
   const day = moment(event.date_time).format("dddd, \n MMMM Do YYYY")
   const time = moment(event.date_time).format( "h:mm a")
   
@@ -47,10 +46,8 @@ const EventShow=({event, handleClick, attending, creator})=>{
           <p>{event.notes}</p>
         </div> 
         <div>
-          <RSVPComponent 
-            handleClick={handleClick} 
-            attending={attending} 
-          /> 
+          {renderRSVP()}
+          
           {renderAttendees()}  
 
         </div>
