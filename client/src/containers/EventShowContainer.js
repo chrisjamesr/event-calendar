@@ -5,6 +5,7 @@ import moment from 'moment'
 import { readEvent } from '../actions/eventsActions'
 import {createRSVP, updateRSVP} from '../actions/rsvpActions' 
 import EventShow from '../components/Events/EventShow'
+import RSVPComponent from '../components/Events/RSVPComponent'
 
 class currentEventShowContainer extends React.Component {
   constructor(props){
@@ -17,6 +18,7 @@ class currentEventShowContainer extends React.Component {
     this.findRSVPAttending = this.findRSVPAttending.bind(this)
     this.findRSVP = this.findRSVP.bind(this)
     this.didCreate = this.didCreate.bind(this)
+    this.renderRSVP = this.renderRSVP.bind(this) 
   }
 
   handleClick = () => {
@@ -75,6 +77,13 @@ class currentEventShowContainer extends React.Component {
       return !!this.findRSVP(this.props.currentEvent).creator ? this.setState({...this.state, creator: true}) : {creator: false}  
     }
   }
+
+  renderRSVP = () =>{
+    return this.props.auth ? <RSVPComponent 
+            handleClick={this.handleClick} 
+            attending={this.attending} 
+            /> : null
+  }  
   
 
   render(){
@@ -84,6 +93,7 @@ class currentEventShowContainer extends React.Component {
         attending = {this.state.attending}
         handleClick={this.handleClick}
         creator={this.state.creator}
+        renderRSVP={this.renderRSVP}
       />
     )  
   }
