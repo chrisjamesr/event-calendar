@@ -12,6 +12,10 @@ class Event < ApplicationRecord
   attr_reader :date, :time
   attr_accessor :creator_id
 
+  def date_time=(date_time)
+    write_attribute(:date_time, date_time.to_datetime.localtime)
+  end
+
   def date
     @date = self.date_time.strftime('%m-%d-%Y')
 
