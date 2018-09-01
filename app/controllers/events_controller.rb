@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   def create
     event = Event.new(event_params.merge(creator_id: current_user.id))
     if event.save
+      puts event.attributes
       render json: event, status: 201
     else
       head 400
@@ -17,6 +18,7 @@ class EventsController < ApplicationController
 
   def show
     event = Event.find(params[:id])
+    puts event.attributes
     render json: event, status: 200
   end
 
@@ -24,6 +26,7 @@ class EventsController < ApplicationController
     event = Event.find(event_params[:id])
     if event.update(event_params)
       render json: event, status: 200
+      puts "updated: #{event.attributes}"
     else
       puts event.errors.full_messages  
       head 400
