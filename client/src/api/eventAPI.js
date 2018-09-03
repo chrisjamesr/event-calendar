@@ -44,7 +44,7 @@ class EventAPI {
     })
     return fetch(patchEventRequest).then(handleError)
       .then(response=>{
-        return response.json
+        return response.json()
       })
   }
 
