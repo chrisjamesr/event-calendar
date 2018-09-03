@@ -63,10 +63,11 @@ export function readEvent(eventId, history){
   }
 }
 
-export function updateEvent(event){
+export function updateEvent(event, history){
   return function(dispatch){
     dispatch({type: 'UPDATE_EVENT_REQUEST'});
-    return EventAPI.putEvent(event)
+    return EventAPI.putEvent(eventWithTimezone(event))
+    // return EventAPI.putEvent(event)
     .catch(error=>{
         dispatch({
           type: 'UPDATE_EVENT_FAILURE',
@@ -80,6 +81,7 @@ export function updateEvent(event){
         type: 'UPDATE_EVENT_SUCCESS',
         payload: event
       })
+      history.push(`/events/${event.id}`)   
     }) 
   }
 }
@@ -110,5 +112,11 @@ export function destroyEvent(event, history){
       history.push("/events")     
     })   
   }
+}
+
+const eventWithTimezone = (event)=>{
+  event.date_time = new Date(event.date_time).toUTCString()
+  console.log(event)
+  return event
 }
 
