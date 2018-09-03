@@ -4,11 +4,10 @@ import moment from 'moment'
 import '../../styles/event.css'
 import AttendeesComponent from './AttendeesComponent'
 import EditButtonComponent from './EditButtonComponent'
+ import {dateTime} from '../../utils/calendar'
 
 const EventShow=({event, handleClick, attending, creator, renderRSVP})=>{
-  const day = moment(event.date_time).format("dddd, \n MMMM Do YYYY")
-  const time = moment(event.date_time).format( "h:mm a")
-  
+    
   const renderAttendees = () => {
     if (event.hasOwnProperty("user_events") && event.user_events.length>0) {
       const attendees = event.user_events.filter(ue=> !!ue.attending) || []
@@ -26,20 +25,19 @@ const EventShow=({event, handleClick, attending, creator, renderRSVP})=>{
 
   return (
     <div className="EventTile">
+
       <aside className="Event-sidebar">
         <div className="Event-date-header">
                    
-          <p>{day}</p>
-          <p>{time}</p>
-          
+          <p>{dateTime(event.date_time).displayDay}</p>
+          <p>{dateTime(event.date_time).displayTime}</p>
         </div>
-        
       </aside>  
+      
       <main>
         <div className="Event-name-header">
           <h3>{event.name}</h3>
           {renderEditButton()}
-            
         </div>  
         <div className="Event-details">
           <p>{event.location}</p>
@@ -47,9 +45,7 @@ const EventShow=({event, handleClick, attending, creator, renderRSVP})=>{
         </div> 
         <div>
           {renderRSVP()}
-          
           {renderAttendees()}  
-
         </div>
       </main>  
     </div>
