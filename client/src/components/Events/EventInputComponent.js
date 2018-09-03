@@ -2,9 +2,8 @@ import React from 'react'
 import '../../styles/form.css'
 import PropTypes from 'prop-types'
 
-
 const EventInputComponent = ({handleSubmit, handleChange, handleDelete, event, action}) => {
-  
+ 
   return(
     <div className="input">
       <h1>{action} event</h1>
@@ -14,7 +13,7 @@ const EventInputComponent = ({handleSubmit, handleChange, handleDelete, event, a
           <input type="text" name="name" onChange={handleChange} value={event.name}/>
         </div>
         <div>
-          <label>Date & Time: </label>
+          <label>Date/Time: </label>
           <input type="datetime-local" name="date_time" onChange={handleChange} value={event.date_time}/>
         </div>
         <div>
