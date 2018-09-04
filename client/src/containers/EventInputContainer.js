@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { createEvent, readEvent, updateEvent, destroyEvent } from '../actions/eventsActions'
 import EventInputComponent from '../components/Events/EventInputComponent'
+import { dateTime} from '../utils/calendar'
 
 
 
@@ -14,7 +15,7 @@ export class EventInputContainer extends React.Component {
         name: '',
         date_time: '',
         location: '',
-        description: ''
+        description: '',
       },
       action: 'Create'
     }    
@@ -39,7 +40,8 @@ export class EventInputContainer extends React.Component {
       event: {
         id: currentEvent.id,
         name: currentEvent.name,
-        date_time: currentEvent.date_time.slice(0,-5),
+        //modify date_time to exclude ms and show local timezone
+        date_time: dateTime(currentEvent.date_time).inputFormat, 
         location: currentEvent.location,
         description: currentEvent.description
       },
