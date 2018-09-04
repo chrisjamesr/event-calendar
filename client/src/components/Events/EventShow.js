@@ -6,7 +6,7 @@ import AttendeesComponent from './AttendeesComponent'
 import EditButtonComponent from './EditButtonComponent'
  import {dateTime} from '../../utils/calendar'
 
-const EventShow=({event, handleClick, attending, creator, renderRSVP})=>{
+const EventShow=({event, handleClick, creator, renderRSVP})=>{
     
   const renderAttendees = () => {
     if (event.hasOwnProperty("user_events") && event.user_events.length>0) {
@@ -61,7 +61,6 @@ EventShow.propTypes = {
     date_time: PropTypes.string,
     user_events: PropTypes.array    
   }),
-  attending: PropTypes.bool,
   creator: PropTypes.bool,
   handleClick: PropTypes.func
 }
