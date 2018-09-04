@@ -6,10 +6,11 @@ export const dateTime=(eventDateTime)=>{
   const inputDateFormat = m.format("YYYY-MM-DD") 
   const displayTime = m.format("LT")
   const displayDay = m.format("dddd, \n MMMM Do YYYY")
+  const indexDate = m.format("MMMM Do YYYY")
   // const inputFormat = moment(m).add(m.utcOffset(),"minutes").format("YYYY-MM-DDThh:MM")
   const inputFormat = moment(m).format("YYYY-MM-DDTHH:mm")
 
-  return {displayDay, displayTime, inputDateFormat, inputTimeFormat, inputFormat}
+  return {displayDay, displayTime, inputDateFormat, inputTimeFormat, inputFormat, indexDate}
 }
 
   function makeMonthsArray(){
