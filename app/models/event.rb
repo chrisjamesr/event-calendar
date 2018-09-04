@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   scope :ordered_events, -> { order(:date_time) }
+  scope :upcoming_events, -> {where("date_time > ?", Time.zone.now)}
 
   has_many :user_events, dependent: :destroy
   has_many :users, :through => :user_events
