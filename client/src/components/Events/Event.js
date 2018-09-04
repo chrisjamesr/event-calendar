@@ -2,39 +2,25 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, Route } from 'react-router-dom';
 import '../../styles/event.css'
-import moment from 'moment'
+import {dateTime} from '../../utils/calendar'
 
 
 const Event=({event, match})=>{
-  const day = moment(event.date_time).format("dddd, \n MMMM Do YYYY")
-  const time = moment(event.date_time).format( "h:mm a")
-
+  const display= {
+      display: "flex",
+      justifyContent: "flexStart",
+      alignItems: "space-between"
+    }
   return (
-    
-    <div className="EventTile">
-      <aside className="Event-sidebar">
-        <div className="Event-date-header">
-                    
-          <p>{day}</p>
-          <p>{time}</p>
-          
-        </div>
-        
-      </aside>  
-      <main>
-        <div className="Event-name-header">
-        <h3>
-          <Link to={`/events/${event.id}`}>
-            {event.name} 
-          </Link>  
-        </h3>
-          
-        </div>  
-        <div className="Event-details">
-          <p>{event.location}</p>
-          <p>{event.notes}</p>
-        </div> 
-      </main>  
+    <div style={display}>                    
+      <div>
+        <span style={{margin: "0 15px 0 10px"}} className="Event-date-header">{dateTime(event.date_time).indexDate}</span>
+      </div>
+      <div>
+        <Link to={`/events/${event.id}`} style={{margin: "0 0 0 10px"}} >
+          {event.name} 
+        </Link>  
+      </div>
     </div>
   )
 }
