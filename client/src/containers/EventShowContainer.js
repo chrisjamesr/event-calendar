@@ -81,7 +81,7 @@ class EventShowContainer extends React.Component {
   renderRSVP = () =>{
     return this.props.auth ? <RSVPComponent 
             handleClick={this.handleClick} 
-            attending={this.attending} 
+            attending={this.state.attending} 
             /> : null
   }  
   
@@ -90,7 +90,6 @@ class EventShowContainer extends React.Component {
     return (
       <EventShow 
         event={this.props.currentEvent} 
-        attending = {this.state.attending}
         handleClick={this.handleClick}
         creator={this.state.creator}
         renderRSVP={this.renderRSVP}
