@@ -13,7 +13,7 @@ class EventsController < ApplicationController
 
   def index
     events = Event.all.order(:date_time)
-    render json: events, status: 200
+    render json: events, each_serializer: EventIndexSerializer, status: 200
   end
 
   def show
