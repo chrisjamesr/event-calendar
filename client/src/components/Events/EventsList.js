@@ -3,14 +3,16 @@ import Event from './Event'
 import PropTypes from 'prop-types'
 
 const EventsList = ({events, renderEventShow}) => {
-  const renderEvents = events.map((e,i)=> <Event key={i} id={e.id} event={e}/>)
+  const renderEvents = events.map((e,i)=> <li style={{listStyle: "none"}} key={i}><Event key={i} id={e.id} event={e}/></li>)
   return (
     <div>
       <div>
       <h1>Events List</h1>
       
       </div>
+      <ul>
         {renderEvents} 
+      </ul>  
     </div>    
   )
 }
