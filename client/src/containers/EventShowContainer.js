@@ -7,7 +7,7 @@ import {createRSVP, updateRSVP} from '../actions/rsvpActions'
 import EventShow from '../components/Events/EventShow'
 import RSVPComponent from '../components/Events/RSVPComponent'
 
-class currentEventShowContainer extends React.Component {
+class EventShowContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -74,7 +74,7 @@ class currentEventShowContainer extends React.Component {
 
   didCreate = ()=>{
     if (!this.state.creator){
-      return !!this.findRSVP(this.props.currentEvent).creator ? this.setState({...this.state, creator: true}) : {creator: false}  
+      !!this.findRSVP(this.props.currentEvent).creator ? this.setState({...this.state, creator: true}) : {creator: false}  
     }
   }
 
@@ -108,4 +108,4 @@ const mapDispatchToProps = (dispatch)=> {
   return bindActionCreators({readEvent, createRSVP, updateRSVP}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(currentEventShowContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(EventShowContainer)
