@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     post 'user_token' => 'user_token#create'
     resources :user_events, :as => :rsvp, :path => :rsvp, :only => [:create, :index, :update]
     resources :events, :except => [:new, :edit]
-    resources :users, :only => [:create, :show ]
+    resources :users, :only => [:create, :show ] do
+      resources :events, :only => [:index]
+    end
   end
 end
