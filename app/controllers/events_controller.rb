@@ -12,8 +12,13 @@ class EventsController < ApplicationController
   end
 
   def index
-    events = Event.all.order(:date_time).upcoming_events
-    render json: events, each_serializer: EventIndexSerializer, status: 200
+    if params[:user_id].present? && params[:user_id].to_i === current_user.id
+      events = Event.by_user(current_user.id).upcoming_events.order(:date_time)
+      render json: events, each_serializer: EventIndexSerializer, status: 200
+    else  
+      events = Event.all.order(:date_time).upcoming_events
+      render json: events, each_serializer: EventIndexSerializer, status: 200
+    end
   end
 
   def show
@@ -44,7 +49,6 @@ class EventsController < ApplicationController
       head 400
     end
   end
-
 
   private
 
