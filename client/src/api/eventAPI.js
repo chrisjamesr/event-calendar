@@ -13,6 +13,17 @@ class EventAPI {
     })
   }
 
+  static getUserEventsIndex(user_id){
+    const eventsIndexRequest = new Request(`http://localhost:3000/api/users/${user_id}/events`,{
+      headers: tokenHeader(),
+      method: 'GET'
+      })
+    return fetch(eventsIndexRequest).then(handleError)
+      .then(response=> {
+        return response.json() 
+    })
+  }
+
   static postNewEvent(event){
     const newEventRequest = new Request('http://localhost:3000/api/events',{
       headers: tokenHeader(),
