@@ -20,6 +20,26 @@ export function fetchEvents(){
   }
 }
 
+export function fetchUserEvents(user_id){
+  return function(dispatch){
+    dispatch({type: 'FETCH_EVENTS_REQUEST'});
+    return EventAPI.getUserEventsIndex(user_id)
+      .catch(error=>{
+        dispatch({
+          type: 'FETCH_EVENTS_FAILURE',
+          payload: error.statusText
+        })
+        console.error(error)
+        return Promise.reject()
+      })     
+      .then(events => dispatch({
+        type: 'FETCH_EVENTS_SUCCESS',
+        payload: events
+      })
+    ) 
+  }
+}
+
 export function createEvent( event, history){
   return function(dispatch){
     dispatch({type: 'CREATE_EVENT_REQUEST'});
