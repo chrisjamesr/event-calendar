@@ -21,7 +21,8 @@ class App extends React.Component{
                   <Switch>                    
                     <Route path="/events/new" render={(props)=> <EventInputContainer {...props} />} />
                     <Route exact path="/events/:id/edit" render={(props)=> <EventInputContainer {...props} />} />
-                    <Route path="/events/:id" component={EventShowContainer} />                    
+                    <Route path="/events/:id" component={EventShowContainer} />
+                    <Route path="/users/:id/events" component={EventsContainer} />                    
                     <Route exact path="/events" component={EventsContainer} />
                   </Switch>
                 </div>
