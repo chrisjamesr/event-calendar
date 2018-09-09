@@ -21,5 +21,3 @@ EventsList.propTypes = {
 }
 
 export default EventsList 
-
-export default EventsList
