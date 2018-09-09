@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import '../../styles/event.css'
+import '../../styles/event-show.css'
 import AttendeesComponent from './AttendeesComponent'
 import EditButtonComponent from './EditButtonComponent'
  import {dateTime} from '../../utils/calendar'
@@ -41,7 +41,7 @@ const EventShow=({event, handleClick, creator, renderRSVP})=>{
         </div>  
         <div className="Event-details">
           <p>{event.location}</p>
-          <p>{event.notes}</p>
+          <p>{event.description}</p>
         </div> 
         <div>
           {renderRSVP()}
