@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
 import { fetchEvents, fetchUserEvents, createEvent, readEvent } from '../actions/eventsActions'
-import EventsList from '../components/Events/EventsList'
+import EventYears from '../components/Events/EventYears'
 
 
 export class EventsContainer extends React.Component {
@@ -39,7 +39,7 @@ export class EventsContainer extends React.Component {
 
   renderEventsList = ()=> {
     return (
-      <EventsList events={this.props.events} />    
+      <EventYears events={this.props.events} />    
     )  
   }
 
