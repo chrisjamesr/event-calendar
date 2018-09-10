@@ -90,7 +90,8 @@ export class AuthContainer extends React.Component{
     )
   }
 
-  logOut = () => {
+  logOut = (event) => {
+    event.preventDefault()
     this.props.logOut(this.props.history)
     this.clearUserState()
   }
