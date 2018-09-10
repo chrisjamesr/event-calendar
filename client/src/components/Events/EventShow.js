@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
 import '../../styles/event-show.css'
 import AttendeesComponent from './AttendeesComponent'
 import EditButtonComponent from './EditButtonComponent'
