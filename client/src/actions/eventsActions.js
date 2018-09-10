@@ -106,11 +106,11 @@ export function updateEvent(event, history){
   }
 }
 
-// export function clearCurrentEvent(eventId){
-//   return function(dispatch){
-//     dispatch({type: 'CLEAR_CURRENT_EVENT'})
-//   }
-// }
+export function clearCurrentEvent(eventId){
+  return function(dispatch){
+    dispatch({type: 'CLEAR_EVENT'})
+  }
+}
 
 export function destroyEvent(event, history){
   return function(dispatch){
