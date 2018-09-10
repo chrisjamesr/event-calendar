@@ -1,4 +1,5 @@
-import {tokenHeader, handleError} from './apiUtils'
+import {handleError} from './apiUtils'
+// import {tokenHeader} from './apiUtils'
 class UserAPI {
 
   static getToken(user){
@@ -24,8 +25,6 @@ class UserAPI {
         return response.json() 
     })
   }
-
-
 }
 
 export default UserAPI
