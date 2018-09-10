@@ -12,20 +12,17 @@ const EventYears = ({events}) => {
       eventObject[new Date(element.date_time).getFullYear()] = Array.of(element)
     }
   })
-  const renderEventYears = Object.keys(eventObject).map((element)=>{
-      return <EventsList year={element} events={eventObject[element]}/>
+  const renderEventYears = Object.keys(eventObject).map((element, i)=>{
+      return <EventsList key={i} year={element} events={eventObject[element]}/>
     })
 
   return (
     <div className="container">
       <div className="title-bar">
-      <h1>Events List</h1>
-      
+      <h1>Events List</h1>      
       </div>
       <div className="events-list-container">
-        <ul>
-          {renderEventYears} 
-        </ul>
+        {renderEventYears} 
       </div>  
     </div>    
   )
