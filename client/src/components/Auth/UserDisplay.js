@@ -6,14 +6,11 @@ import '../../styles/Navbar.css'
 const UserDisplay = ({userName, logOut}) => {
   return (
     <div className="user-display">
-      <p>Logged in as
-        <br/>  
-        <NavLink to="/" exact className="link">{userName} </NavLink>  
-        <br/>
-        <NavLink to="/" exact className="link"> All Events</NavLink>  
-        <NavLink to="/events/new" className="link">Add event</NavLink>
+      <p>
+        Logged in as <NavLink to={`/users/${sessionStorage.user_id}/events`}>{userName}</NavLink>
       </p>
-      <button onClick={logOut}>Log Out</button>
+      <hr/>  
+      <NavLink to="#" onClick={logOut}>Log Out</NavLink>
     </div>
   )
 }
