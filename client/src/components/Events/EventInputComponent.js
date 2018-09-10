@@ -3,39 +3,46 @@ import '../../styles/form.css'
 import PropTypes from 'prop-types'
 
 const EventInputComponent = ({handleSubmit, handleChange, handleDelete, event, action}) => {
+  const renderDeleteButton = ()=>{
+    return action === "Edit" ? (
+      <button className="submit-button"
+              type="submit" 
+              name="destroy-button"               
+              onClick={handleDelete}
+      >Delete Event</button>
+    ) : null
+  }
  
   return(
-    <div className="input">
-      <h1>{action} event</h1>
-      <form className="input-form" onSubmit={handleSubmit}>
-        <div>
-          <label>Name: </label>
-          <input type="text" name="name" onChange={handleChange} value={event.name}/>
-        </div>
-        <div>
-          <label>Date/Time: </label>
-          <input type="datetime-local" name="date_time" onChange={handleChange} value={event.date_time}/>
-        </div>
-        <div>
-          <label>Location: </label>
-          <input type="text" name="location" onChange={handleChange} value={event.location}/>
-        </div>
-        <div>  
-          <label>Description: </label>
-          <textarea name="description" onChange={handleChange} value={event.description}/>
-        </div>
-        <button name="edit-button">{action} Event</button>
-
-      </form>
-        {
-          action === "Edit" ? (
-            <input type="submit" 
-                   name="destroy-button" 
-                   value="Delete Event"
-                   onClick={handleDelete}
-            />
-          ) : null
-        }  
+    <div className="container">
+      <div className="title-bar">
+        <h1>{action} event</h1>
+      </div>
+      <div className="event-input-form">
+        <form className="input-form" onSubmit={handleSubmit}>
+          <div className="input-row">
+            <label>Name: </label>
+            <input type="text" name="name" onChange={handleChange} value={event.name}/>
+          </div>
+          <div className="input-row">
+            <label>Date/Time: </label>
+            <input type="datetime-local" name="date_time" onChange={handleChange} value={event.date_time}/>
+          </div>
+          <div className="input-row">
+            <label>Location: </label>
+            <input type="text" name="location" onChange={handleChange} value={event.location}/>
+          </div>
+          <div className="input-row">
+            <label>Description: </label>
+            <textarea name="description" rows="3" onChange={handleChange} value={event.description}/>
+          </div>
+          <div className="input-row button-row">
+            <button className="submit-button" name="edit-button">{action} Event</button>
+            { renderDeleteButton() }          
+          </div>  
+        </form>
+      </div>
+       
 
     </div>
   )
