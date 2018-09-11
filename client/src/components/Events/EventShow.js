@@ -19,34 +19,29 @@ const EventShow=({event, handleClick, creator, renderRSVP})=>{
   }
 
   const renderEditButton = () => {
-    return creator ? <EditButtonComponent eventId={event.id}/> : null
+    return creator ? <EditButtonComponent id="edit-button" eventId={event.id}/> : null
   }
 
   return (
-    <div className="EventTile">
-
-      <aside className="Event-sidebar">
-        <div className="Event-date-header">
-                   
-          <p>{dateTime(event.date_time).displayDay}</p>
-          <p>{dateTime(event.date_time).displayTime}</p>
-        </div>
-      </aside>  
-      
-      <main>
-        <div className="Event-name-header">
-          <h3>{event.name}</h3>
+    <div className="event-show">
+      <div className="event-show-header">
+        <h1>{event.name}</h1>
           {renderEditButton()}
-        </div>  
-        <div className="Event-details">
-          <p>{event.location}</p>
-          <p>{event.description}</p>
-        </div> 
-        <div>
-          {renderRSVP()}
-          {renderAttendees()}  
-        </div>
-      </main>  
+      </div>      
+      
+      <p className="event-property event-datetime">
+        <label>Date & Time:</label>
+        <span>{dateTime(event.date_time).displayDay} -- {dateTime(event.date_time).displayTime}</span>
+      </p>
+      <p className="event-property event-location">
+        <label>Location:</label>
+        <span>{event.location}</span>
+      </p>
+      <div className="event-description">
+        <p>{event.description}</p>
+      </div>
+      {renderRSVP()}
+      {renderAttendees()}  
     </div>
   )
 }
