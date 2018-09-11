@@ -4,9 +4,7 @@ import PropTypes from 'prop-types'
 
 const EditButtonComponent = ({eventId}) => {
   return (
-    <div>
-      {<NavLink to={`/events/${eventId}/edit`} exact className="link"> Edit </NavLink>}
-    </div>
+    <NavLink to={`/events/${eventId}/edit`} exact id="edit-button"> Edit </NavLink>
   )
 }
 
