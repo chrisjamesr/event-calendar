@@ -1,0 +1,58 @@
+h1, h3 {
+  margin: 15px 0;
+}
+
+main {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+ 
+.event-date{
+  margin: 0 15px 0 10px;
+}
+
+.container {
+  padding-bottom: 50px;
+}
+
+.title-bar {
+
+}
+.events-list-year-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+div.events-list-year-container >div:nth-child(odd) {
+  background-color: rgb(219, 219, 219);
+}
+
+.events-list-year-container > p {
+  margin: 0;
+}
+
+div.indexed-event{
+  padding: 10px 5px;
+  border: .25px solid rgb(205, 205, 205);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;  
+  /*flex-wrap: wrap;*/
+  align-items: space-between;
+}
+
+span.event-date{
+  flex-basis: 20%;
+  min-width: 140px
+}
+
+a.event-name {
+  margin: 0 0 0 10px;
+  color: rgb(0,0,0);
+} 
+
+
