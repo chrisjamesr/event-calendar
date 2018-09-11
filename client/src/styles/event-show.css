@@ -1,0 +1,51 @@
+.event-show{
+  padding:  15px 0 50px 25px;
+}
+
+.event-show-header {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.event-show-header > h3{
+  /*flex-basis: */
+}
+
+#edit-button{
+  align-self: flex-end;
+}
+
+p.event-datetime{
+  margin-top: 25px;
+}
+
+p.event-property {
+  display: flex;
+  justify-content: flex-start
+}
+
+p.event-property > label {
+  flex-basis: 30%;
+}
+
+.event-description{
+
+}
+button.rsvp-button {
+  margin: 8px 0 16px;
+  border-radius: 8px;
+  padding: 5px 15px;
+  font-size: 1em;
+  color: rgb(176,9,255);
+}
+
+div.attending > p {
+  margin: 8px 0;
+}
+
+button.rsvp-button:hover{
+  color: rgb(109, 33, 145);
+  background-color: rgb(248, 248, 248);
+}
