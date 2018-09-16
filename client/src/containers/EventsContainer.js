@@ -12,17 +12,32 @@ export class EventsContainer extends React.Component {
 
     this.renderEventsList = this.renderEventsList.bind(this)
     this.fetchEventData = this.fetchEventData.bind(this)
+    this.eventsObject = this.eventsObject.bind(this)
   }
+
+    eventsObject = (events)=> events.reduce((acc, event)=>{
+      if (Object.keys(acc).includes(new Date(event.date_time).getFullYear().toString())) {
+          acc[new Date(event.date_time).getFullYear()] = acc[new Date(event.date_time).getFullYear()].concat(event)
+      } else {
+          acc[new Date(event.date_time).getFullYear()] = Array.of(event)
+      }
+      return acc
+    }, {})
 
   componentDidMount(){
     this.fetchEventData(this.props.match.params)
   }
 
-  componentWillReceiveProps(nextProps){
-    if (nextProps.match.params.hasOwnProperty("id") !== this.props.match.params.hasOwnProperty("id") ){
-      this.fetchEventData(nextProps.match.params)
+  componentDidUpdate(prevProps){
+    if (this.props.match.params.hasOwnProperty("id") !== prevProps.match.params.hasOwnProperty("id") ){
+      this.fetchEventData(this.props.match.params)
     }
   }
+  // componentWillReceiveProps(nextProps){
+  //   if (nextProps.match.params.hasOwnProperty("id") !== this.props.match.params.hasOwnProperty("id") ){
+  //     this.fetchEventData(nextProps.match.params)
+  //   }
+  // }
   
   // shouldComponentUpdate(nextProps){
     // Add correct conditional to update on after second call to componentWillReceiveProps
@@ -39,7 +54,8 @@ export class EventsContainer extends React.Component {
 
   renderEventsList = ()=> {
     return (
-      <EventYears events={this.props.events} />    
+      // <EventYears events={this.props.events} />    
+      <EventYears events={this.eventsObject(this.props.events)} />    
     )  
   }
 
