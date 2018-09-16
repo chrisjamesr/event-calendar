@@ -20,9 +20,11 @@ export default function currentEventReducer(state=initialState.currentEvent, act
     return state
   case 'DELETE_EVENT_SUCCESS':
     // create new events array ommitting destroyed event
-    return {}          
+    return emptyEvent   
   case 'DELETE_EVENT_FAILURE':
     return state
+   case 'CLEAR_EVENT': 
+   return emptyEvent
   case 'CREATE_RSVP_REQUEST':
     return state
   case 'CREATE_RSVP_SUCCESS':
@@ -47,4 +49,13 @@ export default function currentEventReducer(state=initialState.currentEvent, act
   default:
     return state
   }      
+}
+
+const emptyEvent = {
+  event: {
+    name: '',
+    date_time: '',
+    location: '',
+    description: '',
+  }
 }
