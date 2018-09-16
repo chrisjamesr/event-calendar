@@ -4,12 +4,13 @@ import PropTypes from 'prop-types'
 const RSVPComponent = ({attending, handleClick}) => {
   return (
     <div>
-      <input 
+      <button
+        className="rsvp-button"
         type="submit" 
         name="rsvp" 
         onClick={handleClick} 
-        value={attending ? "Attending" : "RSVP" }
-      />
+        >{attending ? "RSVP'd" : "RSVP" }
+      </button>  
     </div>
   )
 }
