@@ -1,36 +1,84 @@
+nav {
+  background-color: rgb(255, 255, 255);
+}
+
+hr{
+  width:100%;
+}
 .nav-header {
   display: flex;
   flex-flow: row | wrap;
   justify-content: flex-start;
   align-items: center;
-  background-color: #gray;
   height: 90px;
-  padding: 20px 20px 10px;
-  background-color: white;
+  padding: 20px 20px 20px;  
   border: 1px solid black;
   width: auto;
+}
+
+.navbar-link-container{
+  flex-basis: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 10%; 
+  padding: 0 20px  0 30px ;
+
+}
+
+.user-display{
+  flex-basis:15%;
+  margin: 0 15px;
+  align-self: baseline;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-end;
+  font-weight: 10px;
+  font-size: .75em;
+  text-align: center;
+}
+
+div.icon{
+  margin: 0 15px;
+  border: 1px solid black;
+  width: 150px;
+  height: 80px;
 }
 
 .nav-links{
   flex-basis:70%;
   display: flex;
   justify-content: space-between;
-  margin-right: 10%;
-
+  margin: 10%;
 }
 
-.nav-user-status{
-  flex-basis:25%;
-  display:flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-content: flex-end;
+
+.nav-link {
+  margin: 10px;
+  color: rgb(176,9,255);
+  font-weight: 500;
+  font-size: 1.15em;
+}
+a.nav-link-active {
+  color: rgb(190,0,255);
 }
 
 .link {
   margin: 10px;
 }
-
+.auth-input-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 15px;
+}
+.auth-input-container{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+}
 .toggle-user-auth {
   display: flex;
   justify-content: space-between;
@@ -53,24 +101,44 @@
   border-radius: 10%;
   padding: 2px;
   margin: 1px;
-  color: rgb(204,204,204);
-  
+  color: rgb(0,0,0);
 }
 .button:hover{
   color: rgb(0,0,0);
   border: .75px black solid;
 }
 
-.user-display{
-  font-weight: 10px;
-  text-align: center;
+div.user-display{
+  margin: auto 0;
+  /*display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: stretch;*/
+  /*font-size: 10px;*/
+  /*text-align: center;  */
+ }
+
+ .user-display > p {
+  margin: 5px 0;
+ }
+
+.user-display  a {
+  cursor: hand;
+  color: rgb(176,9,255);
 }
 
-a:link, a:visited, a:active{
+p > a  {
+  color: rgb(176,9,255);
+}
+a:link, a:visited {
   text-decoration: none;
-  color: black;
 }
+
+/*a.navlink :hover{*/
 a:hover{
-  text-decoration: underline;
-  color: black;    
+  color: rgb(190,0,255);
+  /*color: rgb(179,0,255);*/
+  /*color: rgb(209,89,255)*/;
+  /*color: rgb(170,0,255);*/
 }
+

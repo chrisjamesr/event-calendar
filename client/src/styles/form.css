@@ -1,62 +1,45 @@
-.create-input{
-  display: flex;
-  flex-direction: column;
-  /*align-items: ;*/
-  
+.user-input{
+
+}
+
+.event-input-form{
+  padding-bottom: 50px;
+  border: .25px solid rgb(205, 205, 205);
 }
 
 .input-form{
   display: flex;
   flex-direction: column;
-  /*align-self: center;*/
-  /*padding: 15px;*/
+  padding: 20px;
 }
 
-.input-form div {
+div.input-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
   padding: 10px;
 }
 
-.auth-input-container{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; 
-}
-
-.input-form{
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  /*padding: 15px;*/
-}
-
-.auth-input-form{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-  padding: 15px;
-}
-
-.input-form div {
-  padding: 10px;
-}
-
-.form-label {
+div.input-row > label{
+  flex-basis: 20%;
   padding-right: 10px;
-  width: 110px;
 }
 
-input {
-  width: 150px;
-  padding: 1px 0;
-  margin:1px 0;
-  color: rgb(0,0,0);
+div.input-row > input {
+  flex-basis: 60%;
+  height: 20px;
 }
 
-button {
-  width: 75px;
+.input-row > textarea {
+  flex-basis: 60%;
 }
 
-label {
-  padding-right: 10px;
+.button-row {
+  justify-content: space-around;
+}
+.submit-button {
+  border: .25px solid rgb(205, 205, 205);
+  height: 25px;
+  width: 20%;
 }
