@@ -1,5 +1,4 @@
 import initialState from './initialState'
-let events;
 
 export default function eventsReducer(state=initialState.events, action){
   switch (action.type) {
