@@ -37,9 +37,10 @@ const EventShow=({event, handleClick, creator, renderRSVP})=>{
         <label>Location:</label>
         <span>{event.location}</span>
       </p>
-      <div className="event-description">
-        <p>{event.description}</p>
-      </div>
+      <p className="event-property event-description">
+        <label>Description:</label>
+        <span>{event.description}</span>
+      </p>
       {renderRSVP()}
       {renderAttendees()}  
     </div>
