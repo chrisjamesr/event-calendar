@@ -68,7 +68,7 @@ div.icon{
   font-size: 1.15em;
 }
 a.nav-link-active {
-  color: rgb(190,0,255);
+  color: rgb(166,0, 198);
 }
 
 .link {
@@ -101,7 +101,7 @@ a.nav-link-active {
 
 .toggle-link-active{
   text-decoration: underline;
-  /*color: rgb(0,0,0);*/
+  color: rgb(0,0,0);
 }
 .button{
   border: .5px black solid;
