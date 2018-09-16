@@ -3,17 +3,8 @@ import EventsList from './EventsList'
 import PropTypes from 'prop-types'
 
 const EventYears = ({events}) => {
-
-  let eventObject = {}
-  const eventsByYear = events.forEach((element)=>{
-    if (Object.keys(eventObject).includes(new Date(element.date_time).getFullYear().toString())) {
-      eventObject[new Date(element.date_time).getFullYear()].push(element)
-    } else {
-      eventObject[new Date(element.date_time).getFullYear()] = Array.of(element)
-    }
-  })
-  const renderEventYears = Object.keys(eventObject).map((element, i)=>{
-      return <EventsList key={i} year={element} events={eventObject[element]}/>
+  const renderEventYears = Object.keys(events).map((event, i)=>{
+      return <EventsList key={i} year={event} events={events[event]}/>
     })
 
   return (
