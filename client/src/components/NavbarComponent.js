@@ -1,13 +1,14 @@
 import React from 'react';
 import {NavLink } from 'react-router-dom';
 import '../styles/Navbar.css';
+import Icon from "./Icon"
 import AuthContainer from '../containers/AuthContainer'
   
 const Navbar =({history,loggedIn}) => {
 
   return (
     <nav className="nav-header">
-      <div className="icon"></div>
+      <Icon/>
       <div className="navbar-link-container">
         <div >
           <NavLink to="/events"
