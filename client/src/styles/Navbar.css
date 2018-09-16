@@ -16,6 +16,12 @@ hr{
   width: auto;
 }
 
+.icon{
+  height: 80px;
+  margin-right: 15px;
+  /*color: rgb(176,9,255);*/
+}
+
 .navbar-link-container{
   flex-basis: 60%;
   display: flex;
@@ -56,7 +62,8 @@ div.icon{
 
 .nav-link {
   margin: 10px;
-  color: rgb(176,9,255);
+  /*color: rgb(176,9,255);*/
+  color: rgb(166,0, 198);
   font-weight: 500;
   font-size: 1.15em;
 }
@@ -94,7 +101,7 @@ a.nav-link-active {
 
 .toggle-link-active{
   text-decoration: underline;
-  color: rgb(0,0,0);
+  /*color: rgb(0,0,0);*/
 }
 .button{
   border: .5px black solid;
