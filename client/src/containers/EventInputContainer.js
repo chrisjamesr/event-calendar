@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { createEvent, readEvent, updateEvent, destroyEvent } from '../actions/eventsActions'
+import { createEvent, readEvent, updateEvent, destroyEvent, clearCurrentEvent } from '../actions/eventsActions'
 import EventInputComponent from '../components/Events/EventInputComponent'
 import { dateTime} from '../utils/calendar'
 
@@ -23,6 +23,8 @@ export class EventInputContainer extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.setCurrentEvent = this.setCurrentEvent.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
+    this.createNewEvent = this.createNewEvent.bind(this)
+    this.resetCurrentEvent = this.resetCurrentEvent.bind(this)
   }
 
   componentDidMount(){
@@ -35,13 +37,31 @@ export class EventInputContainer extends React.Component {
     ) : null    
   }
 
-  setCurrentEvent = (currentEvent) =>{
+  createNewEvent(){
+    this.props.match.path === "/events/new"  
+    this.props.clearCurrentEvent()
+    this.resetCurrentEvent()
+  }
+
+  resetCurrentEvent = () =>{
+    this.setState({
+      event: {
+        name: '',
+        date_time: '',
+        location: '',
+        description: '',
+      }, 
+      action: "Create"
+    })
+  }
+
+  setCurrentEvent = (currentEvent) => {
     this.setState({
       event: {
         id: currentEvent.id,
         name: currentEvent.name,
         //modify date_time to exclude ms and show local timezone
-        date_time: dateTime(currentEvent.date_time).inputFormat, 
+        date_time: dateTime(currentEvent.date_time).inputFormat || "", 
         location: currentEvent.location,
         description: currentEvent.description
       },
@@ -49,11 +69,16 @@ export class EventInputContainer extends React.Component {
     })
   }
 
-  componentWillReceiveProps(nextProps){
-    nextProps.currentEvent !== this.props.currentEvent ? (
-      this.setCurrentEvent(nextProps.currentEvent)
+  componentDidUpdate(prevProps){
+    prevProps.currentEvent !== this.props.currentEvent ? (
+      this.setCurrentEvent(this.props.currentEvent)
     ) : null  
   }
+  // componentWillReceiveProps(nextProps){
+  //   nextProps.currentEvent !== this.props.currentEvent ? (
+  //     this.setCurrentEvent(nextProps.currentEvent)
+  //   ) : null  
+  // }
 
   handleChange = (event) => {
     this.setState({
@@ -64,6 +89,8 @@ export class EventInputContainer extends React.Component {
       }
     })
   }
+
+
 
   handleSubmit = (event) => {
     event.preventDefault()
@@ -79,7 +106,7 @@ export class EventInputContainer extends React.Component {
 
   render(){
     return(
-      <div>
+      // <div>
         <EventInputComponent //{...this.props}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
@@ -87,7 +114,7 @@ export class EventInputContainer extends React.Component {
           event={this.state.event}
           action={this.state.action}
         />
-      </div>
+      // </div>
     )
   }
 }
@@ -97,7 +124,7 @@ const mapStateToProps=({currentEvent})=>{
 }
 
 const mapDispatchToProps=(dispatch)=>{
-  return bindActionCreators({createEvent, readEvent, updateEvent, destroyEvent}, dispatch)
+  return bindActionCreators({createEvent, readEvent, updateEvent, destroyEvent, clearCurrentEvent}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventInputContainer)
