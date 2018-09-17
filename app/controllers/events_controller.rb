@@ -32,10 +32,10 @@ class EventsController < ApplicationController
     if event.update(event_params)
       render json: event, status: 200
       puts "updated: #{event.attributes}"
-    else
-      puts event.errors.full_messages  
-      head 400
-    end
+    # else
+      # puts event.errors.full_messages  
+      # head 400
+    # end
   end
 
   def destroy
