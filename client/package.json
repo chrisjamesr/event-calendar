@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
+  "proxy": "https://event-list-app.herokuapp.com/",
   "dependencies": {
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.21",
