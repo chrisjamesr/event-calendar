@@ -1,6 +1,6 @@
-# task :start do 
-#   exec 'foreman start -p 3000'
-# end
+task :start do 
+  exec 'foreman start -p 3000'
+end
 
 namespace :start do
   task :development do
@@ -8,5 +8,5 @@ namespace :start do
   end
 end
 
-desc 'Start development server'
-task :start => 'start:development'
+# desc 'Start development server'
+# task :start => 'start:development'
