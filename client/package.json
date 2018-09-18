@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://event-list-app.herokuapp.com/",
   "proxy": "https://event-list-app.herokuapp.com/",
   "dependencies": {
     "moment": "^2.22.2",
