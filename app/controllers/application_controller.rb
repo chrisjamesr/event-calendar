@@ -18,6 +18,10 @@ class ApplicationController < ActionController::API
     render json: {error: "unauthorized"}, status: 401 unless logged_in?
   end
 
+  def fallback_index_html
+    render :file => 'public/index.html'
+  end
+
   private
 
     def token
