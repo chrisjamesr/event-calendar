@@ -8,7 +8,7 @@ namespace :start do
   end
 
   task :production do 
-    exec 'NPM_CONFIG_PRODUCTION=true npm run postinstall && foreman start'
+    exec 'heroku -f Procfile'
   end
 end
 
