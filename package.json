@@ -2,7 +2,8 @@
   "name": "event-calendar",
   "license": "MIT",
   "engines": {
-    "node": "6.11.2"
+    "node": "6.11.2",
+    "npm": "6.4.1"
   },  
   "scripts": {
     "build": "cd client && npm install && npm run build && cd ..",
