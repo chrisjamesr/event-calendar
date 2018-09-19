@@ -5,5 +5,5 @@ namespace :start do
   end
 end
 
-# desc 'Start development server'
-# task :start => 'start:development'
+desc 'Start development server'
+task :start => 'start:development'
