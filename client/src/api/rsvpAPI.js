@@ -3,7 +3,7 @@ import {tokenHeader, handleError} from './apiUtils'
 class RsvpAPI {
 
   static postCreateRsvp(eventId){
-    const createRSVP = new Request(`http://localhost:3000/api/rsvp`,{
+    const createRSVP = new Request(`/api/rsvp`,{
       headers: tokenHeader(),
       method: 'POST',
       body: JSON.stringify({
@@ -19,7 +19,7 @@ class RsvpAPI {
   }
 
   static postUpdateRsvp(eventId, rsvpId){
-    const updateRSVP = new Request(`http://localhost:3000/api/rsvp/${rsvpId}`,{
+    const updateRSVP = new Request(`/api/rsvp/${rsvpId}`,{
       headers: tokenHeader(),
       method: 'PATCH',
       body: JSON.stringify({

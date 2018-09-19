@@ -3,7 +3,7 @@ import {tokenHeader, handleError} from './apiUtils'
 class EventAPI {
 
   static getEventsIndex(){
-    const eventsIndexRequest = new Request('http://localhost:3000/api/events',{
+    const eventsIndexRequest = new Request('/api/events',{
       headers: { 'Content-Type': 'application/json' },
       method: 'GET'
       })
@@ -14,7 +14,7 @@ class EventAPI {
   }
 
   static getUserEventsIndex(user_id){
-    const eventsIndexRequest = new Request(`http://localhost:3000/api/users/${user_id}/events`,{
+    const eventsIndexRequest = new Request(`/api/users/${user_id}/events`,{
       headers: tokenHeader(),
       method: 'GET'
       })
@@ -25,7 +25,7 @@ class EventAPI {
   }
 
   static postNewEvent(event){
-    const newEventRequest = new Request('http://localhost:3000/api/events',{
+    const newEventRequest = new Request('/api/events',{
       headers: tokenHeader(),
       method: 'POST',
       body: JSON.stringify({'event':event})
@@ -37,7 +37,7 @@ class EventAPI {
   }
 
   static getEvent(eventId){
-    const getEventRequest = new Request(`http://localhost:3000/api/events/${eventId}`,{
+    const getEventRequest = new Request(`/api/events/${eventId}`,{
       headers: tokenHeader(),
       method: 'GET'
       })
@@ -48,7 +48,7 @@ class EventAPI {
   }
 
   static putEvent(event){
-    const patchEventRequest = new Request(`http://localhost:3000/api/events/${event.id}`,{
+    const patchEventRequest = new Request(`/api/events/${event.id}`,{
       headers: tokenHeader(),
       method: 'PUT',
       body: JSON.stringify(event)
@@ -60,7 +60,7 @@ class EventAPI {
   }
 
   static deleteEvent(event){
-    const deleteEventRequest = new Request(`http://localhost:3000/api/events/${event.id}`,{
+    const deleteEventRequest = new Request(`/api/events/${event.id}`,{
       headers: tokenHeader(),
       method: 'DELETE',
       body: JSON.stringify(event)

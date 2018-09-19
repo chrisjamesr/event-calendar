@@ -3,7 +3,7 @@ import {handleError} from './apiUtils'
 class UserAPI {
 
   static getToken(user){
-    const tokenRequest = new Request('http://localhost:3000/api/user_token',{
+    const tokenRequest = new Request('/api/user_token',{
       body: JSON.stringify({'auth': user}),
       headers: { 'Content-Type': 'application/json' },
       method: 'POST'
@@ -15,7 +15,7 @@ class UserAPI {
   }
 
   static createToken(user){
-    const tokenRequest = new Request('http://localhost:3000/api/users',{
+    const tokenRequest = new Request('/api/users',{
       body: JSON.stringify({'user': user}),
       headers: { 'content-type': 'application/json' },
       method: 'POST'
