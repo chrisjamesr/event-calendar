@@ -13,13 +13,13 @@ class App extends React.Component{
      
         <NavbarContainer {...this.props} />
         <div className="app-container">
-          <Route exact path="/" render={()=> <Redirect to="/api/events" />} />
+          <Route exact path="/" render={()=> <Redirect to="/events" />} />
           <Switch>                    
-            <Route exact path="/api/events/new" render={(props)=> <EventInputContainer {...props} />} />
-            <Route exact path="/api/events/:id/edit" render={(props)=> <EventInputContainer {...props} />} />
-            <Route path="/api/events/:id" component={EventShowContainer} />
-            <Route path="/api/users/:id/events" component={EventsContainer} />                    
-            <Route path="/api/events" component={EventsContainer} />
+            <Route exact path="/events/new" render={(props)=> <EventInputContainer {...props} />} />
+            <Route exact path="/events/:id/edit" render={(props)=> <EventInputContainer {...props} />} />
+            <Route path="/events/:id" component={EventShowContainer} />
+            <Route path="/users/:id/events" component={EventsContainer} />                    
+            <Route path="/events" component={EventsContainer} />
           </Switch>
         </div>
              
