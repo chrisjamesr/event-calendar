@@ -19,7 +19,7 @@ class App extends React.Component{
             <Route exact path="/api/events/:id/edit" render={(props)=> <EventInputContainer {...props} />} />
             <Route path="/events/:id" component={EventShowContainer} />
             <Route path="/users/:id/events" component={EventsContainer} />                    
-            <Route path="/events" component={EventsContainer} />
+            <Route path="/api/events" component={EventsContainer} />
           </Switch>
         </div>
              
