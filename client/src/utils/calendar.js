@@ -44,8 +44,6 @@ export const dateTime=(eventDateTime)=>{
     let month=[]
     const dNumber = d.month()
     for (let i=d.date(); i<=d.daysInMonth();i++){
-      let day = {
-      }
       if (d.month() === dNumber){
         month.push(moment(d))
         d = moment(d).add(1,'day')
@@ -54,15 +52,5 @@ export const dateTime=(eventDateTime)=>{
     return month
   }
   
-  // determine duration between current date and last scheduled event
-
-  function eventsDuration(){
-    //return moment.duration
-  }
-
-  function totalDuration(){
-    eventsDuration().asYears() < 1 ? moment.duration(12,'m'): eventsDuration().asMonths()
-  }
-
   export const calendar = makeMonthsArray()
   
