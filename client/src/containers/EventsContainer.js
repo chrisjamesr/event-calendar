@@ -1,7 +1,6 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Route } from 'react-router-dom'
 import { fetchEvents, fetchUserEvents, createEvent, readEvent } from '../actions/eventsActions'
 import EventYears from '../components/Events/EventYears'
 
