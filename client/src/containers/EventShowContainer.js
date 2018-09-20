@@ -63,7 +63,7 @@ class EventShowContainer extends React.Component {
 
   findRSVP = (e) => {
      return e.user_events.find(ue=>{
-        return ue.user_id === parseInt(sessionStorage.user_id)
+        return ue.user_id === parseInt(sessionStorage.user_id, 10)
     }) || false
   }
 

@@ -30,10 +30,10 @@ export class EventInputContainer extends React.Component {
   componentDidMount(){
     this.props.match.params.hasOwnProperty("id") ? (
       this.props.currentEvent.hasOwnProperty("id") ? (
-        parseInt(this.props.match.params.id) === this.props.currentEvent.id ? (
+        parseInt(this.props.match.params.id, 10) === this.props.currentEvent.id ? (
           this.setCurrentEvent(this.props.currentEvent)
-        ) : this.props.readEvent( parseInt(this.props.match.params.id), this.props.history)
-      ) : this.props.readEvent(parseInt(this.props.match.params.id), this.props.history)
+        ) : this.props.readEvent( parseInt(this.props.match.params.id, 10), this.props.history)
+      ) : this.props.readEvent(parseInt(this.props.match.params.id, 10), this.props.history)
     ) : null    
   }
 
