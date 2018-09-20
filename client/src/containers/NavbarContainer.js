@@ -3,9 +3,6 @@ import {connect} from 'react-redux';
 import NavbarComponent  from '../components/NavbarComponent'
 
 class NavbarContainer extends React.Component{
-  constructor(props) {
-    super(props)
-  }
 
   render(){
     return(
