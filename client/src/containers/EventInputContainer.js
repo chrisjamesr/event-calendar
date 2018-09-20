@@ -28,13 +28,23 @@ export class EventInputContainer extends React.Component {
   }
 
   componentDidMount(){
-    this.props.match.params.hasOwnProperty("id") ? (
-      this.props.currentEvent.hasOwnProperty("id") ? (
-        parseInt(this.props.match.params.id, 10) === this.props.currentEvent.id ? (
+    if (this.props.match.params.hasOwnProperty("id")){
+      if (this.props.currentEvent.hasOwnProperty("id")) {
+        if (parseInt(this.props.match.params.id, 10) === this.props.currentEvent.id) {
           this.setCurrentEvent(this.props.currentEvent)
-        ) : this.props.readEvent( parseInt(this.props.match.params.id, 10), this.props.history)
-      ) : this.props.readEvent(parseInt(this.props.match.params.id, 10), this.props.history)
-    ) : null    
+        } else {
+          this.props.readEvent( parseInt(this.props.match.params.id, 10), this.props.history)
+        }
+      } else {  
+        this.props.readEvent(parseInt(this.props.match.params.id, 10), this.props.history)
+      }          
+    }
+  }
+
+  componentDidUpdate(prevProps){
+    if (prevProps.currentEvent !== this.props.currentEvent){
+      this.setCurrentEvent(this.props.currentEvent)
+    }
   }
 
   createNewEvent(){
@@ -68,17 +78,6 @@ export class EventInputContainer extends React.Component {
       action: "Edit"
     })
   }
-
-  componentDidUpdate(prevProps){
-    prevProps.currentEvent !== this.props.currentEvent ? (
-      this.setCurrentEvent(this.props.currentEvent)
-    ) : null  
-  }
-  // componentWillReceiveProps(nextProps){
-  //   nextProps.currentEvent !== this.props.currentEvent ? (
-  //     this.setCurrentEvent(nextProps.currentEvent)
-  //   ) : null  
-  // }
 
   handleChange = (event) => {
     this.setState({
