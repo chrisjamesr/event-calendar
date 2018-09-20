@@ -1,5 +1,4 @@
 import initialState from './initialState'
-import {browserHistory} from 'react-router';
 
 export default function authReducer(state = initialState.auth, action){
   switch (action.type){
