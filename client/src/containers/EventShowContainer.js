@@ -1,7 +1,6 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import moment from 'moment'
 import { readEvent } from '../actions/eventsActions'
 import {createRSVP, updateRSVP} from '../actions/rsvpActions' 
 import EventShow from '../components/Events/EventShow'
