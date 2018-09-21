@@ -41,9 +41,10 @@ export function fetchUserEvents(user_id){
 }
 
 export function createEvent( event, history){
+  debugger
   return function(dispatch){
     dispatch({type: 'CREATE_EVENT_REQUEST'});
-    return EventAPI.postNewEvent(event)
+    return EventAPI.postNewEvent(eventWithTimezone(event))
       .catch(error=>{
         dispatch({
           type: 'CREATE_EVENT_FAILURE',
