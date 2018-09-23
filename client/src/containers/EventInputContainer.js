@@ -31,26 +31,30 @@ export class EventInputContainer extends React.Component {
     if (this.props.match.params.hasOwnProperty("id")){
       if (this.props.currentEvent.hasOwnProperty("id")) {
         if (parseInt(this.props.match.params.id, 10) === this.props.currentEvent.id) {
-          this.setCurrentEvent(this.props.currentEvent)
+          this.setCurrentEvent(this.props.currentEvent, "Edit")
         } else {
           this.props.readEvent( parseInt(this.props.match.params.id, 10), this.props.history)
         }
       } else {  
         this.props.readEvent(parseInt(this.props.match.params.id, 10), this.props.history)
       }          
+    } 
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    if (this.props.match.path === "/events/new" && this.state.action !== "Create" ){
+      this.props.clearCurrentEvent()
+      this.setState({...this.state, action: "Create"})
+    } else if (prevProps.currentEvent !== this.props.currentEvent){
+      this.setCurrentEvent(this.props.currentEvent, this.state.action)
     }
   }
 
-  componentDidUpdate(prevProps){
-    if (prevProps.currentEvent !== this.props.currentEvent){
-      this.setCurrentEvent(this.props.currentEvent)
+  createNewEvent(path){
+    if (path === "/events/new") {  
+      this.props.clearCurrentEvent()
+    // this.resetCurrentEvent()
     }
-  }
-
-  createNewEvent(){
-    this.props.match.path === "/events/new"  
-    this.props.clearCurrentEvent()
-    this.resetCurrentEvent()
   }
 
   resetCurrentEvent = () =>{
@@ -65,17 +69,24 @@ export class EventInputContainer extends React.Component {
     })
   }
 
-  setCurrentEvent = (currentEvent) => {
+  setStateAction = () => {
+    this.setState({
+      ...this.state,
+      action: "Create"
+    })
+  }
+
+  setCurrentEvent = (currentEvent, action) => {
     this.setState({
       event: {
-        id: currentEvent.id,
+        id: currentEvent.id || "",
         name: currentEvent.name,
         //modify date_time to exclude ms and show local timezone
-        date_time: dateTime(currentEvent.date_time).inputFormat || "", 
+        date_time: dateTime(currentEvent.date_time).inputFormat, 
         location: currentEvent.location,
         description: currentEvent.description
       },
-      action: "Edit"
+      action: action
     })
   }
 
@@ -119,7 +130,7 @@ export class EventInputContainer extends React.Component {
 }
 
 const mapStateToProps=({currentEvent})=>{
-  return{ currentEvent: Object.assign({}, currentEvent) }
+  return{ currentEvent }
 }
 
 const mapDispatchToProps=(dispatch)=>{
