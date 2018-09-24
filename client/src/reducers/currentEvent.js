@@ -3,7 +3,6 @@ import initialState from './initialState'
 export default function currentEventReducer(state=initialState.currentEvent, action){  
 
   const emptyEvent = {
-    id: '',
     name: '',
     date_time: '',
     location: '',
