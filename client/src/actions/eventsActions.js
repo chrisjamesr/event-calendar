@@ -106,7 +106,7 @@ export function updateEvent(event, history){
   }
 }
 
-export function clearCurrentEvent(eventId){
+export function clearCurrentEvent(){
   return function(dispatch){
     dispatch({type: 'CLEAR_EVENT'})
   }
