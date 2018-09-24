@@ -1,7 +1,14 @@
 import initialState from './initialState'
 
 export default function currentEventReducer(state=initialState.currentEvent, action){  
-  let event;  
+
+  const emptyEvent = {
+    id: '',
+    name: '',
+    date_time: '',
+    location: '',
+    description: ''
+  }
   switch (action.type) {
   case 'SHOW_EVENT_REQUEST':
     return state
@@ -51,11 +58,3 @@ export default function currentEventReducer(state=initialState.currentEvent, act
   }      
 }
 
-const emptyEvent = {
-  event: {
-    name: '',
-    date_time: '',
-    location: '',
-    description: '',
-  }
-}
