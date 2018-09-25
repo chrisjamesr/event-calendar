@@ -7,9 +7,9 @@ export function createRSVP(eventId){
     .catch(error=>{
       dispatch({
         type: 'CREATE_RSVP_FAILURE',
-        payload: error.statusText
+        message: error.statusText
       })
-      console.error(error)
+      console.error(error.statusText)
       return Promise.reject()
     })
     .then(event => {
@@ -28,9 +28,9 @@ export function updateRSVP(eventId, rsvpId){
     .catch(error=>{
       dispatch({
         type: 'UPDATE_RSVP_FAILURE',
-        payload: error.statusText
+        message: error.statusText
       })
-      console.error(error)
+      console.error(error.statusText)
       return Promise.reject()
     })
     .then(event => {

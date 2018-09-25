@@ -7,9 +7,9 @@ export function fetchEvents(){
       .catch(error=>{
         dispatch({
           type: 'FETCH_EVENTS_FAILURE',
-          payload: error.statusText
+          message: error.statusText
         })
-        console.error(error)
+        console.error(error.statusText)
         return Promise.reject()
       })     
       .then(events => dispatch({
@@ -27,9 +27,9 @@ export function fetchUserEvents(user_id){
       .catch(error=>{
         dispatch({
           type: 'FETCH_EVENTS_FAILURE',
-          payload: error.statusText
+          message: error.statusText
         })
-        console.error(error)
+        console.error(error.statusText)
         return Promise.reject()
       })     
       .then(events => dispatch({
@@ -47,9 +47,9 @@ export function createEvent( event, history){
       .catch(error=>{
         dispatch({
           type: 'CREATE_EVENT_FAILURE',
-          payload: error
+          message: error
         })
-        console.error(error)
+        console.error(error.statusText)
         return Promise.reject()
       })  
       .then(event => {
@@ -68,9 +68,9 @@ export function readEvent(eventId, history){
     .catch(error=>{
         dispatch({
           type: 'SHOW_EVENT_FAILURE',
-          payload: error.statusText
+          message: error.statusText
         })
-        console.error(error)
+        console.error(error.statusText)
         return Promise.reject()
       })  
       .then(event => {
@@ -91,9 +91,9 @@ export function updateEvent(event, history){
     .catch(error=>{
         dispatch({
           type: 'UPDATE_EVENT_FAILURE',
-          payload: error.statusText
+          message: error.statusText
         })
-        console.error(error)
+        console.error(error.statusText)
         return Promise.reject()
       })  
       .then(event => {
@@ -119,9 +119,9 @@ export function destroyEvent(event, history){
     .catch(error=>{
         dispatch({
           type: 'DELETE_EVENT_FAILURE',
-          payload: error.statusText
+          message: error.statusText
         })
-        console.error(error)
+        console.error(error.statusText)
         return Promise.reject()
       })  
       .then(event => {

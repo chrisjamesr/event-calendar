@@ -8,9 +8,9 @@ export function logIn(history, user){
       .catch(error=> {
         dispatch({
           type: 'LOGIN_FAILURE',
-          payload: error.statusText
+          message: error.statusText
         })
-        console.error(error)
+        console.error(error.statusText)
         return Promise.reject()
       })
       .then(json => {
@@ -32,9 +32,9 @@ export function signUp(history, user){
       .catch(error=> {
         dispatch({
           type: 'SIGNUP_FAILURE',
-          payload: error.statusText
+          message: error.statusText
         })
-        console.error(error)
+        console.error(error.statusText)
         return Promise.reject()
       })
       .then(json => {
