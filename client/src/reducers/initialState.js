@@ -2,7 +2,10 @@ const initialState = {
   // jwt: '',
   events: [],
   currentEvent: {},
-  auth: !!sessionStorage.jwt
+  auth: {
+    loggedIn: !!sessionStorage.jwt,
+    message: ""
+  }
   // rsvp: []
 }
 
