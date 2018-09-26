@@ -7,10 +7,11 @@ class UsersController < ApplicationController
       jwt = Auth.issue({user: @user.id})
       render json: {jwt: jwt, user_id: @user.id}
     else
-      head 403
+      render json: {errors: @user.errors.full_messages}, status: 401
     end
   end
 
+  # action not in use
   def show
     user = User.find(params[:id])
     logged_in? ? (render json: user) : (head 403 )
