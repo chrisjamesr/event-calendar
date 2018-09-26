@@ -4,24 +4,24 @@ import UserAPI from '../api/userAPI'
 export function logIn(history, user){
   return function(dispatch){
     dispatch({type: 'LOGIN_REQUEST'})
-    return UserAPI.getToken(user) 
-      .catch(error=> {
-        dispatch({
-          type: 'LOGIN_FAILURE',
-          message: error.statusText
-        })
-        console.error(error.statusText)
-        return Promise.reject()
-      })
-      .then(json => {
-        sessionStorage.setItem('jwt', json.jwt)
-        sessionStorage.setItem('user_id', json.user_id)
-        sessionStorage.setItem('username', user.email.split('@')[0])  
-        dispatch({
-          type: 'LOGIN_SUCCESS'
-        })
-        history.push("/events") 
-      })  
+    return UserAPI.getToken(user)
+      .then(
+        ({ status, json }) => {
+          if (status >= 400) {
+            console.log("login failed")
+            console.log(status, json)
+          } else {
+            console.log(status, json)
+            sessionStorage.setItem('jwt', json.jwt)
+            sessionStorage.setItem('user_id', parseInt(json.user_id,10))
+            sessionStorage.setItem('username', user.email.split('@')[0])  
+            dispatch({
+              type: 'LOGIN_SUCCESS'
+            })
+            history.push("/events") 
+          }  
+      }    
+    )
   }
 }    
 
