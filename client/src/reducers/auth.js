@@ -5,7 +5,6 @@ export default function authReducer(state = initialState.auth, action){
     case 'LOGIN_REQUEST':
       return state
     case 'LOGIN_SUCCESS':
-      // redirect to home
       return !!sessionStorage.jwt
     case 'LOGIN_FAILURE':
       return !!sessionStorage.jwt
@@ -16,7 +15,6 @@ export default function authReducer(state = initialState.auth, action){
     case 'SIGNUP_FAILURE':
       return !!sessionStorage.jwt
     case 'LOGOUT_USER':
-      // redirect to home
       return !!sessionStorage.jwt
     default:
       return state
