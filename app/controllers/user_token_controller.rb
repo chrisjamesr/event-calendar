@@ -6,9 +6,8 @@ class UserTokenController < ApplicationController
     if @user && @user.authenticate(auth_params[:password])
       jwt = Auth.issue({user: @user.id})
       render json: {jwt: jwt, user_id: @user.id}
-    else 
-      head 403
-      # render json: {error: "Unable to Authenticate"}, status: 403  
+    else     
+      render json: {errors: !!@user ? "Please enter password again" : "User not found"}, status: 401  
     end
   end
 
