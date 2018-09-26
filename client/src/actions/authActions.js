@@ -39,7 +39,7 @@ export function signUp(history, user){
       })
       .then(json => {
         sessionStorage.setItem('jwt', json.jwt)
-        sessionStorage.setItem('user_id', json.user_id)
+        sessionStorage.setItem('user_id', parseInt(json.user_id,10))
         sessionStorage.setItem('username', user.email.split('@')[0])
         dispatch({
           type: 'SIGNUP_SUCCESS'
