@@ -8,9 +8,13 @@ class UserAPI {
       headers: { 'Content-Type': 'application/json' },
       method: 'POST'
       })
-    return fetch(tokenRequest).then(handleError)
+    return fetch(tokenRequest)
       .then(response=> {
-        return response.json() 
+        return response.json().then(json => ({
+          status: response.status,
+          json
+        })
+      ) 
     })
   }
 
