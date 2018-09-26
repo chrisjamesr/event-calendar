@@ -1,4 +1,4 @@
-import {handleError} from './apiUtils'
+import {parseResponse} from './apiUtils'
 // import {tokenHeader} from './apiUtils'
 class UserAPI {
 
@@ -9,13 +9,7 @@ class UserAPI {
       method: 'POST'
       })
     return fetch(tokenRequest)
-      .then(response=> {
-        return response.json().then(json => ({
-          status: response.status,
-          json
-        })
-      ) 
-    })
+      .then(parseResponse)
   }
 
   static createToken(user){
@@ -24,11 +18,9 @@ class UserAPI {
       headers: { 'content-type': 'application/json' },
       method: 'POST'
       })
-    return fetch(tokenRequest).then(handleError)
-      .then(response=> {
-        return response.json() 
-    })
-  }
-}
+    return fetch(tokenRequest)
+      .then(parseResponse)
+  } 
+} //end of class
 
 export default UserAPI
