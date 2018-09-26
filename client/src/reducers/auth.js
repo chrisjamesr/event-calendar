@@ -1,21 +1,22 @@
 import initialState from './initialState'
 
 export default function authReducer(state = initialState.auth, action){
+  const loginState = {message: action.message, loggedIn: !!sessionStorage.jwt}
   switch (action.type){
     case 'LOGIN_REQUEST':
-      return state
+      return loginState
     case 'LOGIN_SUCCESS':
-      return !!sessionStorage.jwt
+      return loginState
     case 'LOGIN_FAILURE':
-      return !!sessionStorage.jwt
+      return loginState
     case 'SIGNUP_REQUEST':
-      return state
+      return loginState
     case 'SIGNUP_SUCCESS':  
-      return !!sessionStorage.jwt
+      return loginState
     case 'SIGNUP_FAILURE':
-      return !!sessionStorage.jwt
+      return loginState
     case 'LOGOUT_USER':
-      return !!sessionStorage.jwt
+      return loginState
     default:
       return state
   }
