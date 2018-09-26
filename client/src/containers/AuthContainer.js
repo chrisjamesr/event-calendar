@@ -119,7 +119,7 @@ export class AuthContainer extends React.Component{
 }
 
 const mapStatetoProps = ({auth}) => {
-  return {auth}
+  return {auth: auth.loggedIn, message: auth.message}
 }
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({logIn, signUp, logOut}, dispatch)

@@ -12,7 +12,7 @@ class NavbarContainer extends React.Component{
 }
 
 const mapStateToProps = ({auth}) => {
-  return {auth}
+  return {auth: auth.loggedIn, message: auth.message}
 }
 
 export default connect(mapStateToProps)(NavbarContainer)
