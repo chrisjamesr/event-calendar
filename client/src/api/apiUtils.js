@@ -17,3 +17,11 @@ export function handleError(response){
 export const loggedIn = () => {
     return !!sessionStorage.jwt
   }
+
+export function parseResponse(response){
+    return response.json().then(json => ({
+      status: response.status,
+      json
+    })
+  ) 
+}
