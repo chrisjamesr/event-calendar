@@ -41,8 +41,10 @@ const Navbar =({history,loggedIn}) => {
              }  
            </div> 
         </div>
-        <AuthModalContainer /> 
-        <AuthContainer history={history}/>        
+        <div>
+          <AuthModalContainer />  
+          <AuthContainer history={history}/>        
+        </div>
       </div>  
     </nav>
   )
