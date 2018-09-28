@@ -32,16 +32,6 @@ export class EventsContainer extends React.Component {
       this.fetchEventData(this.props.match.params)
     }
   }
-  // componentWillReceiveProps(nextProps){
-  //   if (nextProps.match.params.hasOwnProperty("id") !== this.props.match.params.hasOwnProperty("id") ){
-  //     this.fetchEventData(nextProps.match.params)
-  //   }
-  // }
-  
-  // shouldComponentUpdate(nextProps){
-    // Add correct conditional to update on after second call to componentWillReceiveProps
-  //   return nextProps.match.params.hasOwnProperty("id") !== this.props.match.params.hasOwnProperty("id")
-  // }
 
   fetchEventData = (params) => {
     if (params.hasOwnProperty("id")) {
@@ -58,8 +48,12 @@ export class EventsContainer extends React.Component {
     )  
   }
 
-  render(){
-     return this.renderEventsList()
+  render(){ 
+    if (this.props.loading){
+      return <h1>Loading Events...</h1>
+    } else {
+      return this.renderEventsList()
+    }
   }
 }
 
