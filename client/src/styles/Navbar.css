@@ -8,7 +8,7 @@ hr{
 }
 .nav-header {
   display: flex;
-  flex-flow: row | wrap;
+  flex-flow: row | nowrap;
   margin: 0 10%;
   justify-content: space-between;
   align-items: center;
@@ -28,7 +28,6 @@ hr{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-right: 10%; 
   padding: 0 20px  0 30px ;
 
 }
