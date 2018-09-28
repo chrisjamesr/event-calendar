@@ -1,5 +1,6 @@
 nav {
   background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(205, 205, 205);
 }
 
 hr{
@@ -8,11 +9,11 @@ hr{
 .nav-header {
   display: flex;
   flex-flow: row | wrap;
-  justify-content: flex-start;
+  margin: 0 10%;
+  justify-content: space-between;
   align-items: center;
   height: 90px;
-  padding: 20px 20px 20px;  
-  border: 1px solid black;
+  padding: 20px 20px 20px;    
   width: auto;
 }
 
