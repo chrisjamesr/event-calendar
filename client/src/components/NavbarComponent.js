@@ -3,42 +3,47 @@ import {NavLink } from 'react-router-dom';
 import '../styles/Navbar.css';
 import Icon from "./Icon"
 import AuthContainer from '../containers/AuthContainer'
+import LoginModalContainer from '../containers/ErrorModalContainer'
+
   
 const Navbar =({history,loggedIn}) => {
 
   return (
-    <nav className="nav-header">
-      <Icon/>
-      <div className="navbar-link-container">
-        <div >
-          <NavLink to="/events"
-            className="nav-link" 
-            activeClassName="nav-link-active" 
-          >
-            All Events
-          </NavLink>
-        </div>  
-        <div>
-          { 
-            loggedIn ?               
-              <NavLink to="/events/new"
-                className="nav-link" 
-                activeClassName="nav-link-active"
-              > Add Event </NavLink> : null
-          } 
-        </div> 
-        <div>
-          { 
-            loggedIn ? 
-              <NavLink 
-                to={`/users/${sessionStorage.user_id}/events`}
-                className="nav-link" 
-                activeClassName="nav-link-active"
-              > My Events </NavLink>: null
-           }  
-         </div> 
-      </div>
-      <AuthContainer history={history} />
+    <nav>
+      <div className="nav-header">
+        <Icon/>
+        <div className="navbar-link-container">
+          <div >
+            <NavLink to="/events"
+              className="nav-link" 
+              activeClassName="nav-link-active" 
+            >
+              All Events
+            </NavLink>
+          </div>  
+          <div>
+            {  
+              loggedIn ?               
+                <NavLink to="/events/new"
+                  className="nav-link" 
+                  activeClassName="nav-link-active"
+                > Add Event </NavLink> : null
+            } 
+          </div> 
+          <div>
+            { 
+              loggedIn ? 
+                <NavLink 
+                  to={`/users/${sessionStorage.user_id}/events`}
+                  className="nav-link" 
+                  activeClassName="nav-link-active"
+                > My Events </NavLink>: null
+             }  
+           </div> 
+        </div>
+        <LoginModalContainer /> 
+        <AuthContainer history={history}/>        
+      </div>  
     </nav>
   )
 }
