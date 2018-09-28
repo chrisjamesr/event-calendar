@@ -2,11 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { logIn, signUp, logOut } from '../actions/authActions'
-// import {userRSVPs} from '../actions/rsvpActions'
 import ToggleAuthLink from '../components/Auth/ToggleAuthLink'
 import AuthInputComponent from '../components/Auth/AuthInputComponent'
 import UserDisplay from '../components/Auth/UserDisplay'
-import ErrorModalContainer from './ErrorModalContainer'
 
 export class AuthContainer extends React.Component{
   constructor(props){
