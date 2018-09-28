@@ -1,6 +1,9 @@
 div.modal {
-  transform: translate(95%, 2%);
-  width: 170px;
+  /*transform: translate(95%, 2%);*/
+  position:absolute;
+  top:2.5%;
+  right:10%;
+  width: 180px;
   height: 90px;
   border: .5px solid black;
   background-color: rgb(219, 219, 219);
@@ -12,17 +15,15 @@ div.modal {
   box-shadow: 10px 5px 5px rgb(176,9,255);
   opacity: .75;
 }
-div.modal{
-
-}
 
 .modal-main {
   padding: 15% 10%;
-  width:100%;
-  height: auto;
+  /*width:100%;*/
+  overflow-wrap: normal;
   margin: auto;
-  text-shadow: .75px .75px 1px white;
-  color: rgb(176,9,255);
+  text-shadow: .75px .75px 1px rgb(255,255,255);
+  font-size: 1em;
+  color: rgb(119,0,186);
   font-weight: 600;
 }
 
