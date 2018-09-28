@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import LoginError from '../components/Modals/LoginError'
-import AuthContainer from './AuthContainer'
 
 class LoginModalContainer extends React.Component{
   constructor(props){
