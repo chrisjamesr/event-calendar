@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { fetchEvents, fetchUserEvents, createEvent, readEvent } from '../actions/eventsActions'
 import EventYears from '../components/Events/EventYears'
+import LoadingDots from '../components/LoadingDots'
 
 
 export class EventsContainer extends React.Component {
@@ -50,7 +51,7 @@ export class EventsContainer extends React.Component {
 
   render(){ 
     if (this.props.loading){
-      return <h1>Loading Events...</h1>
+      return <LoadingDots message="Loading"/>  
     } else {
       return this.renderEventsList()
     }
