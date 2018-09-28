@@ -3,7 +3,10 @@ import UserAPI from '../api/userAPI'
 
 export function logIn(history, user){
   return function(dispatch){
-    dispatch({type: 'LOGIN_REQUEST'})
+    dispatch({
+      type: 'LOGIN_REQUEST',
+      message: "Logging In..."
+    })
     return UserAPI.getToken(user)
       .then(({ status, json }) => {
         if (status >= 400) {
@@ -11,7 +14,7 @@ export function logIn(history, user){
           console.log(status, json)
           dispatch({
             type: 'LOGIN_FAILURE',
-            message: `${json}`
+            message: `${json.errors}`
           })
         } else {
           sessionStorage.setItem('jwt', json.jwt)
@@ -30,7 +33,10 @@ export function logIn(history, user){
 
 export function signUp(history, user){
   return function(dispatch){
-    dispatch({type: 'SIGNUP_REQUEST'})
+    dispatch({
+      type: 'SIGNUP_REQUEST',
+      message: "Signing Up..."
+    })
     return UserAPI.createToken(user) 
       .then(({ status, json }) => {
         if (status >= 400) {
@@ -38,7 +44,7 @@ export function signUp(history, user){
           console.log(status, json)
           dispatch({
             type: 'SIGNUP_FAILURE',
-            message: `${json}`
+            message: `${json.errors}`
           })
         } else {
           sessionStorage.setItem('jwt', json.jwt)
