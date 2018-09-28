@@ -19,6 +19,7 @@ div.modal {
 .modal-main {
   padding: 15% 10%;
   overflow-wrap: normal;
+  text-align: center;
   margin: auto;
   text-shadow: .75px .75px 1px rgb(255,255,255);
   font-size: 1em;
