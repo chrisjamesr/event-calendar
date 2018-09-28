@@ -65,7 +65,7 @@ export class EventsContainer extends React.Component {
 
 const mapStateToProps=({events})=>{
   return{
-    events: events
+    events: events.events, loading: events.loading
   }
 }
 
