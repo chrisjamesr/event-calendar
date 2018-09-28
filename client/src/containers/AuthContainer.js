@@ -6,6 +6,7 @@ import { logIn, signUp, logOut } from '../actions/authActions'
 import ToggleAuthLink from '../components/Auth/ToggleAuthLink'
 import AuthInputComponent from '../components/Auth/AuthInputComponent'
 import UserDisplay from '../components/Auth/UserDisplay'
+import ErrorModalContainer from './ErrorModalContainer'
 
 export class AuthContainer extends React.Component{
   constructor(props){
@@ -23,6 +24,9 @@ export class AuthContainer extends React.Component{
     this.renderToggleAuthLink = this.renderToggleAuthLink.bind(this)
     this.renderAuthInput = this.renderAuthInput.bind(this)
     this.logOut = this.logOut.bind(this)
+    this.renderDisplay = this.renderDisplay.bind(this)
+    this.renderAuthOptions = this.renderAuthOptions.bind(this)
+    this.renderUserDisplay = this.renderUserDisplay.bind(this)
   }
 
   handleChange = (event) => {  
@@ -96,24 +100,41 @@ export class AuthContainer extends React.Component{
     this.clearUserState()
   }
 
-  render(){
+  renderDisplay = () => {
+    return null    
+  }
+
+  renderAuthOptions = (selector) => {
     return (
-      !!this.props.auth ? (
-        <UserDisplay
-          userName={sessionStorage.username} 
-          logOut={this.logOut}    
-        />
-      ) : (
-        <div className="auth-container">
-          <div className="toggle-user-auth">
-            {this.renderToggleAuthLink(this.state.selector)}
-          </div>
-          <div>  
-            {this.renderAuthInput(this.state.selector)}
-          </div>  
+      <div className="auth-container">          
+        <div className="toggle-user-auth">
+          {this.renderToggleAuthLink(selector)}
         </div>
-      )
+        <div>  
+          {this.renderAuthInput(selector)}
+        </div>  
+      </div>
+    )  
+  } 
+
+  renderUserDisplay = () => {
+    return (
+      <UserDisplay
+        userName={sessionStorage.username} 
+        logOut={this.logOut}    
+      />
     )
+  }
+  renderAuthState = (selector) => {
+    if (this.props.auth) {
+      return this.renderUserDisplay()
+    } else {
+      return this.renderAuthOptions(selector)
+    }   
+  } 
+
+  render(){
+    return this.renderAuthState(this.state.selector)
   }
 
 }
