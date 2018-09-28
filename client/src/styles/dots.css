@@ -1,0 +1,34 @@
+ .loading-dots-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center
+ }
+ .dots-container{
+  padding: 20px 40%;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.dot{
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+  background-color: black;
+  opacity: 0;
+  animation: blinkingDot 1.5s ease-in-out infinite;
+}
+ .one { animation-delay: 0.1s; }
+ .two { animation-delay: 0.3s; }
+ .three { animation-delay: 0.5s; }
+ 
+
+
+@keyframes blinkingDot {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  60% { opacity: 1; }
+  100% { opacity: 0; }
+}
