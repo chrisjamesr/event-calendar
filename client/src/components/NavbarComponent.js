@@ -3,7 +3,7 @@ import {NavLink } from 'react-router-dom';
 import '../styles/Navbar.css';
 import Icon from "./Icon"
 import AuthContainer from '../containers/AuthContainer'
-import LoginModalContainer from '../containers/ErrorModalContainer'
+import AuthModalContainer from '../containers/AuthModalContainer'
 
   
 const Navbar =({history,loggedIn}) => {
@@ -41,7 +41,7 @@ const Navbar =({history,loggedIn}) => {
              }  
            </div> 
         </div>
-        <LoginModalContainer /> 
+        <AuthModalContainer /> 
         <AuthContainer history={history}/>        
       </div>  
     </nav>
