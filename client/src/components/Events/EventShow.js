@@ -57,7 +57,7 @@ EventShow.propTypes = {
     user_events: PropTypes.array    
   }),
   creator: PropTypes.bool,
-  handleClick: PropTypes.func
+  handleRSVPClick: PropTypes.func
 }
 
 export default EventShow
