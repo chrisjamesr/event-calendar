@@ -34,6 +34,9 @@ div.input-row > input {
 .input-row > textarea {
   flex-basis: 60%;
 }
+a#edit-button{
+  color: rgb(166,0, 198)
+}
 
 .button-row {
   justify-content: space-around;
