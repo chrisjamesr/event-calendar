@@ -82,7 +82,7 @@ class EventShowContainer extends React.Component {
 
   renderRSVP = () =>{
     return this.props.auth ? <RSVPComponent 
-            handleClick={this.handleClick} 
+            handleRSVPClick={this.handleRSVPClick} 
             attending={this.state.attending} 
             /> : null
   }  
