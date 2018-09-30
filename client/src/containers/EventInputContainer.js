@@ -129,8 +129,8 @@ export class EventInputContainer extends React.Component {
   }
 }
 
-const mapStateToProps=({currentEvent})=>{
-  return{ currentEvent }
+const mapStateToProps = ({currentEvent:{currentEvent}})=> {
+  return {currentEvent}
 }
 
 const mapDispatchToProps=(dispatch)=>{
