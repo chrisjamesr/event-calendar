@@ -39,7 +39,7 @@ export default function currentEventReducer(state=initialState.currentEvent, act
   case 'CREATE_RSVP_FAILURE':
     return state  
   case 'UPDATE_RSVP_REQUEST':
-    return {...state, loading: true}
+    return {...state, loading: false}
   case 'UPDATE_RSVP_SUCCESS':
     let rsvps = state.currentEvent.user_events.map((ue, i, arr) =>{
       return ue.id === action.payload.id ? action.payload : ue
