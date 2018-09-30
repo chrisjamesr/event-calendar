@@ -14,14 +14,14 @@ class EventShowContainer extends React.Component {
       attending: false,
       creator: false
     }
-    this.handleClick = this.handleClick.bind(this)
+    this.handleRSVPClick = this.handleRSVPClick.bind(this)
     this.findRSVPAttending = this.findRSVPAttending.bind(this)
     this.findRSVP = this.findRSVP.bind(this)
     this.didCreate = this.didCreate.bind(this)
     this.renderRSVP = this.renderRSVP.bind(this) 
   }
 
-  handleClick = () => {
+  handleRSVPClick = () => {
     if (this.props.auth){
       if (this.findRSVP(this.props.currentEvent)) {
         this.props.updateRSVP(this.props.currentEvent.id, this.findRSVP(this.props.currentEvent).id) 
@@ -95,7 +95,7 @@ class EventShowContainer extends React.Component {
       return (
         <EventShow 
           event={this.props.currentEvent} 
-          handleClick={this.handleClick}
+          handleRSVPClick={this.handleRSVPClick}
           creator={this.state.creator}
           renderRSVP={this.renderRSVP}
         />
@@ -105,8 +105,8 @@ class EventShowContainer extends React.Component {
 
 }
 
-const mapStateToProps = ({currentEvent:{currentEvent, loading},  auth})=> {
-  return {currentEvent, loading, auth}
+const mapStateToProps = ({currentEvent:{currentEvent, loading},  auth:{loggedIn}})=> {
+  return {currentEvent, loading, auth:loggedIn}
 }
 
 const mapDispatchToProps = (dispatch)=> {
