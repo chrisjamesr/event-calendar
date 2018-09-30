@@ -5,6 +5,7 @@ import { readEvent } from '../actions/eventsActions'
 import {createRSVP, updateRSVP} from '../actions/rsvpActions' 
 import EventShow from '../components/Events/EventShow'
 import RSVPComponent from '../components/Events/RSVPComponent'
+import LoadingDots from '../components/LoadingDots'
 
 class EventShowContainer extends React.Component {
   constructor(props){
@@ -88,14 +89,18 @@ class EventShowContainer extends React.Component {
   
 
   render(){
-    return (
-      <EventShow 
-        event={this.props.currentEvent} 
-        handleClick={this.handleClick}
-        creator={this.state.creator}
-        renderRSVP={this.renderRSVP}
-      />
-    )  
+    if (this.props.loading){
+      return <LoadingDots message="Loading"/>  
+    } else {
+      return (
+        <EventShow 
+          event={this.props.currentEvent} 
+          handleClick={this.handleClick}
+          creator={this.state.creator}
+          renderRSVP={this.renderRSVP}
+        />
+      )  
+    }
   }
 
 }
