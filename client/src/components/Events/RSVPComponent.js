@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const RSVPComponent = ({attending, handleClick}) => {
+const RSVPComponent = ({attending, handleRSVPClick}) => {
   return (
     <div>
       <button
         className="rsvp-button"
         type="submit" 
         name="rsvp" 
-        onClick={handleClick} 
+        onClick={handleRSVPClick} 
         >{attending ? "RSVP'd" : "RSVP" }
       </button>  
     </div>
@@ -17,7 +17,7 @@ const RSVPComponent = ({attending, handleClick}) => {
 
 RSVPComponent.propTypes = {
   attending: PropTypes.bool,
-  handleClick: PropTypes.func
+  handleRSVPClick: PropTypes.func
 }
 
 export default RSVPComponent
