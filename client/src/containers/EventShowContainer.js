@@ -100,8 +100,8 @@ class EventShowContainer extends React.Component {
 
 }
 
-const mapStateToProps = ({ currentEvent, auth})=> {
-  return {currentEvent: currentEvent, auth}
+const mapStateToProps = ({currentEvent:{currentEvent, loading},  auth})=> {
+  return {currentEvent, loading, auth}
 }
 
 const mapDispatchToProps = (dispatch)=> {
