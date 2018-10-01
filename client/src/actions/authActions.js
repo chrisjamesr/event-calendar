@@ -9,14 +9,7 @@ export function logIn(history, user){
     })
     return UserAPI.getToken(user)
       .then(({ status, json }) => {
-        if (status >= 400) {
-          console.log("login failed")
-          console.log(status, json)
-          dispatch({
-            type: 'LOGIN_FAILURE',
-            message: `${json.errors}`
-          })
-        } else {
+        if (status.ok) {
           sessionStorage.setItem('jwt', json.jwt)
           sessionStorage.setItem('user_id', parseInt(json.user_id,10))
           sessionStorage.setItem('username', user.email.split('@')[0])  
@@ -25,11 +18,21 @@ export function logIn(history, user){
             message: `Welcome ${user.email.split('@')[0]}`
           })
           history.push("/events") 
+        } else {
+          throw new Error(json.errors)
         }  
       }    
     )
-  }
-}    
+    .catch((e)=>{
+      console.log("login failed")
+      // console.log(e.message)
+      dispatch({
+        type: 'LOGIN_FAILURE',
+        message: `${e.message}`
+      })
+    })
+  }    
+}
 
 export function signUp(history, user){
   return function(dispatch){
@@ -39,14 +42,7 @@ export function signUp(history, user){
     })
     return UserAPI.createToken(user) 
       .then(({ status, json }) => {
-        if (status >= 400) {
-          console.log("Signup failed")
-          console.log(status, json)
-          dispatch({
-            type: 'SIGNUP_FAILURE',
-            message: `${json.errors}`
-          })
-        } else {
+        if (status.ok) {
           sessionStorage.setItem('jwt', json.jwt)
           sessionStorage.setItem('user_id', parseInt(json.user_id,10))
           sessionStorage.setItem('username', user.email.split('@')[0])  
@@ -55,9 +51,18 @@ export function signUp(history, user){
             message: `Welcome ${user.email.split('@')[0]}`
           })
           history.push("/events") 
+        } else {
+          throw new Error(json.errors)
         }  
       }
     )
+    .catch((e)=>{
+      console.log("Signup failed")
+      dispatch({
+        type: 'SIGNUP_FAILURE',
+        message: `${e.message}`
+      })
+    })
   }
 } 
 
