@@ -9,7 +9,7 @@ export function logIn(history, user){
     })
     return UserAPI.getToken(user)
       .then(({ status, json }) => {
-        if (status.ok) {
+        if (status < 400) {
           sessionStorage.setItem('jwt', json.jwt)
           sessionStorage.setItem('user_id', parseInt(json.user_id,10))
           sessionStorage.setItem('username', user.email.split('@')[0])  
@@ -42,7 +42,7 @@ export function signUp(history, user){
     })
     return UserAPI.createToken(user) 
       .then(({ status, json }) => {
-        if (status.ok) {
+        if (status < 400) {
           sessionStorage.setItem('jwt', json.jwt)
           sessionStorage.setItem('user_id', parseInt(json.user_id,10))
           sessionStorage.setItem('username', user.email.split('@')[0])  
