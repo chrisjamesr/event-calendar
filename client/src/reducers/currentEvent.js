@@ -8,7 +8,6 @@ export default function currentEventReducer(state=initialState.currentEvent, act
     location: '',
     description: ''
   }
-  let event;
   switch (action.type) {
   case 'SHOW_EVENT_REQUEST':
     return {...state, loading: true}
