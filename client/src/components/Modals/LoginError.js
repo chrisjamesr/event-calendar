@@ -16,4 +16,10 @@ const LoginModal = ({ handleClose, show, message }) => {
   );
 };
 
+LoginModal.propTypes = {
+  handleClose: PropTypes.func,
+  show: PropTypes.bool,
+  message: PropTypes.string
+}
+
 export default LoginModal
