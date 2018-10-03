@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import LoginError from '../components/Modals/LoginError'
 
-class LoginModalContainer extends React.Component{
+class AuthModalContainer extends React.Component{
   constructor(props){
     super(props)
     this.state = {
@@ -47,8 +47,8 @@ class LoginModalContainer extends React.Component{
   }  
 }
 
-const mapStateToProps = ({auth})=> {
-  return {auth: auth.loggedIn, message: auth.message}
+const mapStateToProps = ({auth: {loggedIn, message}})=> {
+  return {auth: loggedIn, message}
 }
 
-export default connect(mapStateToProps)(LoginModalContainer)
+export default connect(mapStateToProps)(AuthModalContainer)
