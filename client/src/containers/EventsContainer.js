@@ -58,10 +58,8 @@ export class EventsContainer extends React.Component {
   }
 }
 
-const mapStateToProps=({events})=>{
-  return{
-    events: events.events, loading: events.loading
-  }
+const mapStateToProps=({events: {events, loading}})=>{
+  return { events, loading }
 }
 
 const mapDispatchToProps=(dispatch)=>{
