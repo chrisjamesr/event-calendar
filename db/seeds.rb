@@ -7,6 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'ffaker'
+10.times do
+  User.create do |u|
+    u.email = FFaker::Internet.email,
+    u.password = FFaker::Internet.password
+  end
+end
 
 15.times do
   Event.create do |e|
@@ -21,17 +27,10 @@ require 'ffaker'
   end
 end
 
-  10.times do
-    User.create do |u|
-      u.email = FFaker::Internet.email,
-      u.password = FFaker::Internet.password
-    end
+User.all.each do |u|
+  3.times do 
+    UserEvent.create(user_id: u.id, event_id: Event.all.sample.id)
   end
+end
 
-  User.all.each do |u|
-    3.times do 
-      UserEvent.create(user_id: u.id, event_id: Event.all.sample.id)
-    end
-  end
-
-  User.all.each {|u| u.update(:email=> u.email.match(/(\w\S+\b)/)[0])}
+User.all.each {|u| u.update(:email=> u.email.match(/(\w\S+\b)/)[0])}
