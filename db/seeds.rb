@@ -17,7 +17,7 @@ require 'ffaker'
       FFaker::AddressUS.city, 
       FFaker::AddressUS.state_abbr
     ].join(', ')
-    e.date_time = FFaker::Time.between(DateTime.now, DateTime.new(2018, 12, 31, 23, 59))
+    e.date_time = FFaker::Time.between(DateTime.now, DateTime.new(2020, 12, 31, 23, 59))
   end
 end
 
