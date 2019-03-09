@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: event-calendar_production
-  username: event-calendar
+  database: events
+  username: eventuser
   password: <%= ENV['EVENT-CALENDAR_DATABASE_PASSWORD'] %>
