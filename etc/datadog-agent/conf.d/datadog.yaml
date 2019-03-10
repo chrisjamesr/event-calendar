@@ -1,0 +1,7 @@
+api_key: ${DD_API_KEY}
+
+apm_config:
+  enabled: true
+  env: prod
+  analyzed_spans:
+    event-list-heroku|rack.request: 1

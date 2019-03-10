@@ -59,6 +59,9 @@ GEM
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    ddtrace (0.20.0)
+      msgpack
+      opentracing (>= 0.4.1)
     erubi (1.7.1)
     execjs (2.7.0)
     ffaker (2.10.0)
@@ -95,6 +98,7 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
+    opentracing (0.5.0)
     pg (1.1.3)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -168,6 +172,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   byebug
+  ddtrace
   ffaker
   foreman (~> 0.82.0)
   jbuilder (~> 2.5)
@@ -188,4 +193,4 @@ RUBY VERSION
    ruby 2.4.2p198
 
 BUNDLED WITH
-   1.16.4
+   2.0.1
