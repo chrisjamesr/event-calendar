@@ -4,4 +4,4 @@ apm_config:
   enabled: true
   env: prod
   analyzed_spans:
-    event_list_heroku|rack.request: 1
+    event-list-heroku|rack.request: 1
