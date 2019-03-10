@@ -1,0 +1,5 @@
+api_key: ${DD_API_KEY}
+
+apm_config:
+  enabled: true
+  env: production
