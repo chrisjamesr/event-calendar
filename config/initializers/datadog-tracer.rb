@@ -1,4 +1,4 @@
 # require 'ddtrace'
 Datadog.configure do |c|
-  c.use :rails, service_name: 'event_list_heroku'
+  c.use :rails, service_name: 'event-list-heroku'
 end
