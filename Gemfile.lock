@@ -62,7 +62,6 @@ GEM
     ddtrace (0.20.0)
       msgpack
       opentracing (>= 0.4.1)
-    dogstatsd-ruby (4.1.0)
     erubi (1.7.1)
     execjs (2.7.0)
     ffaker (2.10.0)
@@ -174,7 +173,6 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   ddtrace
-  dogstatsd-ruby
   ffaker
   foreman (~> 0.82.0)
   jbuilder (~> 2.5)
