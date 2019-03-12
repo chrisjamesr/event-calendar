@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  before_action :authenticate 
+  before_action :authenticate, :datadog_trace_extend 
 
   def logged_in?
     !!current_user
@@ -34,6 +34,15 @@ class ApplicationController < ActionController::API
 
     def auth_present?
       !!request.env.fetch("HTTP_AUTHORIZATION", "").scan(/Bearer/).flatten.first
+    end
+
+    def datadog_trace_extend
+      current_span = Datadog.tracer.active_span
+      if current_span
+        current_span.set_tag('account.id', 1)
+        current_span.set_tag('account.user_id', 100)
+        current_span.set_tag('http.source', 'api')
+      end
     end
 
 end
