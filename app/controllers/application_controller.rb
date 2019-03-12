@@ -39,9 +39,10 @@ class ApplicationController < ActionController::API
     def datadog_trace_extend
       current_span = Datadog.tracer.active_span
       if current_span
-        current_span.set_tag('account.id', 1)
-        current_span.set_tag('account.user_id', 100)
-        current_span.set_tag('http.source', 'api')
+        current_span.set_tag('http.method', request.method)
+        current_span.set_tag('resource', current_span.resource)
+        current_span.set_tag('span-type', current_span.span_type)
+        current_span.set_metric('duration', current_span.end_time - current_span.start_time)
       end
     end
 
