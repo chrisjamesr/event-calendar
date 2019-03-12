@@ -42,8 +42,8 @@ class ApplicationController < ActionController::API
         current_span.set_tag('http.method', request.method)
         current_span.set_tag('resource', current_span.resource)
         current_span.set_tag('span-type', current_span.span_type)
-        current_span.set_metric('duration', current_span.end_time - current_span.start_time)
       end
+      current_span.set_metric('duration', current_span.end_time - current_span.start_time)
     end
 
 end
