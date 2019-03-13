@@ -40,6 +40,8 @@ gem 'ffaker'
 gem 'bootsnap', '>= 1.1.0', require: false
 # datadog agent integration  
 gem 'ddtrace'
+gem 'logging-rails', :require => 'logging/rails'
+gem 'lograge'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
