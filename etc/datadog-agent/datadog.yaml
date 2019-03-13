@@ -2,7 +2,7 @@ api_key: ${DD_API_KEY}
 
 logs_enabled: true
 
-log_level: NOTICE
+log_level: warn
 
 apm_config:
   enabled: true
