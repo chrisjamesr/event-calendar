@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate, only: [:index, :show]
-  require 'statsd'
+  # require 'statsd'
 
   statsd = Statsd.new('localhost', 8125)
 
