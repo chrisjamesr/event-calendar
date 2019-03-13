@@ -8,8 +8,8 @@ logs:
     ##   sourcecategory : (optional) Multiple value attribute. Can be used to refine the source attribute
     ##   tags: (optional) add tags to each logs collected
 
-  - type: file
-    path: /path/to/your/ruby/log.log
+  - type: tcp
+    path: 10518
     service: ruby
     source: ruby
     sourcecategory: sourcecode
