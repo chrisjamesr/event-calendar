@@ -1,5 +1,7 @@
 api_key: ${DD_API_KEY}
 
+logs_enabled: true
+
 apm_config:
   enabled: true
   analyzed_spans:
