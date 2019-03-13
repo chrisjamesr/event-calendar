@@ -4,6 +4,8 @@ logs_enabled: true
 
 log_level: warn
 
+hostname: etc.folder
+
 process_config:
   enabled: "true"
 
