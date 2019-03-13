@@ -5,7 +5,7 @@ logs_enabled: true
 log_level: warn
 
 process_config:
-  enabled: true
+  enabled: "true"
 
 apm_config:
   enabled: true
