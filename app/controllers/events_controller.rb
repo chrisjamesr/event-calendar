@@ -1,6 +1,11 @@
 class EventsController < ApplicationController
   skip_before_action :authenticate, only: [:index, :show]
+  require 'statsd'
 
+  statsd = Statsd.new('localhost', 8125)
+
+# Increment a counter.
+  
   def create
     event = Event.new(event_params.merge(creator_id: current_user.id))
     if event.save
@@ -19,6 +24,7 @@ class EventsController < ApplicationController
       events = Event.all.order(:date_time).upcoming_events
       render json: events, each_serializer: EventIndexSerializer, status: 200
     end
+    statsd.increment('rubyapp.pages.views')
   end
 
   def show
