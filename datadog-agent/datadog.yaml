@@ -4,7 +4,8 @@ logs_enabled: true
 
 log_level: warn
 
-hostname: root.folder
+tags:
+  - env: root
 
 process_config:
   enabled: true
