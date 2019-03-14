@@ -764,7 +764,7 @@ apm_config:
 #   Will inherit from "env" tag if "none" is applied here
   env: apm_trace
 #   The port that the Receiver should listen on
-  # receiver_port: 8126
+  receiver_port: 8126
 
   analyzed_spans:
     event-list-heroku|rack.request: 1
