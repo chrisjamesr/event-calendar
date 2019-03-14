@@ -767,8 +767,8 @@ apm_config:
   # receiver_port: 8126
 
   analyzed_spans:
-    # event-list-trace-agent|rack.request: 1
-    event-list-trace-agent|rails.action_controller: 1
+    event-list-trace-agent|rack.request: 1
+    # event-list-trace-agent|rails.action_controller: 1
 #   Whether the Trace Agent should listen for non local traffic
 #   Only enable if Traces are being sent to this Agent from another host/container
 #   apm_non_local_traffic: false
