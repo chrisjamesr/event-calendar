@@ -1,9 +1,0 @@
-init_config:
-
-instances:
-   # -   host: ec2-52-206-132-70.compute-1.amazonaws.com
-   -   host: localhost
-       port: 5432
-       username: datadog
-       password: p14ad5ab36027ad5aca7f4bf0b777feac0a1018912b1ba967526bed3891679876
-       
