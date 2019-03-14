@@ -762,7 +762,7 @@ apm_config:
   enabled: true
 #   The environment tag that Traces should be tagged with
 #   Will inherit from "env" tag if "none" is applied here
-  env: apm_trace
+  env: "apm_trace"
 #   The port that the Receiver should listen on
   receiver_port: 8126
 
