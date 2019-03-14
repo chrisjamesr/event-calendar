@@ -46,9 +46,9 @@ api_key: ${DD_API_KEY}
 # hostname_fqdn: false
 
 # Set the host's tags (optional)
-# tags:
+tags:
 #   - mytag
-#   - env:prod
+  - env:prod
 #   - role:database
 
 # Split tag values according to a given separator.
@@ -288,7 +288,7 @@ dogstatsd_tags:
 # Logs agent
 #
 # Logs agent is disabled by default
-logs_enabled: false
+logs_enabled: true
 #
 # Enable logs collection for all containers, disabled by default
 # logs_config:
@@ -413,7 +413,7 @@ log_level: warn
 # log_file: /var/log/datadog/agent.log
 
 # Set to 'true' to output logs in JSON format
-log_format_json: false
+log_format_json: true
 
 # Set to 'false' to disable logging to stdout
 # log_to_console: false
@@ -714,12 +714,12 @@ disable_file_logging: true
 
 # Process agent specific settings
 #
-process_config:
+# process_config:
 #   A string indicating the enabled state of the Process Agent.
 #   If "false" (the default) it will only collect containers.
 #   If "true" it will collect containers and processes.
 #   If "disabled" it will be disabled altogether and won't start.
-  enabled: "true"
+  # enabled: "true"
 #   The full path to the file where process-agent logs will be written.
 #   log_file:
 #   The interval, in seconds, at which we will run each check. If you want consistent
@@ -759,15 +759,15 @@ process_config:
 #
 apm_config:
 #   Whether or not the APM Agent should run
-  enabled: false
+  enabled: true
 #   The environment tag that Traces should be tagged with
 #   Will inherit from "env" tag if "none" is applied here
-  # env: "apm_trace"
+  env: "none"
 #   The port that the Receiver should listen on
-  # receiver_port: 8126
+  receiver_port: 8126
 
-  # analyzed_spans:
-    # event-list-heroku|rack.request: 1
+  analyzed_spans:
+    event-list-heroku|rack.request: 1
 #   Whether the Trace Agent should listen for non local traffic
 #   Only enable if Traces are being sent to this Agent from another host/container
 #   apm_non_local_traffic: false
