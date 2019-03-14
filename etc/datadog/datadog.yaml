@@ -2,7 +2,7 @@
 # The Datadog api key to associate your Agent's data with your organization.
 # Can be found here:
 # https://app.datadoghq.com/account/settings
-api_key: ${DD_API_KEY}
+api_key: <%= ENV['DD_API_KEY'] %>
 
 # The site of the Datadog intake to send Agent data to.
 # Defaults to 'datadoghq.com', set to 'datadoghq.eu' to send data to the EU site.
@@ -720,6 +720,7 @@ process_config:
 #   If "true" it will collect containers and processes.
 #   If "disabled" it will be disabled altogether and won't start.
   enabled: "true"
+
 #   The full path to the file where process-agent logs will be written.
 #   log_file:
 #   The interval, in seconds, at which we will run each check. If you want consistent
