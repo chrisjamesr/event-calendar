@@ -757,19 +757,18 @@ process_config:
 
 # Trace Agent Specific Settings
 #
-apm_config:
+# apm_config:
 #   Whether or not the APM Agent should run
-  enabled: true
+  # enabled: true
 #   The environment tag that Traces should be tagged with
 #   Will inherit from "env" tag if "none" is applied here
-  env: apm_trace
+  # env: apm_trace
 #   The port that the Receiver should listen on
   # receiver_port: 8126
 
-  analyzed_spans:
+  # analyzed_spans:
     # event-list-trace-agent|rack.request: 1
-    # tags: "" 
-    event-list-trace-agent|rails.action_controller: 1
+    # event-list-trace-agent|rails.action_controller: 1
 
 #   Whether the Trace Agent should listen for non local traffic
 #   Only enable if Traces are being sent to this Agent from another host/container
