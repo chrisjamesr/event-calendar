@@ -6,4 +6,5 @@ instances:
        port: 5432
        username: datadog
        password: p14ad5ab36027ad5aca7f4bf0b777feac0a1018912b1ba967526bed3891679876
-       
+       use_psycopg2: true
+       ssl: true
