@@ -40,6 +40,7 @@ gem 'ffaker'
 gem 'bootsnap', '>= 1.1.0', require: false
 # datadog agent integration  
 gem 'ddtrace'
+gem 'dogstatsd-ruby'
 gem 'logging-rails', :require => 'logging/rails'
 gem 'lograge'
 
