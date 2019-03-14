@@ -759,15 +759,15 @@ process_config:
 #
 apm_config:
 #   Whether or not the APM Agent should run
-  enabled: false
+  enabled: true
 #   The environment tag that Traces should be tagged with
 #   Will inherit from "env" tag if "none" is applied here
-  # env: apm_trace
+  env: apm_trace
 #   The port that the Receiver should listen on
   # receiver_port: 8126
 
-  # analyzed_spans:
-  #   event-list-heroku|rack.request: 1
+  analyzed_spans:
+    event-list-heroku|rack.request: 1
 #   Whether the Trace Agent should listen for non local traffic
 #   Only enable if Traces are being sent to this Agent from another host/container
 #   apm_non_local_traffic: false
