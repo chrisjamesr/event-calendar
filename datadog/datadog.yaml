@@ -714,7 +714,7 @@ disable_file_logging: true
 
 # Process agent specific settings
 #
-# process_config:
+process_config:
 #   A string indicating the enabled state of the Process Agent.
 #   If "false" (the default) it will only collect containers.
 #   If "true" it will collect containers and processes.
