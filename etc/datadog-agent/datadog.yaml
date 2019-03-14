@@ -1,4 +1,4 @@
-{{ if .Common }}
+
 # The Datadog api key to associate your Agent's data with your organization.
 # Can be found here:
 # https://app.datadoghq.com/account/settings
@@ -117,8 +117,7 @@ api_key: ${DD_API_KEY}
 
 # Collect Google Cloud Engine metadata as agent tags
 # collect_gce_tags: true
-{{ end }}
-{{- if .Agent }}
+
 # The path containing check configuration files
 # By default, uses the conf.d folder located in the agent configuration folder.
 # confd_path:
@@ -218,16 +217,13 @@ api_key: ${DD_API_KEY}
 # The timeout to execute the command in second
 # secret_backend_timeout: 5
 
-{{ end -}}
-{{- if .Metadata }}
+
 # Metadata providers, add or remove from the list to enable or disable collection.
 # Intervals are expressed in seconds. You can also set a provider's interval to 0
 # to disable it.
 # metadata_providers:
 #  - name: k8s
 #    interval: 60
-{{ end -}}
-{{- if .Dogstatsd }}
 # DogStatsd
 #
 # If you don't want to enable the DogStatsd server, set this option to false
@@ -288,8 +284,7 @@ dogstatsd_tags:
 # you can configure the namspace below. Each metric received will be prefixed
 # with the namespace before it's sent to Datadog.
 # statsd_metric_namespace:
-{{ end -}}
-{{- if .LogsAgent }}
+
 # Logs agent
 #
 # Logs agent is disabled by default
@@ -299,8 +294,7 @@ logs_enabled: false
 # logs_config:
 #   container_collect_all: false
 #
-{{ end -}}
-{{- if .JMX }}
+
 # JMX
 #
 # jmx_pipe_path:
@@ -348,8 +342,7 @@ logs_enabled: false
 # Determines the maximum waiting period in seconds before timing up on instance reconnection.
 # jmx_reconnection_timeout: 10
 #
-{{ end -}}
-{{- if .Autoconfig }}
+
 # Autoconfig
 #
 # Directory containing configuration templates
@@ -375,11 +368,11 @@ logs_enabled: false
 #   - name: clusterchecks
 #      grace_time_seconds: 60
 
-{{- if .ClusterChecks }}
+
 ## The kube_services provider watches Kubernetes services for cluster-checks
 #   - name: kube_services
 #     polling: true
-{{ end -}}
+
 
 #   - name: etcd
 #     polling: true
@@ -413,21 +406,20 @@ logs_enabled: false
 # extra_config_providers:
 #   - clusterchecks
 
-{{ end -}}
-{{- if .Logging }}
+
 # Logging
 #
-# log_level: info
+log_level: warn
 # log_file: /var/log/datadog/agent.log
 
 # Set to 'true' to output logs in JSON format
-# log_format_json: false
+log_format_json: false
 
 # Set to 'false' to disable logging to stdout
-# log_to_console: true
+# log_to_console: false
 
 # Set to 'true' to disable logging to the log file
-# disable_file_logging: false
+disable_file_logging: true
 
 # Set to 'true' to enable logging to syslog.
 # Note: Even if this option is set to 'false', the service launcher of your environment
@@ -455,8 +447,7 @@ logs_enabled: false
 #
 # syslog_tls_verify: true
 #
-{{ end -}}
-{{- if .Autodiscovery }}
+
 # Autodiscovery
 #
 # Change the root directory to look at to get cgroup statistics. Useful when running inside a
@@ -541,8 +532,7 @@ logs_enabled: false
 # On all registered configuration providers
 # ad_config_poll_interval: 10
 #
-{{ end -}}
-{{- if .ClusterChecks }}
+
 # Cluster check dispatching
 #
 # The cluster-agent is able to autodiscover cluster resources and dispatch checks on
@@ -568,8 +558,7 @@ logs_enabled: false
 #   Additionnal tags can be set here. They will be added to every cluster-check configuration
 #   extra_tags: []
 #
-{{ end -}}
-{{- if .DockerTagging }}
+
 # Container detection
 #
 # On hosts with mixed workloads, non-containernized processes can
@@ -595,8 +584,7 @@ logs_enabled: false
 #   com.docker.compose.service: service_name
 #   com.docker.compose.project: +project_name
 #
-{{ end -}}
-{{- if .KubernetesTagging }}
+
 # Kubernetes tag extraction
 #
 # We can extract pod labels and annotations as metric tags. If you prefix your
@@ -610,8 +598,7 @@ logs_enabled: false
 #   app:               kube_app
 #   pod-template-hash: +kube_pod-template-hash
 #
-{{ end -}}
-{{- if .ECS }}
+
 # ECS integration
 #
 # The ECS agent container should be autodetected when running with the
@@ -622,8 +609,7 @@ logs_enabled: false
 #
 # Fargate clusters use other endpoints and are not affected by these options.
 #
-{{ end -}}
-{{- if .CRI }}
+
 # CRI integration
 #
 # To activate the CRI check you'll need to indicate the path of the
@@ -636,8 +622,7 @@ logs_enabled: false
 # You can configure the timeout (in seconds) for querying the CRI
 # cri_query_timeout: 5
 #
-{{ end -}}
-{{- if .Containerd}}
+
 # Containerd integration
 #
 # To activate the Containerd check you'll need to indicate the path of the
@@ -653,8 +638,7 @@ logs_enabled: false
 # As the Containerd check only supports Kubernetes, the default value is `k8s.io`
 # https://github.com/containerd/cri/blob/release/1.2/pkg/constants/constants.go#L22-L23
 # containerd_namespace: k8s.io
-{{ end -}}
-{{- if .Kubelet }}
+
 # Kubernetes kubelet connectivity
 #
 # The kubelet host and port should be autodetected when running inside a pod.
@@ -683,8 +667,7 @@ logs_enabled: false
 # Polling frequency in seconds of the agent to the kubelet "/pods" endpoint
 # kubelet_cache_pods_duration: 5
 #
-{{ end -}}
-{{- if .KubeApiServer }}
+
 # Kubernetes apiserver integration
 #
 # When running in a pod, the agent will automatically use the pod's serviceaccount
@@ -728,9 +711,7 @@ logs_enabled: false
 #
 # Kubernetes cluster identifier used to avoid host alias collisions. Empty by default.
 # clustername: cluster_identifier
-{{ end -}}
 
-{{- if .ProcessAgent }}
 # Process agent specific settings
 #
 # process_config:
@@ -763,9 +744,7 @@ logs_enabled: false
 #   dd_agent_bin:
 #   Overrides of the environment we pass to fetch the hostname. The default is usually fine.
 #   dd_agent_env:
-{{ end -}}
 
-{{- if .NetworkTracer }}
 # Network tracer specific settings
 #
 # network_tracer_config:
@@ -775,9 +754,7 @@ logs_enabled: false
 #   nettracer_socket: /opt/datadog-agent/run/nettracer.sock
 #   The full path to the file where network-tracer logs will be written.
 #   log_file: /var/log/datadog/network-tracer.log
-{{ end -}}
 
-{{- if .TraceAgent }}
 # Trace Agent Specific Settings
 #
 apm_config:
@@ -806,4 +783,3 @@ apm_config:
 #   all entries must be surrounded by double quotes and separated by commas
 #   Example: ["(GET|POST) /healthcheck", "GET /V1"]
 #   ignore_resources: []
-{{ end -}}
