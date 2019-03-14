@@ -5,5 +5,5 @@ instances:
        port: 5432
        username: datadog
        password: p14ad5ab36027ad5aca7f4bf0b777feac0a1018912b1ba967526bed3891679876
-       dbname: postgresql-animated-86574
+       dbname: d8qi9ej9guip7v
        ssl: true
