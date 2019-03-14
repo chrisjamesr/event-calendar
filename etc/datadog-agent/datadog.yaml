@@ -227,10 +227,10 @@ tags:
 # DogStatsd
 #
 # If you don't want to enable the DogStatsd server, set this option to false
-use_dogstatsd: true
-#
+# use_dogstatsd: true
+
 # Make sure your client is sending to the same UDP port
-dogstatsd_port: 8125
+# dogstatsd_port: 8125
 #
 # The host to bind to receive external metrics (used only by the dogstatsd
 # server for now). For dogstatsd this is ignored if
@@ -270,9 +270,9 @@ dogstatsd_port: 8125
 # Additional tags to append to all metrics, events and service checks received by
 # this dogstatsd server. Useful for tagging all dogstatsd metrics reporting from
 # a single host without resorting to host tags.
-dogstatsd_tags:
-  - dogstatsd:tags
-#
+# dogstatsd_tags:
+  # - dogstatsd:tags
+
 # If you want to forward every packet received by the dogstatsd server
 # to another statsd server, uncomment these lines.
 # WARNING: Make sure that forwarded packets are regular statsd packets and not "dogstatsd" packets,
@@ -714,12 +714,12 @@ disable_file_logging: true
 
 # Process agent specific settings
 #
-# process_config:
+process_config:
 #   A string indicating the enabled state of the Process Agent.
 #   If "false" (the default) it will only collect containers.
 #   If "true" it will collect containers and processes.
 #   If "disabled" it will be disabled altogether and won't start.
-  # enabled: "true"
+  enabled: "true"
 #   The full path to the file where process-agent logs will be written.
 #   log_file:
 #   The interval, in seconds, at which we will run each check. If you want consistent
