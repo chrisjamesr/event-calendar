@@ -2,7 +2,7 @@
 # The Datadog api key to associate your Agent's data with your organization.
 # Can be found here:
 # https://app.datadoghq.com/account/settings
-api_key: <%= ENV['DD_API_KEY'] %>
+api_key: <%= ENV.fetch("DD_API_KEY") %>
 
 # The site of the Datadog intake to send Agent data to.
 # Defaults to 'datadoghq.com', set to 'datadoghq.eu' to send data to the EU site.
