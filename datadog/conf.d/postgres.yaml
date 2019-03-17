@@ -6,7 +6,7 @@ instances:
     username: <YOUR USERNAME>
     password: <YOUR PASSWORD>
     dbname: <YOUR DBNAME>
-    ssl: True
+    ssl: true
 
 # Connect using a UNIX socket (host must begin with a /)
 # If `use_psycopg2` is enabled, use the directory containing the UNIX socket (ex: `/run/postgresql/`)
