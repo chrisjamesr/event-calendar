@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Disable the Datadog Agent based on dyno type
-
+echo "etc prerun"
 # Update the Postgres configuration from above using the Heroku application environment variable
 if [ -n "$DATADOG_URL" ]; then
   POSTGREGEX='^postgres://([^:]+):([^@]+)@([^:]+):([^/]+)/(.*)$'
