@@ -116,12 +116,12 @@ instances:
 #
 
 ## log Section (Available for Agent >=6.0)
- logs:
-      - type: file
-        path: /var/log/pg_log/pg.log
-        source: postgresql
-        sourcecategory: database
-        service: myapp
+ # logs:
+ #      - type: file
+ #        path: /var/log/pg_log/pg.log
+ #        source: postgresql
+ #        sourcecategory: database
+ #        service: myapp
         #To handle multi line that starts with yyyy-mm-dd use the following pattern
         #log_processing_rules:
         #  - type: multi_line
