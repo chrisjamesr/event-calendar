@@ -59,10 +59,6 @@ GEM
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
-    ddtrace (0.20.0)
-      msgpack
-      opentracing (>= 0.4.1)
-    dogstatsd-ruby (4.1.0)
     erubi (1.8.0)
     execjs (2.7.0)
     ffaker (2.10.0)
@@ -110,7 +106,6 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
-    opentracing (0.5.0)
     pg (1.1.4)
     pry (0.12.2)
       coderay (~> 1.1.0)
@@ -186,8 +181,6 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   byebug
-  ddtrace
-  dogstatsd-ruby
   ffaker
   foreman (~> 0.82.0)
   jbuilder (~> 2.5)
