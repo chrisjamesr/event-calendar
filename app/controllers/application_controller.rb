@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  before_action :authenticate, :datadog_trace_extend 
+  before_action :authenticate
 
   def logged_in?
     !!current_user
