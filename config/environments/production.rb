@@ -82,20 +82,20 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-  config.lograge.custom_options = lambda do |event|
+  # config.lograge.custom_options = lambda do |event|
   # Retrieves trace information for current thread
-    correlation = Datadog.tracer.active_correlation
+    # correlation = Datadog.tracer.active_correlation
 
-    {
+    # {
       # Adds IDs as tags to log output
-      :dd => {
-        :trace_id => correlation.trace_id,
-        :span_id => correlation.span_id
-      },
-      :ddsource => ["ruby"],
-      :params => event.payload[:params].reject { |k| %w(controller action).include? k }
-    }
-  end
+      # :dd => {
+        # :trace_id => correlation.trace_id,
+        # :span_id => correlation.span_id
+      # },
+      # :ddsource => ["ruby"],
+      # :params => event.payload[:params].reject { |k| %w(controller action).include? k }
+    # }
+  # end
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
